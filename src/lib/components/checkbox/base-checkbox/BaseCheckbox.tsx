@@ -1,5 +1,5 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { getColor, getColorSystem } from '@src/lib/common/getColor';
+import { getColor, getColorIcon, getColorSystem } from '@src/lib/common/getColor';
 import { getMargin } from '@src/lib/common/getMargin';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSCheckbox, TypeSSMR } from '@src/lib/general/styleScheme';
@@ -56,7 +56,7 @@ const SIcon = styled.svg<SIconProps>`
     height: 14px;
     fill: none;
     stroke: ${(props) =>
-        getColorSystem({
+        getColorIcon({
             cs: props.$colors,
             disabled: props.$disabled,
             color: props.$color,

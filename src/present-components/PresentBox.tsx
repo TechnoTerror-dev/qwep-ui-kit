@@ -83,7 +83,7 @@ export const PresentBox = () => {
                 </SubmitButton>
 
                 <IconButton borderRadius={'round'} color={'#EFF6FF'}>
-                    <Icon.Phone color={'#000'} />
+                    <Icon.BarChart color={'#000'} />
                 </IconButton>
 
                 <BaseTextField />
@@ -93,18 +93,18 @@ export const PresentBox = () => {
                 <BaseTextField disabled placeholder={'placeholder'} />
                 <MainTextField
                     placeholder={'placeholder'}
-                    iconStart={<Icon.Phone />}
+                    iconStart={<Icon.BarChart />}
                     iconsEnd={[
                         <SBtn key={1} onClick={onclickInp}>
-                            <Icon.Phone />
+                            <Icon.BarChart />
                         </SBtn>,
                         <Icon.AddCircle onClick={onclickInp} key={2} />,
-                        <Icon.Phone onClick={onclickInp} key={3} />,
+                        <Icon.BarChart onClick={onclickInp} key={3} />,
                         <Icon.AddCircle onClick={onclickInp} key={4} />,
                     ]}
                 />
 
-                <MainTextField colorVariant={'success'} disabled iconStart={<Icon.Phone onClick={onclickInp} />} />
+                <MainTextField colorVariant={'success'} disabled iconStart={<Icon.BarChart onClick={onclickInp} />} />
 
                 <WrapperInput
                     required
@@ -115,7 +115,7 @@ export const PresentBox = () => {
                         text: 'SimpleTextField',
                     }}
                 >
-                    <MainTextField iconStart={<Icon.Phone />} />
+                    <MainTextField iconStart={<Icon.BarChart />} />
                 </WrapperInput>
 
                 <WrapperInput required positionLabel={'top'} id={'BaseTextField'} label={'BaseTextField'}>

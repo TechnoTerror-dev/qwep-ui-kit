@@ -1,4 +1,4 @@
-import { getColorSystem } from '@src/lib/common/getColor';
+import { getColorIcon } from '@src/lib/common/getColor';
 import { renderIconTextField } from '@src/lib/common/renderIconItem';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
@@ -6,6 +6,7 @@ import { EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
 import { EInpVariant } from '@src/lib/types/TypeInp';
 import React, { useCallback, useMemo, useState } from 'react';
 import styled, { css } from 'styled-components';
+
 import { SBaseInput } from '../base-text-field/BaseInput';
 import { SBaseTextField, TBaseTextField } from '../base-text-field/BaseTextField';
 
@@ -26,7 +27,7 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
     align-items: center;
     ${SIconContainer} {
         display: flex;
-        padding-right: 4px;
+        padding-right: 8px;
         ${(props) =>
             props.$disabled &&
             css`
@@ -34,7 +35,7 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
             `};
         svg {
             color: ${(props) =>
-                getColorSystem({
+                getColorIcon({
                     cs: props.$colors,
                     color: props.$color,
                     disabled: props.$disabled,
@@ -47,7 +48,7 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
         ${SIconContainer} {
             svg {
                 color: ${(props) =>
-                    getColorSystem({
+                    getColorIcon({
                         cs: props.$colors,
                         color: props.$color,
                         disabled: props.$disabled,

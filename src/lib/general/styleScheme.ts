@@ -320,8 +320,8 @@ export const styleScheme: TypeSS = {
         lineHeightText: '18px',
         lineHeightSubText: '16px',
         // font weight
-        weightTitle: '600',
-        weightItem: '600',
+        weightTitle: '700',
+        weightItem: '700',
         weightGlobal: '400',
     },
 

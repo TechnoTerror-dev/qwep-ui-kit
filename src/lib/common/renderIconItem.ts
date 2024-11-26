@@ -1,6 +1,6 @@
 import React from 'react';
 import { TypeSSBtn, TypeSSInp } from '../general/styleScheme';
-import { TVariantSize, EVariantSize } from '../types/TypeBase';
+import { EVariantSize, TVariantSize } from '../types/TypeBase';
 
 type renderIconTextFieldProps = {
     icon?: React.ReactNode;
@@ -16,7 +16,7 @@ export const renderIconTextField = ({ icon, size, sizeVariant, rest }: renderIco
             width: size.inpIconSize_L,
             height: size.inpIconSize_L,
             minWidth: size.inpIconSize_L,
-            minheight: size.inpIconSize_L,
+            minHeight: size.inpIconSize_L,
         },
         [EVariantSize.M]: {
             width: size.inpIconSize_M,

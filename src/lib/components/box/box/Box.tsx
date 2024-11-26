@@ -12,7 +12,7 @@ type TypeStyles = {
     mr: TypeSSMR;
 };
 
-type BoxProps = {
+export type BoxProps = {
     mr?: TMargin;
     boxWidthVariant?: TBoxWidthVariant;
     boxPaddingVariant?: TBoxPaddingVariant;
@@ -21,7 +21,7 @@ type BoxProps = {
     as?: keyof JSX.IntrinsicElements;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-type SBoxProps = {
+type SRootProps = {
     $boxWidthVariant?: TBoxWidthVariant;
     $boxPaddingVariant?: TBoxPaddingVariant;
     $boxGapVariant?: TBoxGapVariant;
@@ -30,7 +30,7 @@ type SBoxProps = {
     $styles: TypeStyles;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const SRoot = styled.div<SBoxProps>`
+const SRoot = styled.div<SRootProps>`
     ${(props) =>
         CSSBaseBox({
             $boxWidthVariant: props.$boxWidthVariant,
@@ -71,12 +71,12 @@ export const Box = React.memo(
 
 //export component
 export const SBox = {
-    Box: SRoot,
+    Root: SRoot,
 };
 
 //export type
 export namespace TBox {
     export type Main = BoxProps;
     export type Styles = TypeStyles;
-    export type SBox = SBoxProps;
+    export type SRoot = SRootProps;
 }

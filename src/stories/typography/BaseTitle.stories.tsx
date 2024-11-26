@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseBox, BaseTitle } from '../../lib';
-import { TBaseTitle } from '../../lib/components/typography/base/BaseTitle';
+import { TBaseTitle } from '../../lib/components/typography/title/Title';
 
 const meta = {
     title: 'Components/typography/BaseTitle',

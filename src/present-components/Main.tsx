@@ -1,7 +1,7 @@
 import { BaseContainer } from '@src/lib';
 // import { useThemeContext } from '@src/lib/general';
 import { useState } from 'react';
-import { PresentBox } from './Box';
+import { PresentBox } from './PresentBox';
 
 export const Main = () => {
     const [val, setVal] = useState(<PresentBox />);

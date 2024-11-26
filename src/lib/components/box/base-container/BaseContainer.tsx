@@ -3,17 +3,17 @@ import { TypeColorScheme } from '@src/lib/general/colors';
 import React from 'react';
 import { styled } from 'styled-components';
 
-type BaseContainerProps = {
+type ContainerProps = {
     as?: keyof JSX.IntrinsicElements;
     background?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-type SContainerProps = {
+type SRootProps = {
     $background?: string;
     $colors: TypeColorScheme;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const SContainer = styled.div<SContainerProps>`
+const SRoot = styled.div<SRootProps>`
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -24,23 +24,23 @@ const SContainer = styled.div<SContainerProps>`
 `;
 
 export const BaseContainer = React.memo(
-    React.forwardRef<HTMLDivElement, BaseContainerProps>(({ as: Component = 'div', background, ...rest }, ref) => {
+    React.forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div', background, ...rest }, ref) => {
         const colors = useColorScheme();
         return (
-            <SContainer ref={ref} as={Component} $background={background} $colors={colors} {...rest}>
+            <SRoot ref={ref} as={Component} $background={background} $colors={colors} {...rest}>
                 {rest.children}
-            </SContainer>
+            </SRoot>
         );
     })
 );
 
 //export component
-export const SBaseContainer = {
-    Container: SContainer,
+export const SContainer = {
+    Container: SRoot,
 };
 
 //export type
-export namespace TBaseContainer {
-    export type Main = BaseContainerProps;
-    export type SContainer = SContainerProps;
+export namespace TContainer {
+    export type Main = ContainerProps;
+    export type SRoot = SRootProps;
 }

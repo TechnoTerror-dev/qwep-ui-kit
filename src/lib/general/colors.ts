@@ -3,8 +3,10 @@ export type Hex = `#${string}`;
 export type TypeColorScheme = {
     primary: Hex;
     secondary: Hex;
+    system: Hex;
 
     //other
+    lightShadow: Hex;
     lightElem: Hex;
     backgroundInfo: Hex;
     backgroundSuccess: Hex;
@@ -33,10 +35,10 @@ export type TypeColorScheme = {
     //text
     title: Hex;
     text: Hex;
+    subText: Hex;
     textItem: Hex;
     link: Hex;
     linkActive: Hex;
-    prompt: Hex;
 
     //general
     alpha: Hex;
@@ -47,9 +49,11 @@ export type TypeColorScheme = {
 
 export const colorsLight: TypeColorScheme = {
     primary: '#2563EB',
-    secondary: '#E5F1FF',
+    secondary: '#EFF6FF',
+    system: '#E2E8F0',
 
     //other
+    lightShadow: '#AABDE840',
     lightElem: '#A9C1CF',
     backgroundInfo: '#BFDBFE',
     backgroundSuccess: '#BBF7D0',
@@ -69,7 +73,7 @@ export const colorsLight: TypeColorScheme = {
     warningItemActive: '#C2410C',
 
     //base
-    background: '#ffffff',
+    background: '#CBD5E1',
     backgroundBox: '#ffffff',
     backgroundTooltip: '#1f1f1fc8',
     disabled: '#B9BCBE',
@@ -78,10 +82,10 @@ export const colorsLight: TypeColorScheme = {
     //text
     title: '#1A242A',
     text: '#1A242A',
+    subText: '#475569',
     textItem: '#F5F5F5',
     link: '#2563EB',
     linkActive: '#1D4ED8',
-    prompt: '#4f4f4f',
 
     //general
     alpha: '#ffffff',
@@ -91,9 +95,11 @@ export const colorsLight: TypeColorScheme = {
 export const colorsDark: TypeColorScheme = {
     primary: '#3B82F6',
     secondary: '#1E293B',
+    system: '#E2E8F0',
 
     //other
     lightElem: '#A9C1CF',
+    lightShadow: '#AABDE840',
     backgroundInfo: '#18338C',
     backgroundSuccess: '#12512A',
     backgroundWarning: '#7B2A0E',
@@ -121,10 +127,10 @@ export const colorsDark: TypeColorScheme = {
     //text
     title: '#F8FAFC',
     text: '#A9C1CF',
+    subText: '#475569',
     textItem: '#F8FAFC',
     link: '#3B82F6',
     linkActive: '#2563EB',
-    prompt: '#94A3B8',
 
     //general
     alpha: '#ffffff',

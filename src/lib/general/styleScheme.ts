@@ -15,6 +15,7 @@ export type TypeSSMR = {
 
 export type TypeSSBase = {
     borderRadiusItem: string;
+    circleDecorationElem: string;
 };
 
 export type TypeSSBtn = {
@@ -26,6 +27,8 @@ export type TypeSSBtn = {
     btnHeight_M: string;
     btnIconSize_L: string;
     btnIconSize_M: string;
+    btnLoadingSize_L: string;
+    btnLoadingSize_M: string;
 };
 
 export type TypeSSInp = {
@@ -96,17 +99,19 @@ export type TypeSSRadio = {
 };
 
 export type TypeSSTypography = {
-    fontSizeItem: string;
-    fontSizeGlobal: string;
-    h1: string;
-    h2: string;
-    h3: string;
-    h4: string;
-    h5: string;
-    h6: string;
-    fontWeightTitle: string;
-    fontWeightItem: string;
-    fontWeightGlobal: string;
+    // size
+    text: string;
+    subText: string;
+    title_L: string;
+    title_M: string;
+    title_S: string;
+    // line height
+    lineHeightText: string;
+    lineHeightSubText: string;
+    // font weight
+    weightTitle: string;
+    weightItem: string;
+    weightGlobal: string;
 };
 
 export type TypeSSBox = {
@@ -140,6 +145,22 @@ export type TypeSSBox = {
     boxGap_6: string;
 };
 
+export type TypeSSLayout = {
+    borderRadius: string;
+
+    width_L: string;
+    width_M: string;
+    width_S: string;
+
+    padding_L: string;
+    padding_M: string;
+    padding_S: string;
+
+    margin_L: string;
+    margin_M: string;
+    margin_S: string;
+};
+
 export type TypeSS = {
     // base
     base: TypeSSBase;
@@ -168,6 +189,9 @@ export type TypeSS = {
 
     //box
     box: TypeSSBox;
+
+    //box layout
+    layout: TypeSSLayout;
 } & {
     [key: string]: string | { [key: string]: string | object };
 };
@@ -176,6 +200,7 @@ export const styleScheme: TypeSS = {
     // base
     base: {
         borderRadiusItem: '8px',
+        circleDecorationElem: '40px',
     },
 
     //margin
@@ -204,6 +229,8 @@ export const styleScheme: TypeSS = {
         btnHeight_M: '32px',
         btnIconSize_L: '20px',
         btnIconSize_M: '16px',
+        btnLoadingSize_L: '14px',
+        btnLoadingSize_M: '12px',
     },
 
     //inp
@@ -283,17 +310,19 @@ export const styleScheme: TypeSS = {
 
     //text
     typography: {
-        fontSizeItem: '14px',
-        fontSizeGlobal: '14px',
-        h1: '38px',
-        h2: '30px',
-        h3: '24px',
-        h4: '20px',
-        h5: '18px',
-        h6: '16px',
-        fontWeightTitle: '400',
-        fontWeightItem: '700',
-        fontWeightGlobal: '400',
+        // size
+        text: '14px',
+        subText: '12px',
+        title_L: '24px',
+        title_M: '20px',
+        title_S: '16px',
+        // line height
+        lineHeightText: '18px',
+        lineHeightSubText: '16px',
+        // font weight
+        weightTitle: '600',
+        weightItem: '600',
+        weightGlobal: '400',
     },
 
     //box
@@ -327,13 +356,19 @@ export const styleScheme: TypeSS = {
         boxGap_5: '28px',
         boxGap_6: '36px',
     },
-    boxLayout: {
-        boxBorderRadius: '40px',
+    layout: {
+        borderRadius: '40px',
 
-        boxWidth_L: '1060px',
-        boxWidth_M: '768px',
-        boxWidth_S: '100%',
+        width_L: '1060px',
+        width_M: '768px',
+        width_S: '100%',
 
-        boxPadding: '40px 80px 60px 80px',
+        padding_L: '40px 80px 60px 80px',
+        padding_M: '40px 60px 60px 60px',
+        padding_S: '24px 20px 36px 20px',
+
+        margin_L: '68px 30px',
+        margin_M: '40px 20px',
+        margin_S: '40px 15px',
     },
 };

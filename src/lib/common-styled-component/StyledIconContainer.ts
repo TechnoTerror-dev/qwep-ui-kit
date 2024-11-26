@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { TypeSSIcon, TypeSSMR } from '../general/styleScheme';
+import { getColorIcon } from '../common/getColor';
 import { getMargin } from '../common/getMargin';
 import { Hex, TypeColorScheme } from '../general/colors';
-import { getColor } from '../common/getColor';
-import { TVariantColor, TMargin, TVariantSize, EVariantSize } from '../types/TypeBase';
+import { TypeSSIcon, TypeSSMR } from '../general/styleScheme';
+import { EVariantSize, TMargin, TVariantColor, TVariantSize } from '../types/TypeBase';
 
 export type TypeStyleIconContainer = {
     icon: TypeSSIcon;
@@ -42,7 +42,7 @@ export const StyledIconContainer = styled.svg<StyledIconContainerProps>`
     transition: all 0.3s ease-in-out;
 
     color: ${({ $colors, $color, $colorVariant, $disabled, $_importantColor }) =>
-        `${getColor({ cs: $colors, color: $color, variant: $colorVariant, disabled: $disabled })} ${$_importantColor ? '!important' : ''}`};
+        `${getColorIcon({ cs: $colors, color: $color, variant: $colorVariant, disabled: $disabled })} ${$_importantColor ? '!important' : ''}`};
 
     ${(props) => ICON_SIZE[props.$sizeVariant](props)}
 `;

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseBox, BaseParagraph } from '../../lib';
-import { TBaseParagraph } from '../../lib/components/typography/base/BaseParagraph';
+import { TBaseParagraph } from '../../lib/components/typography/paragraph/Paragraph';
 
 const meta = {
     title: 'Components/typography/BaseParagraph',

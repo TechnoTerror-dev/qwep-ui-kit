@@ -23,6 +23,7 @@ import {
     Separator,
     CircleDecorationTitle,
     Avatar,
+    BoxSkeleton,
 } from '@src/lib';
 import { IconButton } from '@src/lib/components/button/icon-button/IconButton';
 import { BaseTextField, MainTextField, WrapperInput } from '@src/lib/components/input';
@@ -55,7 +56,7 @@ const SCard = styled(CardBox)`
     }
 `;
 
-const BoxAdaptive = styled(Box)`
+const BoxAdaptive = styled(BoxSkeleton)`
     align-items: start;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -64,6 +65,7 @@ const BoxAdaptive = styled(Box)`
 export const PresentBox = () => {
     const [isShow, setIsShow] = useState(false);
     const [radioId, setRadioId] = useState('1');
+    const [skeleton, setSkeleton] = useState(true);
 
     const loadingShow = () => {
         setIsShow(!isShow);
@@ -75,6 +77,10 @@ export const PresentBox = () => {
 
     const radioClick = (id: string) => {
         setRadioId(id);
+    };
+
+    const skeletonClick = () => {
+        setSkeleton(!skeleton);
     };
     return (
         <>
@@ -250,13 +256,15 @@ export const PresentBox = () => {
                         <SelectItem value={'4'}>Item 4</SelectItem>
                     </SelectGroup>
                 </Select>
+                <Button onClick={skeletonClick}>{skeleton ? 'YES' : 'NO'}</Button>
             </BoxLayout>
 
             <BoxLayout>
                 <Tabs
                     defaultValue={'t-1'}
                     tabs={
-                        <Box
+                        <BoxAdaptive
+                            isSkeleton={skeleton}
                             boxDisplay={'flex'}
                             style={{ justifyContent: 'space-between', alignItems: 'end', flexWrap: 'wrap' }}
                         >
@@ -276,13 +284,13 @@ export const PresentBox = () => {
                                     Интерфейс
                                 </Tab>
                             </Box>
-                        </Box>
+                        </BoxAdaptive>
                     }
                 >
                     <Separator mr={'my-9'} />
 
                     <TabContent value={'t-1'} boxDisplay={'block'}>
-                        <BoxAdaptive boxDisplay={'grid'}>
+                        <BoxAdaptive boxDisplay={'grid'} isSkeleton={skeleton}>
                             <CircleDecorationTitle
                                 title={'Фото'}
                                 icon={<Icon.Photo color={'#000'} />}
@@ -312,7 +320,7 @@ export const PresentBox = () => {
                             </Box>
                         </BoxAdaptive>
                         <Separator mr={'my-9'} />
-                        <BoxAdaptive boxDisplay={'grid'}>
+                        <BoxAdaptive boxDisplay={'grid'} isSkeleton={skeleton}>
                             <CircleDecorationTitle
                                 title={'Учетные данные'}
                                 icon={<Icon.Pen color={'#000'} />}

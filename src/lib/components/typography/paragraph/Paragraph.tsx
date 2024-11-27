@@ -37,9 +37,9 @@ const SRoot = styled(SBaseText.Root)<SRootProps>`
 `;
 
 export const Paragraph: React.FC<ParagraphProps> = React.memo(
-    ({ children, mr, sizeVariant = ETextVariant.L, color, isEllipsis, ...rest }) => {
-        const colors = useColorScheme();
-        const styles = useStyleScheme(['typography', 'mr']);
+    ({ children, mr, sizeVariant = ETextVariant.TEXT, color, isEllipsis, $colors, $styles, ...rest }) => {
+        const colors = useColorScheme($colors);
+        const styles = useStyleScheme(['typography', 'mr'], $styles);
 
         return (
             <SRoot

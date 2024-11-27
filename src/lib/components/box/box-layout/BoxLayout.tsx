@@ -15,6 +15,8 @@ type WrapperProps = {
 
 export type BoxLayoutProps = {
     wrapperProps?: WrapperProps;
+    $styles?: TypeStyles;
+    $colors?: TypeColorScheme;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
@@ -42,9 +44,9 @@ const SWrapper = styled.div<SWrapperProps>`
 `;
 
 export const BoxLayout = React.memo(
-    React.forwardRef<HTMLDivElement, BoxLayoutProps>(({ wrapperProps, ...rest }, ref) => {
-        const colors = useColorScheme();
-        const styles = useStyleScheme(['layout']);
+    React.forwardRef<HTMLDivElement, BoxLayoutProps>(({ wrapperProps, $styles, $colors, ...rest }, ref) => {
+        const colors = useColorScheme($colors);
+        const styles = useStyleScheme(['layout'], $styles);
 
         return (
             <SRoot ref={ref} $styles={styles} {...rest}>

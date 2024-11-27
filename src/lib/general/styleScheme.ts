@@ -50,8 +50,6 @@ export type TypeSSIcon = {
 export type TypeSSCheckbox = {
     checkboxSize_L: string;
     checkboxSize_M: string;
-    checkboxLoadingSize_L: string;
-    checkboxLoadingSize_M: string;
 };
 
 export type TypeSSSwitch = {
@@ -270,10 +268,8 @@ export const styleScheme: TypeSS = {
 
     //checkbox
     checkbox: {
-        checkboxSize_L: '24px',
-        checkboxSize_M: '20px',
-        checkboxLoadingSize_L: '20px',
-        checkboxLoadingSize_M: '16px',
+        checkboxSize_L: '20px',
+        checkboxSize_M: '16px',
     },
 
     // switch
@@ -296,16 +292,16 @@ export const styleScheme: TypeSS = {
 
     // radio
     radio: {
-        radioSize_L: '24px',
-        radioSize_M: '20px',
-        radioSizeIndicator_L: '10px',
+        radioSize_L: '20px',
+        radioSize_M: '16px',
+        radioSizeIndicator_L: '8px',
         radioSizeIndicator_M: '8px',
     },
 
     // icon
     icon: {
         iconSize_L: '20px',
-        iconSize_M: '16px',
+        iconSize_M: '18px',
     },
 
     //text

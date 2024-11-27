@@ -25,6 +25,8 @@ type ButtonProps = {
     color?: Hex;
     blocked?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+    $colors?: TypeColorScheme;
+    $styles?: TypeStyles;
     _isActiveHover?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -162,13 +164,15 @@ export const Button = React.memo(
                 variant = EVariantBtn.CONTAINED,
                 onClick,
                 blocked,
+                $colors,
+                $styles,
                 _isActiveHover = true,
                 ...rest
             },
             ref
         ) => {
-            const colors = useColorScheme();
-            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr']);
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr'], $styles);
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(

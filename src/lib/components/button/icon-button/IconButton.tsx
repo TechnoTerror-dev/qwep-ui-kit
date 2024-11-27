@@ -86,12 +86,14 @@ export const IconButton = React.memo(
                 colorVariant = EVariantColor.DEFAULT,
                 variant = EVariantBtn.CONTAINED,
                 _isActiveHover = true,
+                $colors,
+                $styles,
                 ...rest
             },
             ref
         ) => {
-            const colors = useColorScheme();
-            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr']);
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr'], $styles);
 
             const renderIcon = useMemo(() => {
                 return renderIconButton({

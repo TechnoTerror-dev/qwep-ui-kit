@@ -111,12 +111,14 @@ export const MainButton = React.memo(
                 _isActiveHover = true,
                 iconContainerProps,
                 contentProps,
+                $colors,
+                $styles,
                 ...rest
             },
             ref
         ) => {
-            const colors = useColorScheme();
-            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr']);
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr'], $styles);
 
             const renderIcon = useMemo(() => {
                 return renderIconButton({ icon: icon, size: styles.btn, sizeVariant, rest: { $colors: colors } });

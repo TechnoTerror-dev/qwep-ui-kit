@@ -22,6 +22,7 @@ type SMessageProps = {
 
 const SMessage = styled.span<SMessageProps>`
     position: absolute;
+    user-select: none;
     font-size: 12px;
     top: calc(100% + 2px);
     left: 0;

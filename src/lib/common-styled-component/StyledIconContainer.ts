@@ -14,7 +14,7 @@ export type StyledIconContainerProps = {
     $mr?: TMargin;
     $color?: Hex;
     $disabled?: boolean;
-    $_importantColor?: boolean;
+    $$importantColor?: boolean;
     $colorVariant?: TVariantColor;
     $sizeVariant: TVariantSize;
     $colors: TypeColorScheme;
@@ -41,8 +41,8 @@ export const StyledIconContainer = styled.svg<StyledIconContainerProps>`
     ${(props) => getMargin(props.$styles?.mr, props.$mr)};
     transition: all 0.3s ease-in-out;
 
-    color: ${({ $colors, $color, $colorVariant, $disabled, $_importantColor }) =>
-        `${getColorIcon({ cs: $colors, color: $color, variant: $colorVariant, disabled: $disabled })} ${$_importantColor ? '!important' : ''}`};
+    color: ${({ $colors, $color, $colorVariant, $disabled, $$importantColor }) =>
+        `${getColorIcon({ cs: $colors, color: $color, variant: $colorVariant, disabled: $disabled })} ${$$importantColor ? '!important' : ''}`};
 
     ${(props) => ICON_SIZE[props.$sizeVariant](props)}
 `;

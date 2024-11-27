@@ -19,6 +19,7 @@ export type BoxProps = {
     boxGapVariant?: TBoxGapVariant;
     boxDisplay?: TBoxDisplay;
     as?: keyof JSX.IntrinsicElements;
+    $styles?: TypeStyles;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
@@ -45,10 +46,19 @@ const SRoot = styled.div<SRootProps>`
 export const Box = React.memo(
     React.forwardRef<HTMLDivElement, BoxProps>(
         (
-            { mr, boxWidthVariant, boxDisplay, boxPaddingVariant, boxGapVariant, as: Component = 'div', ...rest },
+            {
+                mr,
+                boxWidthVariant,
+                boxDisplay,
+                boxPaddingVariant,
+                boxGapVariant,
+                as: Component = 'div',
+                $styles,
+                ...rest
+            },
             ref
         ) => {
-            const styles = useStyleScheme(['box', 'mr']);
+            const styles = useStyleScheme(['box', 'mr'], $styles);
 
             return (
                 <SRoot

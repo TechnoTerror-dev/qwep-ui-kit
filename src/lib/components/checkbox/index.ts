@@ -1,4 +1,4 @@
-import { BaseCheckbox } from './base-checkbox/BaseCheckbox';
+import { Checkbox } from './checkbox/Checkbox';
 import { SubmitCheckbox } from './submit-checkbox/SubmitCheckbox';
 
-export { BaseCheckbox, SubmitCheckbox };
+export { Checkbox, SubmitCheckbox };

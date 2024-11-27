@@ -16,6 +16,8 @@ type CircleLoadingProps = {
     color?: Hex;
     sizeVariant?: TVariantSize;
     colorVariant?: TVariantColor;
+    $colors?: TypeColorScheme;
+    $styles?: TypeStyles;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
@@ -73,9 +75,20 @@ const SRoot = styled.div<SRootProps>`
 
 export const CircleLoading = React.memo(
     React.forwardRef<HTMLDivElement, CircleLoadingProps>(
-        ({ mr, sizeVariant = EVariantSize.L, colorVariant = EVariantColor.DEFAULT, color, ...rest }, ref) => {
-            const colors = useColorScheme();
-            const styles = useStyleScheme(['mr', 'icon']);
+        (
+            {
+                mr,
+                sizeVariant = EVariantSize.L,
+                colorVariant = EVariantColor.DEFAULT,
+                color,
+                $colors,
+                $styles,
+                ...rest
+            },
+            ref
+        ) => {
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['mr', 'icon'], $styles);
 
             return (
                 <SRoot

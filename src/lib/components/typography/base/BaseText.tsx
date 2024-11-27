@@ -14,6 +14,8 @@ type BaseTextProps = {
     color?: Hex;
     // as?: keyof JSX.IntrinsicElements;
     sizeVariant?: TTextVariant;
+    $colors?: TypeColorScheme;
+    $styles?: TypeStyles;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
 type SRootProps = {
@@ -40,16 +42,18 @@ const SRoot = styled.p<SRootProps>`
     ${(props) => TEXT_SIZE[props.$sizeVariant](props.$styles.typography)};
 `;
 
-export const BaseText: React.FC<BaseTextProps> = React.memo(({ sizeVariant = ETextVariant.TEXT, color, ...rest }) => {
-    const colors = useColorScheme();
-    const styles = useStyleScheme(['typography']);
+export const BaseText: React.FC<BaseTextProps> = React.memo(
+    ({ sizeVariant = ETextVariant.TEXT, color, $colors, $styles, ...rest }) => {
+        const colors = useColorScheme($colors);
+        const styles = useStyleScheme(['typography'], $styles);
 
-    return (
-        <SRoot $sizeVariant={sizeVariant} $colors={colors} $styles={styles} $color={color} {...rest}>
-            {rest.children}
-        </SRoot>
-    );
-});
+        return (
+            <SRoot $sizeVariant={sizeVariant} $colors={colors} $styles={styles} $color={color} {...rest}>
+                {rest.children}
+            </SRoot>
+        );
+    }
+);
 
 //export component
 export const SBaseText = {

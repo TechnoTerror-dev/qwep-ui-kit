@@ -27,7 +27,7 @@ export const renderIconTextField = ({ icon, size, sizeVariant, rest }: renderIco
     };
     return React.cloneElement(icon as React.ReactElement, {
         //@ts-ignore
-        _importantColor: Boolean(icon?.props.color),
+        $importantColor: Boolean(icon?.props.color),
         ...rest,
         style: {
             ...sizeIcon[sizeVariant],
@@ -62,7 +62,7 @@ export const renderIconButton = ({ icon, size, sizeVariant, rest }: renderIconBi
     };
     return React.cloneElement(icon as React.ReactElement, {
         //@ts-ignore
-        _importantColor: Boolean(icon?.props.color),
+        $importantColor: Boolean(icon?.props.color),
         ...rest,
         style: {
             ...sizeIcon[sizeVariant],

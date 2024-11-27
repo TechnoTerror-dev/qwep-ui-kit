@@ -104,10 +104,8 @@ export const MainTextField = React.memo(
                     icon: iconStart,
                     size: styles.inp,
                     sizeVariant,
-
-                    rest: { ...rest },
                 });
-            }, [iconStart, styles, sizeVariant, rest]);
+            }, [iconStart, styles, sizeVariant]);
 
             const renderIconsEnd = useMemo(() => {
                 return iconsEnd?.map((icon, index) =>
@@ -115,10 +113,11 @@ export const MainTextField = React.memo(
                         icon,
                         size: styles.inp,
                         sizeVariant,
-                        rest: { ...rest, key: `text-field-icon-end-${index}` },
+
+                        rest: { key: `text-field-icon-end-${index}` },
                     })
                 );
-            }, [iconsEnd, styles, sizeVariant, rest]);
+            }, [iconsEnd, styles, sizeVariant]);
 
             return (
                 <SRoot

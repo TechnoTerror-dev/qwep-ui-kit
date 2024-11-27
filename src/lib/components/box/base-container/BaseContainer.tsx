@@ -6,6 +6,7 @@ import { styled } from 'styled-components';
 type ContainerProps = {
     as?: keyof JSX.IntrinsicElements;
     background?: string;
+    $colors?: TypeColorScheme;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
@@ -24,8 +25,8 @@ const SRoot = styled.div<SRootProps>`
 `;
 
 export const BaseContainer = React.memo(
-    React.forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div', background, ...rest }, ref) => {
-        const colors = useColorScheme();
+    React.forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div', background, $colors, ...rest }, ref) => {
+        const colors = useColorScheme($colors);
         return (
             <SRoot ref={ref} as={Component} $background={background} $colors={colors} {...rest}>
                 {rest.children}

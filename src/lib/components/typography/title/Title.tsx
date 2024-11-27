@@ -55,9 +55,9 @@ const SRoot = styled.h1<STitleProps>`
 `;
 
 export const Title: React.FC<TitleProps> = React.memo(
-    ({ mr, sizeVariant = ETitleVariant.M, color, isEllipsis, ...rest }) => {
-        const colors = useColorScheme();
-        const styles = useStyleScheme(['typography', 'mr']);
+    ({ mr, sizeVariant = ETitleVariant.M, color, isEllipsis, $colors, $styles, ...rest }) => {
+        const colors = useColorScheme($colors);
+        const styles = useStyleScheme(['typography', 'mr'], $styles);
 
         return (
             <SRoot

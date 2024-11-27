@@ -15,7 +15,7 @@ export type IconSVGContainerProps = {
     style?: React.CSSProperties;
     mr?: TMargin;
     disabled?: boolean;
-    _importantColor?: boolean;
+    $importantColor?: boolean;
     $colors?: TypeColorScheme;
     $styles?: TypeStyleIconContainer;
 } & React.SVGAttributes<SVGSVGElement>;
@@ -30,7 +30,7 @@ export const IconSVGContainer: React.FC<IconSVGContainerProps> = ({
     style,
     mr,
     disabled,
-    _importantColor,
+    $importantColor,
     $colors,
     $styles,
     ...rest
@@ -50,7 +50,7 @@ export const IconSVGContainer: React.FC<IconSVGContainerProps> = ({
             $colorVariant={colorVariant}
             $sizeVariant={sizeVariant}
             $disabled={disabled}
-            $_importantColor={_importantColor}
+            $$importantColor={$importantColor}
             style={style}
             {...rest}
         >

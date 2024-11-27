@@ -9,7 +9,7 @@ import { EItemIconPosition, EVariantColor, EVariantSize, TVariantColor, TVariant
 import { EBtnPosition, EVariantBtn, TVariantBtn } from '@src/lib/types/TypeBtn';
 import React, { useMemo } from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { CircleLoading, SCircleLoading } from '../../becoration/loading/CircleLoading';
+import { CircleLoading, SCircleLoading } from '../../decoration/loading/CircleLoading';
 import { TButton } from '../button/Button';
 import { SMainButton, TMainButton } from '../main-button/MainButton';
 
@@ -123,12 +123,14 @@ export const SubmitButton = React.memo(
                 iconPosition = EItemIconPosition.LEFT,
                 _isActiveHover = true,
                 loadingProps,
+                $colors,
+                $styles,
                 ...rest
             },
             ref
         ) => {
-            const colors = useColorScheme();
-            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr']);
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['base', 'btn', 'typography', 'mr'], $styles);
 
             const renderIcon = useMemo(() => {
                 return renderIconButton({ icon: rest.icon, size: styles.btn, sizeVariant, rest: { $colors: colors } });
@@ -192,17 +194,15 @@ export const SubmitButton = React.memo(
     )
 );
 
-// //export component
-// export const SSubmitButton = {
-//     Button: SButton,
-//     Loading: SLoading,
-// };
+//export component
+export const SSubmitButton = {
+    Root: SRoot,
+    Loading: SLoading,
+};
 
-// //export type
-// export namespace TSubmitButton {
-//     export type Main = SubmitButtonProps;
-//     export type SButton = SButtonProps;
-//     export type SLoading = SLoadingProps;
-//     export type SIconContainer = TSimpleButton.SIconContainer;
-//     export type SContentContainer = TSimpleButton.SContentContainer;
-// }
+//export type
+export namespace TSubmitButton {
+    export type Main = SubmitButtonProps;
+    export type SButton = SButtonProps;
+    export type SLoading = SLoadingProps;
+}

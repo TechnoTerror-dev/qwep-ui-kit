@@ -1,5 +1,5 @@
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { getColor, getColorIcon, getColorSystem } from '@src/lib/common/getColor';
+import { Root, Indicator } from '@radix-ui/react-checkbox';
+import { getColor, getColorSystem } from '@src/lib/common/getColor';
 import { getMargin } from '@src/lib/common/getMargin';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSCheckbox, TypeSSMR } from '@src/lib/general/styleScheme';
@@ -15,7 +15,7 @@ type TypeStyles = {
     mr: TypeSSMR;
 };
 
-type BaseCheckboxProps = {
+type CheckboxProps = {
     mr?: TMargin;
     colorVariant?: TVariantColor;
     sizeVariant?: TVariantSize;
@@ -26,8 +26,8 @@ type BaseCheckboxProps = {
     _isActiveHover?: boolean;
     iconProps?: React.SVGProps<SVGSVGElement>;
     polylineProps?: React.SVGProps<SVGPolylineElement>;
-    indicatorProps?: React.ComponentPropsWithRef<typeof Checkbox.Indicator>;
-} & React.ComponentPropsWithRef<typeof Checkbox.Root>;
+    indicatorProps?: React.ComponentPropsWithRef<typeof Indicator>;
+} & React.ComponentPropsWithRef<typeof Root>;
 
 type SRootProps = {
     $color?: Hex;
@@ -38,7 +38,7 @@ type SRootProps = {
     $sizeVariant: TVariantSize;
     $blocked?: boolean;
     $_isActiveHover?: boolean;
-} & React.ComponentPropsWithRef<typeof Checkbox.Root>;
+} & React.ComponentPropsWithRef<typeof Root>;
 
 type SIconProps = {
     $colorVariant: TVariantColor;
@@ -56,7 +56,7 @@ const SIcon = styled.svg<SIconProps>`
     height: 14px;
     fill: none;
     stroke: ${(props) =>
-        getColorIcon({
+        getColor({
             cs: props.$colors,
             disabled: props.$disabled,
             color: props.$color,
@@ -82,7 +82,7 @@ const SIZE_CHECKBOX = {
     `,
 };
 
-const SRoot = styled(Checkbox.Root)<SRootProps>`
+const SRoot = styled(Root)<SRootProps>`
     position: relative;
     background-color: transparent;
     cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
@@ -96,7 +96,16 @@ const SRoot = styled(Checkbox.Root)<SRootProps>`
                 color: props.$color,
                 variant: props.$colorVariant,
             })};
-
+    &[data-state='checked'] {
+        border-color: ${(props) =>
+            getColor({
+                cs: props.$colors,
+                disabled: props.disabled,
+                color: props.$color,
+                variant: props.$colorVariant,
+                hover: props.$_isActiveHover,
+            })};
+    }
     &:not([disabled]):hover {
         border-color: ${(props) =>
             getColorSystem({
@@ -136,8 +145,8 @@ const SRoot = styled(Checkbox.Root)<SRootProps>`
         `}
 `;
 
-export const BaseCheckbox = React.memo(
-    React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
+export const Checkbox = React.memo(
+    React.forwardRef<HTMLButtonElement, CheckboxProps>(
         (
             {
                 mr,
@@ -171,7 +180,7 @@ export const BaseCheckbox = React.memo(
                     $_isActiveHover={_isActiveHover}
                     {...rest}
                 >
-                    <Checkbox.Indicator {...indicatorProps}>
+                    <Indicator {...indicatorProps}>
                         <SIcon
                             $colors={colors}
                             $colorVariant={colorVariant}
@@ -182,7 +191,7 @@ export const BaseCheckbox = React.memo(
                         >
                             <polyline points="20 6 9 17 4 12" {...polylineProps} />
                         </SIcon>
-                    </Checkbox.Indicator>
+                    </Indicator>
                 </SRoot>
             );
         }
@@ -190,17 +199,17 @@ export const BaseCheckbox = React.memo(
 );
 
 //export component
-export const SBaseCheckbox = {
+export const SCheckbox = {
     Root: SRoot,
     Icon: SIcon,
-    Indicator: Checkbox.Indicator,
+    Indicator: Indicator,
 };
 
 //export type
-export namespace TBaseCheckbox {
+export namespace TCheckbox {
     export type Styles = TypeStyles;
-    export type Main = BaseCheckboxProps;
+    export type Main = CheckboxProps;
     export type SRoot = SRootProps;
-    export type SIndicator = React.ComponentPropsWithRef<typeof Checkbox.Indicator>;
+    export type SIndicator = React.ComponentPropsWithRef<typeof Indicator>;
     export type SIcon = SIconProps;
 }

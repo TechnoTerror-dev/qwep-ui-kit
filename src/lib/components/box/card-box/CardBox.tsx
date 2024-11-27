@@ -7,7 +7,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { SBox, TBox } from '../box/Box';
 
-type SimpleBoxProps = {
+type CardBoxProps = {
     bg?: Hex;
     boxBorderColor?: Hex;
     boxShadowColor?: Hex;
@@ -39,13 +39,28 @@ const SRoot = styled(SBox.Root)<SRootProps>`
 `;
 
 export const CardBox = React.memo(
-    React.forwardRef<HTMLDivElement, SimpleBoxProps>(
+    React.forwardRef<HTMLDivElement, CardBoxProps>(
         (
-            { as: Component = 'div', bg, boxBorderColor, boxRadiusVariant, boxShadowVariant, boxShadowColor, ...rest },
+            {
+                as: Component = 'div',
+                mr,
+                bg,
+                boxWidthVariant,
+                boxPaddingVariant,
+                boxGapVariant,
+                boxDisplay,
+                boxBorderColor,
+                boxRadiusVariant,
+                boxShadowVariant,
+                boxShadowColor,
+                $colors,
+                $styles,
+                ...rest
+            },
             ref
         ) => {
-            const colors = useColorScheme();
-            const styles = useStyleScheme(['box', 'mr']);
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['box', 'mr'], $styles);
 
             return (
                 <SRoot
@@ -53,11 +68,11 @@ export const CardBox = React.memo(
                     as={Component}
                     $styles={styles}
                     $colors={colors}
-                    $mr={rest.mr}
-                    $boxWidthVariant={rest.boxWidthVariant}
-                    $boxPaddingVariant={rest.boxPaddingVariant}
-                    $boxGapVariant={rest.boxGapVariant}
-                    $boxDisplay={rest.boxDisplay}
+                    $mr={mr}
+                    $boxWidthVariant={boxWidthVariant}
+                    $boxPaddingVariant={boxPaddingVariant}
+                    $boxGapVariant={boxGapVariant}
+                    $boxDisplay={boxDisplay}
                     $bg={bg}
                     $boxBorderColor={boxBorderColor}
                     $boxRadiusVariant={boxRadiusVariant}
@@ -79,6 +94,6 @@ export const SCardBox = {
 
 //export type
 export namespace TCardBox {
-    export type Main = SimpleBoxProps;
+    export type Main = CardBoxProps;
     export type SBox = SRootProps;
 }

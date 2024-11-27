@@ -2,53 +2,43 @@ import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { getColor } from '@src/lib/common/getColor';
-import { TypeSSCheckbox } from '@src/lib/general/styleScheme';
-import { StyledLoadingItemEffect } from '@src/lib/common-styled-component/StyledLoadingItem';
-import { SBaseCheckbox, TBaseCheckbox } from '../base-checkbox/BaseCheckbox';
 import { useColorScheme } from '@src/lib/general';
+import { SCheckbox, TCheckbox } from '../checkbox/Checkbox';
+import { getColor } from '@src/lib/common/getColor';
+import { StyledLoadingItemEffect } from '@src/lib/common-styled-component/StyledLoadingItem';
 
 type SubmitCheckboxProps = {
     isLoading: boolean;
-} & TBaseCheckbox.Main;
+} & TCheckbox.Main;
 
 type SRootProps = {
     $isLoading: boolean;
-} & TBaseCheckbox.SRoot;
+} & TCheckbox.SRoot;
 
-const LOADING_SIZE = {
-    [EVariantSize.L]: (props: TypeSSCheckbox) => css`
-        width: ${props.checkboxLoadingSize_L};
-        height: ${props.checkboxLoadingSize_L};
-    `,
-    [EVariantSize.M]: (props: TypeSSCheckbox) => css`
-        width: ${props.checkboxLoadingSize_M};
-        height: ${props.checkboxLoadingSize_M};
-    `,
-};
-
-const SRoot = styled(SBaseCheckbox.Root)<SRootProps>`
+const SRoot = styled(SCheckbox.Root)<SRootProps>`
     ${(props) => {
         if (props.$isLoading && !props.disabled) {
             return css`
                 pointer-events: none;
                 border-color: transparent;
+                &[data-state='checked'] {
+                    border-color: transparent;
+                }
                 svg {
-                    stroke: ${getColor({
-                        cs: props.$colors,
-                        color: props.$color,
-                        variant: props.$colorVariant,
-                    })};
+                    display: none;
                 }
                 &::after {
+                    box-sizing: border-box;
                     top: 0;
                     left: 0;
-                    ${LOADING_SIZE[props.$sizeVariant](props.$styles.checkbox)}
-                    border: 1px solid ${getColor({
-                        cs: props.$colors,
-                        color: props.$color,
-                        variant: props.$colorVariant,
-                    })};
+                    width: 100%;
+                    height: 100%;
+                    border: 2px solid
+                        ${getColor({
+                            cs: props.$colors,
+                            color: props.$color,
+                            variant: props.$colorVariant,
+                        })};
                 }
                 ${StyledLoadingItemEffect}
             `;
@@ -85,8 +75,8 @@ export const SubmitCheckbox: React.FC<SubmitCheckboxProps> = React.memo(
                     $_isActiveHover={_isActiveHover}
                     {...rest}
                 >
-                    <SBaseCheckbox.Indicator {...rest.indicatorProps}>
-                        <SBaseCheckbox.Icon
+                    <SCheckbox.Indicator {...rest.indicatorProps}>
+                        <SCheckbox.Icon
                             $colors={colors}
                             $disabled={rest.disabled}
                             $colorVariant={colorVariant}
@@ -94,8 +84,8 @@ export const SubmitCheckbox: React.FC<SubmitCheckboxProps> = React.memo(
                             {...rest.iconProps}
                         >
                             <polyline points="20 6 9 17 4 12" {...rest.polylineProps} />
-                        </SBaseCheckbox.Icon>
-                    </SBaseCheckbox.Indicator>
+                        </SCheckbox.Icon>
+                    </SCheckbox.Indicator>
                 </SRoot>
             );
         }
@@ -105,15 +95,10 @@ export const SubmitCheckbox: React.FC<SubmitCheckboxProps> = React.memo(
 //export component
 export const SSubmitCheckbox = {
     Root: SRoot,
-    Icon: SBaseCheckbox.Icon,
-    Indicator: SBaseCheckbox.Indicator,
 };
 
 //export type
 export namespace TSubmitCheckbox {
     export type Main = SubmitCheckboxProps;
     export type SRoot = SRootProps;
-    export type SIcon = TBaseCheckbox.SIcon;
-    export type Styles = TBaseCheckbox.Styles;
-    export type SIndicator = TBaseCheckbox.SIndicator;
 }

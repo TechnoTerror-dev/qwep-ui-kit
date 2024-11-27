@@ -294,7 +294,7 @@ const SContent = styled(S.Content)<SContentProps>`
             $colors: props.$colors,
         })}
 
-    ${SSelectGroup.Group} {
+    ${SSelectGroup.Root} {
         color: ${(props) => props.$colors.disabled};
         border-color: ${(props) => props.$colors.disabled};
     }

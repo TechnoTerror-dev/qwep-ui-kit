@@ -7,7 +7,7 @@ type SelectGroupProps = {
     labelProps?: React.HTMLAttributes<HTMLDivElement>;
 } & React.ComponentPropsWithRef<typeof S.Group>;
 
-const SGroup = styled(S.Group)<React.ComponentPropsWithRef<typeof S.Group>>`
+const SRoot = styled(S.Group)<React.ComponentPropsWithRef<typeof S.Group>>`
     padding: 10px 0;
     &:not(:last-child) {
         border-bottom: 1px solid;
@@ -27,10 +27,10 @@ const SelectGroupRef: React.ForwardRefRenderFunction<HTMLDivElement, SelectGroup
     ref
 ) => {
     return (
-        <SGroup ref={ref} {...rest}>
+        <SRoot ref={ref} {...rest}>
             {label && <SLabel {...labelProps}>{label}</SLabel>}
             {rest.children}
-        </SGroup>
+        </SRoot>
     );
 };
 
@@ -39,7 +39,7 @@ export const SelectGroup = React.forwardRef(SelectGroupRef);
 //export component
 export const SSelectGroup = {
     Label: SLabel,
-    Group: SGroup,
+    Root: SRoot,
 };
 
 //export type

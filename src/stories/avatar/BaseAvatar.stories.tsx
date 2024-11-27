@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseAvatar, BaseBox } from '../../lib';
-import { TBaseAvatar } from '../../lib/components/avatar/base-avatar/BaseAvatar';
+import { TBaseAvatar } from '../../lib/components/avatar/avatar/Avatar';
 
 const meta = {
     title: 'Components/avatar/BaseAvatar',

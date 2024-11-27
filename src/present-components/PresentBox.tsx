@@ -8,7 +8,6 @@ import {
     MainButton,
     Paragraph,
     SubmitButton,
-    Title,
     SubmitCheckbox,
     CardBox,
     RadioGroup,
@@ -16,12 +15,27 @@ import {
     SelectItem,
     SelectGroup,
     Select,
+    Tabs,
+    Box,
+    Title,
+    Tab,
+    TabContent,
+    Separator,
+    CircleDecorationTitle,
+    Avatar,
 } from '@src/lib';
 import { IconButton } from '@src/lib/components/button/icon-button/IconButton';
 import { BaseTextField, MainTextField, WrapperInput } from '@src/lib/components/input';
 
 import { useState } from 'react';
 import { styled } from 'styled-components';
+import { url1 } from './avatar-img';
+
+const LabelRole = styled(Box)`
+    width: fit-content;
+    background-color: #bbf7d0;
+    border-radius: 8px;
+`;
 
 const SBtn = styled.button`
     cursor: pointer;
@@ -39,6 +53,12 @@ const SCard = styled(CardBox)`
         transition: all 0.3s ease-in-out;
         transform: scale(1.1);
     }
+`;
+
+const BoxAdaptive = styled(Box)`
+    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 `;
 
 export const PresentBox = () => {
@@ -230,6 +250,97 @@ export const PresentBox = () => {
                         <SelectItem value={'4'}>Item 4</SelectItem>
                     </SelectGroup>
                 </Select>
+            </BoxLayout>
+
+            <BoxLayout>
+                <Tabs
+                    defaultValue={'t-1'}
+                    tabs={
+                        <Box
+                            boxDisplay={'flex'}
+                            style={{ justifyContent: 'space-between', alignItems: 'end', flexWrap: 'wrap' }}
+                        >
+                            <Box>
+                                <Title mr={'mb-3'}>Настройки профиля</Title>
+                                <Paragraph>Вы можете менять свои личные данные,</Paragraph>
+                                <Paragraph>управлять аккаунтом и настройками безопасности</Paragraph>
+                            </Box>
+                            <Box boxDisplay={'flex'} boxGapVariant={'g-3'} mr={'mt-5'}>
+                                <Tab key={1} value={'t-1'}>
+                                    Общие
+                                </Tab>
+                                <Tab key={2} value={'t-2'}>
+                                    Пароль
+                                </Tab>
+                                <Tab key={3} value={'t-3'} disabled>
+                                    Интерфейс
+                                </Tab>
+                            </Box>
+                        </Box>
+                    }
+                >
+                    <Separator mr={'my-9'} />
+
+                    <TabContent value={'t-1'} boxDisplay={'block'}>
+                        <BoxAdaptive boxDisplay={'grid'}>
+                            <CircleDecorationTitle
+                                title={'Фото'}
+                                icon={<Icon.Photo color={'#000'} />}
+                            ></CircleDecorationTitle>
+                            <Box boxDisplay={'flex'}>
+                                <Avatar sizeVariant={'large'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
+                                <Box
+                                    boxDisplay={'flex'}
+                                    style={{ flexDirection: 'column', justifyContent: 'space-between' }}
+                                >
+                                    <LabelRole
+                                        boxDisplay={'flex'}
+                                        boxGapVariant={'g-1'}
+                                        boxPaddingVariant={'p-1'}
+                                        mr={'mb-2'}
+                                    >
+                                        <Icon.StarFill color={'#16A34A'} sizeVariant={'M'} />
+                                        <Paragraph sizeVariant={'subtext'} color={'#16A34A'} mr={'mr-1'}>
+                                            Админ
+                                        </Paragraph>
+                                    </LabelRole>
+                                    <Box>
+                                        <Title mr={'mb-2'}>Сатоши Накамото</Title>
+                                        <Paragraph>Старший разработчик</Paragraph>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </BoxAdaptive>
+                        <Separator mr={'my-9'} />
+                        <BoxAdaptive boxDisplay={'grid'}>
+                            <CircleDecorationTitle
+                                title={'Учетные данные'}
+                                icon={<Icon.Pen color={'#000'} />}
+                            ></CircleDecorationTitle>
+                            <Box boxDisplay={'flex'} boxGapVariant={'g-4'} style={{ flexDirection: 'column' }}>
+                                <Box boxDisplay={'flex'} boxGapVariant={'g-4'}>
+                                    <WrapperInput positionLabel={'top'} id={'1'} label={'Имя'}>
+                                        <MainTextField placeholder={'Сатоши'} />
+                                    </WrapperInput>
+                                    <WrapperInput positionLabel={'top'} id={'2'} label={'Фамилия'}>
+                                        <MainTextField placeholder={'Накамото'} />
+                                    </WrapperInput>
+                                </Box>
+                                <WrapperInput positionLabel={'top'} id={'3'} label={'Должность'}>
+                                    <MainTextField placeholder={'Старший разработчик'} />
+                                </WrapperInput>
+                                <WrapperInput positionLabel={'top'} id={'4'} label={'Телефон'}>
+                                    <MainTextField placeholder={'+7 977 999-99-99'} />
+                                </WrapperInput>
+                                <WrapperInput positionLabel={'top'} id={'5'} label={'Email'}>
+                                    <MainTextField placeholder={'satoshi_n@example.com'} />
+                                </WrapperInput>
+                            </Box>
+                        </BoxAdaptive>
+                    </TabContent>
+                    <TabContent value={'t-2'}>BaseTabContent_2</TabContent>
+                    <TabContent value={'t-3'}>BaseTabContent_3</TabContent>
+                </Tabs>
             </BoxLayout>
         </>
     );

@@ -11,7 +11,7 @@ type SelectItemProps = {
     itemTextProps?: React.ComponentPropsWithRef<typeof S.ItemText>;
 } & TSelectComponent.SItem;
 
-const SItem = styled(SSelectComponent.Item)<SelectItemProps>`
+const SRoot = styled(SSelectComponent.Item)`
     padding: 6px 20px 6px 20px;
     border-radius: 4px;
 `;
@@ -34,12 +34,12 @@ const SelectItemRef: React.ForwardRefRenderFunction<HTMLDivElement, SelectItemPr
     ref
 ) => {
     return (
-        <SItem ref={ref} {...rest}>
+        <SRoot ref={ref} {...rest}>
             <SIndicator {...indicatorProps}>
                 <BaseCheck {...iconProps} />
             </SIndicator>
             <S.ItemText {...itemTextProps}>{rest.children}</S.ItemText>
-        </SItem>
+        </SRoot>
     );
 };
 
@@ -47,7 +47,7 @@ export const SelectItem = React.forwardRef(SelectItemRef);
 
 //export component
 export const SSelectItem = {
-    Item: SItem,
+    Item: SRoot,
     Indicator: SIndicator,
 };
 

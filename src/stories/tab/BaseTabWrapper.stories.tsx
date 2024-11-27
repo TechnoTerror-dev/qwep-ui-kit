@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseTabWrapper, BaseTab, BaseBox, BaseTabContent } from '../../lib';
-import { TBaseTabWrapper } from '../../lib/components/tab/base-tab/BaseTabWrapper';
+import { TBaseTabWrapper } from '../../lib/components/tab/tab/Tabs';
 
 const meta = {
     title: 'Components/tab/BaseTabWrapper',

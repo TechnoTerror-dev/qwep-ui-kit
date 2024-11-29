@@ -12,7 +12,6 @@ type TypeStyles = {
 
 type BaseTextProps = {
     color?: Hex;
-    // as?: keyof JSX.IntrinsicElements;
     sizeVariant?: TTextVariant;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;

@@ -1,50 +1,31 @@
-import { CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
-import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TBoxRadiusVariant, TBoxShadowVariant } from '@src/lib/types/TypeBox';
 import React from 'react';
+import { CSSSkeletonBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import { styled } from 'styled-components';
-import { SBox, TBox } from '../box/Box';
+import { SBox } from '../box/Box';
+import { SCardBox, TCardBox } from '../card-box/CardBox';
 
-type CardBoxProps = {
-    bg?: Hex;
-    boxBorderColor?: Hex;
-    boxShadowColor?: Hex;
-    boxShadowVariant?: TBoxShadowVariant;
-    boxRadiusVariant?: TBoxRadiusVariant;
-    $colors?: TypeColorScheme;
-} & TBox.Main;
+type CardBoxSkeletonProps = {
+    isSkeleton: boolean;
+} & TCardBox.Main;
 
 type SRootProps = {
-    $colors: TypeColorScheme;
-    $bg?: Hex;
-    $boxBorderColor?: Hex;
-    $boxShadowColor?: Hex;
-    $boxShadowVariant?: TBoxShadowVariant;
-    $boxRadiusVariant?: TBoxRadiusVariant;
-} & TBox.SRoot;
+    $isSkeleton: boolean;
+} & TCardBox.SRoot;
 
-const SRoot = styled(SBox.Root)<SRootProps>`
-    background-color: ${(props) => props.$bg ?? props.$colors.backgroundBox};
-    ${(props) =>
-        CSSSimpleBox({
-            $colors: props.$colors,
-            $boxBorderColor: props.$boxBorderColor,
-            $boxShadowColor: props.$boxShadowColor,
-            $boxShadowVariant: props.$boxShadowVariant,
-            $boxRadiusVariant: props.$boxRadiusVariant,
-            $styles: props.$styles.box,
-        })};
+const SRoot = styled(SCardBox.Root)<SRootProps>`
+    ${(props) => props.$isSkeleton && CSSSkeletonBox(props.$styles.box.boxBorderRadius_2, props.$colors)};
 `;
 
-export const CardBox = React.memo(
-    React.forwardRef<HTMLDivElement, CardBoxProps>(
+export const CardBoxSkeleton = React.memo(
+    React.forwardRef<HTMLDivElement, CardBoxSkeletonProps>(
         (
             {
                 as: Component = 'div',
                 mr,
                 bg,
+                isSkeleton,
                 boxWidthVariant,
                 boxPaddingVariant,
                 boxGapVariant,
@@ -68,6 +49,7 @@ export const CardBox = React.memo(
                     as={Component}
                     $styles={styles}
                     $colors={colors}
+                    $isSkeleton={isSkeleton}
                     $mr={mr}
                     $boxWidthVariant={boxWidthVariant}
                     $boxPaddingVariant={boxPaddingVariant}
@@ -88,12 +70,12 @@ export const CardBox = React.memo(
 );
 
 //export component
-export const SCardBox = {
-    Root: SRoot,
+export const SCardBoxSkeleton = {
+    Box: SBox,
 };
 
 //export type
-export namespace TCardBox {
-    export type Main = CardBoxProps;
-    export type SRoot = SRootProps;
+export namespace TCardBoxSkeleton {
+    export type Main = CardBoxSkeletonProps;
+    export type SBox = SRootProps;
 }

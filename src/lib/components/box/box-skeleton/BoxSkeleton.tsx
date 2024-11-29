@@ -1,86 +1,33 @@
-import { CSSBaseBox } from '@src/lib/common-styled-component/StyledComponentBox';
-import { getMargin } from '@src/lib/common/getMargin';
+import { CSSSkeletonBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import { useColorScheme } from '@src/lib/general';
 import { TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox, TypeSSMR } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TMargin } from '@src/lib/types/TypeBase';
-import { TBoxDisplay, TBoxGapVariant, TBoxPaddingVariant, TBoxWidthVariant } from '@src/lib/types/TypeBox';
 import React from 'react';
-import { css, keyframes, styled } from 'styled-components';
+import { styled } from 'styled-components';
+import { SBox, TBox } from '../box/Box';
 
 type TypeStyles = {
     box: TypeSSBox;
     mr: TypeSSMR;
 };
 
-export type BoxProps = {
-    mr?: TMargin;
-    boxWidthVariant?: TBoxWidthVariant;
-    boxPaddingVariant?: TBoxPaddingVariant;
-    boxGapVariant?: TBoxGapVariant;
+export type BoxSkeletonProps = {
     isSkeleton: boolean;
-    boxDisplay?: TBoxDisplay;
-    as?: keyof JSX.IntrinsicElements;
-    $styles?: TypeStyles;
     $colors?: TypeColorScheme;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & TBox.Main;
 
 type SRootProps = {
     $isSkeleton: boolean;
-    $boxWidthVariant?: TBoxWidthVariant;
-    $boxPaddingVariant?: TBoxPaddingVariant;
-    $boxGapVariant?: TBoxGapVariant;
-    $boxDisplay?: TBoxDisplay;
-    $mr?: TMargin;
-    $styles: TypeStyles;
     $colors: TypeColorScheme;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & TBox.SRoot;
 
-const waveAnimation = keyframes`
-    0% {
-        background-position: 100% 0;
-    }
-    100% {
-        background-position: -100% 0;
-    }
-`;
-
-const SRoot = styled.div<SRootProps>`
-    ${(props) =>
-        CSSBaseBox({
-            $boxWidthVariant: props.$boxWidthVariant,
-            $boxPaddingVariant: props.$boxPaddingVariant,
-            $boxGapVariant: props.$boxGapVariant,
-            $styles: props.$styles.box,
-            $boxDisplay: props.$boxDisplay,
-        })};
-    ${(props) => getMargin(props.$styles.mr, props.$mr)};
-
-    ${(props) =>
-        props.$isSkeleton &&
-        css`
-            border-radius: ${props.$styles.box.boxBorderRadius_2};
-            background-color: ${props.$colors.system};
-            overflow: hidden;
-
-            background: linear-gradient(
-                90deg,
-                ${props.$colors.system} 0%,
-                ${props.$colors.disabled} 50%,
-                ${props.$colors.system} 100%
-            );
-            background-size: 200% 100%;
-            animation: ${waveAnimation} 2s infinite;
-
-            & > * {
-                visibility: hidden;
-            }
-        `}
+const SRoot = styled(SBox.Root)<SRootProps>`
+    ${(props) => props.$isSkeleton && CSSSkeletonBox(props.$styles.box.boxBorderRadius_2, props.$colors)};
 `;
 
 export const BoxSkeleton = React.memo(
-    React.forwardRef<HTMLDivElement, BoxProps>(
+    React.forwardRef<HTMLDivElement, BoxSkeletonProps>(
         (
             {
                 mr,
@@ -120,14 +67,14 @@ export const BoxSkeleton = React.memo(
     )
 );
 
-// //export component
-// export const SBox = {
-//     Root: SRoot,
-// };
+//export component
+export const SBoxSkeleton = {
+    Root: SRoot,
+};
 
-// //export type
-// export namespace TBox {
-//     export type Main = BoxProps;
-//     export type Styles = TypeStyles;
-//     export type SRoot = SRootProps;
-// }
+//export type
+export namespace TBoxSkeleton {
+    export type Main = BoxSkeletonProps;
+    export type Styles = TypeStyles;
+    export type SRoot = SRootProps;
+}

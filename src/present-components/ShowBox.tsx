@@ -24,6 +24,7 @@ import {
     CircleDecorationTitle,
     Avatar,
     BoxSkeleton,
+    CardBoxSkeleton,
 } from '@src/lib';
 import { IconButton } from '@src/lib/components/button/icon-button/IconButton';
 import { BaseTextField, MainTextField, WrapperInput } from '@src/lib/components/input';
@@ -62,7 +63,7 @@ const BoxAdaptive = styled(BoxSkeleton)`
     gap: 16px;
 `;
 
-export const PresentBox = () => {
+export const ShowBox = () => {
     const [isShow, setIsShow] = useState(false);
     const [radioId, setRadioId] = useState('1');
     const [skeleton, setSkeleton] = useState(true);
@@ -85,7 +86,7 @@ export const PresentBox = () => {
     return (
         <>
             <Title sizeVariant={'L'} mr={'m-6'}>
-                Box
+                ShowBox
             </Title>
             <BoxLayout>
                 <Title sizeVariant={'L'}>L ipsum, dolor sit amet consectetur</Title>
@@ -264,16 +265,21 @@ export const PresentBox = () => {
                     defaultValue={'t-1'}
                     tabs={
                         <BoxAdaptive
-                            isSkeleton={skeleton}
+                            isSkeleton={false}
                             boxDisplay={'flex'}
                             style={{ justifyContent: 'space-between', alignItems: 'end', flexWrap: 'wrap' }}
                         >
-                            <Box>
+                            <CardBoxSkeleton isSkeleton={skeleton}>
                                 <Title mr={'mb-3'}>Настройки профиля</Title>
                                 <Paragraph>Вы можете менять свои личные данные,</Paragraph>
                                 <Paragraph>управлять аккаунтом и настройками безопасности</Paragraph>
-                            </Box>
-                            <Box boxDisplay={'flex'} boxGapVariant={'g-3'} mr={'mt-5'}>
+                            </CardBoxSkeleton>
+                            <CardBoxSkeleton
+                                isSkeleton={skeleton}
+                                boxDisplay={'flex'}
+                                boxGapVariant={'g-3'}
+                                mr={'mt-5'}
+                            >
                                 <Tab key={1} value={'t-1'}>
                                     Общие
                                 </Tab>
@@ -283,7 +289,7 @@ export const PresentBox = () => {
                                 <Tab key={3} value={'t-3'} disabled>
                                     Интерфейс
                                 </Tab>
-                            </Box>
+                            </CardBoxSkeleton>
                         </BoxAdaptive>
                     }
                 >

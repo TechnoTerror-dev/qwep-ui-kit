@@ -34,10 +34,12 @@ const SRoot = styled.div<SRootProps>`
     max-width: 100%;
     min-height: 100%;
     height: 100%;
+
     ${(props) => CSSBaseLayout(props.$styles.layout)};
 `;
 
 const SWrapper = styled.div<SWrapperProps>`
+    position: relative;
     margin: 0 auto;
     background-color: ${(props) => props.$wrapperBg ?? props.$colors.backgroundBox};
     ${(props) => CSSBoxLayout(props.$styles.layout)};

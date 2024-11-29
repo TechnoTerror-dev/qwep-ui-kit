@@ -6,15 +6,13 @@ import { EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
 import { EInpVariant } from '@src/lib/types/TypeInp';
 import React, { useCallback, useMemo, useState } from 'react';
 import styled, { css } from 'styled-components';
-
-import { SBaseInput } from '../base-text-field/BaseInput';
 import { SBaseTextField, TBaseTextField } from '../base-text-field/BaseTextField';
 
 type MainTextFieldProps = {
-    icon?: React.ReactNode;
+    iconStart?: React.ReactNode;
     iconsEnd?: React.ReactNode[];
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
-    iconContainerProps?: React.HTMLAttributes<HTMLDivElement> & React.ButtonHTMLAttributes<HTMLButtonElement>;
+    iconContainerProps?: React.HTMLAttributes<HTMLDivElement>;
 } & TBaseTextField.Main;
 
 export const SIconContainer = styled.div`
@@ -56,20 +54,6 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
                         hover: props.$_isActiveHover,
                     })};
             }
-        }
-    }
-`;
-
-const SInput = styled(SBaseInput.Input)<TBaseTextField.SInput>`
-    &:disabled {
-        color: ${(props) => props.$colors.disabled};
-    }
-
-    &:not([disabled]) {
-        color: ${(props) => props.$colors.subText};
-        &::placeholder {
-            user-select: none;
-            color: ${(props) => props.$colors.lightElem};
         }
     }
 `;
@@ -137,7 +121,7 @@ export const MainTextField = React.memo(
                     {...rootProps}
                 >
                     <SIconContainer>{renderIconStart}</SIconContainer>
-                    <SInput
+                    <SBaseTextField.Input
                         ref={ref}
                         $styles={{ typography: styles.typography }}
                         $colors={colors}
@@ -161,4 +145,5 @@ export const SMainTextField = {
 //export type
 export namespace TMainTextField {
     export type Main = MainTextFieldProps;
+    export type SIconContainer = React.HTMLAttributes<HTMLDivElement>;
 }

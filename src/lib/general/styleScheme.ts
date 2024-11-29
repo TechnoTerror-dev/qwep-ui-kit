@@ -301,7 +301,7 @@ export const styleScheme: TypeSS = {
     // icon
     icon: {
         iconSize_L: '20px',
-        iconSize_M: '18px',
+        iconSize_M: '16px',
     },
 
     //text

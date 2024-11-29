@@ -15,12 +15,12 @@ type MessageBoxProps = {
     message?: TypeMessage;
 } & React.HTMLAttributes<HTMLSpanElement>;
 
-type SMessageProps = {
+type SRootProps = {
     $colors: TypeColorScheme;
     $colorVariant: TVariantColor;
 } & React.HTMLAttributes<HTMLSpanElement>;
 
-const SMessage = styled.span<SMessageProps>`
+const SRoot = styled.span<SRootProps>`
     position: absolute;
     user-select: none;
     font-size: 12px;
@@ -38,21 +38,21 @@ export const MessageBox = React.memo(
         const colors = useColorScheme($colors);
         if (!message) return;
         return (
-            <SMessage ref={ref} $colors={colors} $colorVariant={message.colorVariant ?? 'error'} {...rest}>
+            <SRoot ref={ref} $colors={colors} $colorVariant={message.colorVariant ?? 'error'} {...rest}>
                 {message.text}
-            </SMessage>
+            </SRoot>
         );
     })
 );
 
 //export component
 export const SMessageBox = {
-    Message: SMessage,
+    Root: SRoot,
 };
 
 //export type
 export namespace TMessageBox {
     export type Message = TypeMessage;
     export type Main = MessageBoxProps;
-    export type SMessage = SMessageProps;
+    export type SRoot = SRootProps;
 }

@@ -244,6 +244,20 @@ export const ShowBox = () => {
                 <Select mr={'m-3'} placeholder={'Default select'}>
                     <SelectItem value={'1'}>Item 1</SelectItem>
                     <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
+                    <SelectItem value={'1'}>Item 1</SelectItem>
+                    <SelectItem value={'2'}>Item 2</SelectItem>
                 </Select>
                 <Select mr={'m-3'} colorVariant={'warning'} placeholder={'Default select'}>
                     <SelectItem value={'1'}>Item 1</SelectItem>

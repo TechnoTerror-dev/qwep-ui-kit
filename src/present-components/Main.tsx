@@ -6,7 +6,7 @@ import { ShowPopup } from './ShowPopup';
 import { ShowProfile } from './ShowProfile';
 
 export const Main = () => {
-    const [val, setVal] = useState(<ShowPopup />);
+    const [val, setVal] = useState(<ShowProfile />);
     // const { currentColorThemeName, changeColorThemeHandler } = useBaseThemeContext();
 
     // const { currentColorThemeName, changeColorThemeHandler } = useThemeContext();
@@ -98,7 +98,7 @@ export const Main = () => {
                 <button onClick={() => handler('alert')}>Alert</button> */}
                 {/* <BaseButton onClick={themeChange}>{currentColorThemeName}</BaseButton> */}
             </div>
-            <div>{val}</div>
+            {val}
             {/* </NotificationProvider> */}
         </MainContainer>
     );

@@ -165,7 +165,7 @@ export const ShowProfile = () => {
                                     <MainTextField placeholder={'Старший разработчик'} />
                                 </WrapperInput>
                                 <WrapperInput positionLabel={'top'} id={'4'} label={'Телефон'}>
-                                    <PhoneTextField iconList={items} value={phone} onChange={handleChange} />
+                                    <PhoneTextField configList={items} value={phone} onChange={handleChange} />
                                 </WrapperInput>
                                 <WrapperInput positionLabel={'top'} id={'5'} label={'Email'}>
                                     <MainTextField placeholder={'satoshi_n@example.com'} />

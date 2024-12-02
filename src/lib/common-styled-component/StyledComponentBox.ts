@@ -214,8 +214,23 @@ export const CSSSkeletonBox = (borderRadius: string, colors: TypeColorScheme) =>
     overflow: hidden;
     background: linear-gradient(90deg, ${colors.system} 0%, ${colors.disabled} 50%, ${colors.system} 100%);
     background-size: 200% 100%;
-    animation: ${backgroundPosition_SkeletonEffect} 2s infinite;
+    animation:
+        ${backgroundPosition_SkeletonEffect} 2s infinite,
+        ${opacity_BoxLayoutEffect} 0.5s ease-in-out;
     & > * {
         visibility: hidden;
     }
+`;
+
+const opacity_BoxLayoutEffect = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`;
+
+export const CSSBaseLayoutStart = () => css`
+    animation: ${opacity_BoxLayoutEffect} 0.5s ease-in-out;
 `;

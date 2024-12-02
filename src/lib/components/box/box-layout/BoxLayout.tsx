@@ -1,4 +1,4 @@
-import { CSSBaseLayout, CSSBoxLayout } from '@src/lib/common-styled-component/StyledComponentBox';
+import { CSSBaseLayout, CSSBaseLayoutStart, CSSBoxLayout } from '@src/lib/common-styled-component/StyledComponentBox';
 import { useColorScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSLayout } from '@src/lib/general/styleScheme';
@@ -32,8 +32,6 @@ type SWrapperProps = {
 const SRoot = styled.div<SRootProps>`
     position: relative;
     max-width: 100%;
-    min-height: 100%;
-    height: 100%;
 
     ${(props) => CSSBaseLayout(props.$styles.layout)};
 `;
@@ -43,6 +41,7 @@ const SWrapper = styled.div<SWrapperProps>`
     margin: 0 auto;
     background-color: ${(props) => props.$wrapperBg ?? props.$colors.backgroundBox};
     ${(props) => CSSBoxLayout(props.$styles.layout)};
+    ${CSSBaseLayoutStart}
 `;
 
 export const BoxLayout = React.memo(

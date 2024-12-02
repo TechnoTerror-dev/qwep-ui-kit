@@ -133,7 +133,8 @@ export const MainTextField = React.memo(
                     onBlur={handleBlur}
                     {...rootProps}
                 >
-                    <SIconContainer $isStart={true}>{renderIconStart}</SIconContainer>
+                    {renderIconStart && <SIconContainer $isStart={true}>{renderIconStart}</SIconContainer>}
+
                     <SBaseTextField.Input
                         ref={ref}
                         $styles={{ typography: styles.typography }}
@@ -142,7 +143,7 @@ export const MainTextField = React.memo(
                         $colorVariant={colorVariant}
                         {...rest}
                     />
-                    <SIconContainer $isStart={false}>{renderIconsEnd}</SIconContainer>
+                    {renderIconsEnd && <SIconContainer $isStart={false}>{renderIconsEnd}</SIconContainer>}
                 </SRoot>
             );
         }

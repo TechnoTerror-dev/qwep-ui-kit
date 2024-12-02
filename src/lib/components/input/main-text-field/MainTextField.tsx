@@ -15,9 +15,23 @@ type MainTextFieldProps = {
     iconContainerProps?: React.HTMLAttributes<HTMLDivElement>;
 } & TBaseTextField.Main;
 
-export const SIconContainer = styled.div`
+type SIconContainerProps = {
+    $isStart: boolean;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export const SIconContainer = styled.div<SIconContainerProps>`
     margin: 0;
     outline: none;
+    ${({ $isStart }) => {
+        if ($isStart) {
+            return css`
+                padding-right: 8px;
+            `;
+        }
+        return css`
+            padding-left: 8px;
+        `;
+    }};
 `;
 
 export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
@@ -25,7 +39,6 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
     align-items: center;
     ${SIconContainer} {
         display: flex;
-        padding-right: 8px;
         ${(props) =>
             props.$disabled &&
             css`
@@ -120,7 +133,7 @@ export const MainTextField = React.memo(
                     onBlur={handleBlur}
                     {...rootProps}
                 >
-                    <SIconContainer>{renderIconStart}</SIconContainer>
+                    <SIconContainer $isStart={true}>{renderIconStart}</SIconContainer>
                     <SBaseTextField.Input
                         ref={ref}
                         $styles={{ typography: styles.typography }}
@@ -129,7 +142,7 @@ export const MainTextField = React.memo(
                         $colorVariant={colorVariant}
                         {...rest}
                     />
-                    <SIconContainer>{renderIconsEnd}</SIconContainer>
+                    <SIconContainer $isStart={false}>{renderIconsEnd}</SIconContainer>
                 </SRoot>
             );
         }

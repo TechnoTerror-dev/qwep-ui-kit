@@ -28,7 +28,7 @@ type TypeIcon = {
 type PhoneTextFieldProps = {
     iconStart?: React.ReactNode;
     defaultIconId?: string;
-    configList: TypeIcon[];
+    configList?: TypeIcon[];
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     popupItemText?: TBaseText.SRoot;
     popupRootProps?: React.ComponentPropsWithRef<typeof P.Root>;
@@ -89,7 +89,7 @@ export const PhoneTextField = React.memo(
         (
             {
                 mr,
-                configList,
+                configList = [],
                 defaultIconId,
                 color,
                 _isActiveHover = true,

@@ -105,7 +105,7 @@ const SLabel = styled(SBaseText.Root)<SLabelProps>`
                 position: absolute;
                 top: 0;
                 right: 0;
-                color: ${props.$colors.errorItem};
+                color: ${props.$colors.subText};
             }
         `};
 `;

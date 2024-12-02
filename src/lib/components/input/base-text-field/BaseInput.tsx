@@ -34,7 +34,7 @@ const SInput = styled.input<SInputProps>`
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-        box-shadow: 0 0 0 10px ${(props) => props.$inputAutofill ?? props.$colors.background} inset !important;
+        box-shadow: 0 0 0 10px ${(props) => props.$inputAutofill ?? props.$colors.backgroundBox} inset !important;
         -webkit-text-fill-color: ${(props) => props.$inputAutofillText ?? props.$colors.subText} !important;
         color: ${(props) => props.$inputAutofillText ?? props.$colors.subText} !important;
     }

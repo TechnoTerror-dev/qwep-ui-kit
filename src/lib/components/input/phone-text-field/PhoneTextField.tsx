@@ -28,7 +28,7 @@ type TypeIcon = {
 type PhoneTextFieldProps = {
     iconStart?: React.ReactNode;
     defaultIconId?: string;
-    iconList: TypeIcon[];
+    configList: TypeIcon[];
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     popupItemText?: TBaseText.SRoot;
     popupRootProps?: React.ComponentPropsWithRef<typeof P.Root>;
@@ -89,7 +89,7 @@ export const PhoneTextField = React.memo(
         (
             {
                 mr,
-                iconList,
+                configList,
                 defaultIconId,
                 color,
                 _isActiveHover = true,
@@ -114,10 +114,10 @@ export const PhoneTextField = React.memo(
             const [isFocused, setIsFocused] = useState(false);
             const handleFocus = useCallback(() => !rest.disabled && setIsFocused(true), [rest.disabled]);
             const handleBlur = useCallback(() => !rest.disabled && setIsFocused(false), [rest.disabled]);
-            const [iconId, setIconId] = useState<string>(defaultIconId ?? iconList[0].id);
+            const [iconId, setIconId] = useState<string>(defaultIconId ?? configList[0].id);
             const [open, setOpen] = useState(false);
 
-            const currentMask = iconList.find((item) => item.id === iconId)?.mask || '';
+            const currentMask = configList.find((item) => item.id === iconId)?.mask || '';
             const inputMaskKey = `input-mask-${iconId}`;
 
             const handleIconChange = (item: TypeIcon) => {
@@ -144,7 +144,7 @@ export const PhoneTextField = React.memo(
                 >
                     <P.Root open={open} {...popupRootProps}>
                         <SPopupTrigger onClick={() => setOpen(true)} {...popupTriggerProps}>
-                            {iconList.find((icon) => icon.id === iconId)?.icon ?? iconList[0].icon}
+                            {configList.find((icon) => icon.id === iconId)?.icon ?? configList[0].icon}
                         </SPopupTrigger>
                         <P.Portal {...popupPortalProps}>
                             <SPopupContent
@@ -156,7 +156,7 @@ export const PhoneTextField = React.memo(
                                 onInteractOutside={(e) => e && setOpen(false)}
                                 {...popupContentProps}
                             >
-                                {iconList.map((item) => (
+                                {configList.map((item) => (
                                     <SPopupListItem
                                         key={item.id}
                                         onClick={() => handleIconChange(item)}

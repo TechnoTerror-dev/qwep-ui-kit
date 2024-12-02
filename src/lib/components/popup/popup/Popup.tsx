@@ -136,7 +136,7 @@ export const Popup = React.memo(
 );
 
 //export component
-export const SSimplePopup = {
+export const SPopup = {
     Root: SBasePopup.Root,
     Trigger: SBasePopup.Trigger,
     Portal: SBasePopup.Portal,
@@ -144,7 +144,7 @@ export const SSimplePopup = {
 };
 
 //export type
-export namespace TSimplePopup {
+export namespace TPopup {
     export type Styles = TypeStyles;
     export type Main = PopupProps;
     export type SRoot = TBasePopup.SRoot;

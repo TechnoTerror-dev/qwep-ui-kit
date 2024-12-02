@@ -24,7 +24,7 @@ const SRoot = styled.div<SRootProps>`
     background: ${(props) => props.$background ?? props.$colors.background};
 `;
 
-export const BaseContainer = React.memo(
+export const MainContainer = React.memo(
     React.forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div', background, $colors, ...rest }, ref) => {
         const colors = useColorScheme($colors);
         return (
@@ -36,12 +36,12 @@ export const BaseContainer = React.memo(
 );
 
 //export component
-export const SContainer = {
+export const SMainContainer = {
     Container: SRoot,
 };
 
 //export type
-export namespace TContainer {
+export namespace TMainContainer {
     export type Main = ContainerProps;
     export type SRoot = SRootProps;
 }

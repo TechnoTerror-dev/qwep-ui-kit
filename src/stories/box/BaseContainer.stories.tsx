@@ -1,25 +1,25 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BaseContainer } from '../../lib';
-import { TBaseContainer } from '../../lib/components/box/base-container/BaseContainer';
+import { MainContainer } from '../../lib';
+import { TMainContainer } from '../../lib/components/box/base-container/MainContainer';
 
 const meta = {
-    title: 'Components/box/BaseContainer',
-    component: BaseContainer,
+    title: 'Components/box/MainContainer',
+    component: MainContainer,
     tags: ['autodocs'],
-} satisfies Meta<typeof BaseContainer>;
+} satisfies Meta<typeof MainContainer>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const Template = (args: TBaseContainer.Main) => {
+const Template = (args: TMainContainer.Main) => {
     return (
-        <BaseContainer
+        <MainContainer
             style={{
                 justifyContent: 'center',
                 margin: '50px auto',
             }}
             {...args}
-        ></BaseContainer>
+        ></MainContainer>
     );
 };
 export const Main: Story = {
@@ -29,6 +29,6 @@ export const Main: Story = {
     },
 };
 
-export const ExampleBaseContainer = () => {
-    return <BaseContainer style={{ width: '100px', height: '100px', backgroundColor: 'red' }}></BaseContainer>;
+export const ExampleMainContainer = () => {
+    return <MainContainer style={{ width: '100px', height: '100px', backgroundColor: 'red' }}></MainContainer>;
 };

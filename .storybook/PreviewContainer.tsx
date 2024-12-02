@@ -1,6 +1,6 @@
 import '../src/styles/index.css';
 import React from 'react';
-import { BaseBox, SimpleBox, SimpleButton, General, BaseLayout, BaseText, BaseContainer } from '../src/lib';
+import { BaseBox, SimpleBox, SimpleButton, General, BaseLayout, BaseText, MainContainer } from '../src/lib';
 import { Decorator } from '@storybook/react';
 
 const Content = ({ StoryFn, context }: any) => {
@@ -15,7 +15,7 @@ const Content = ({ StoryFn, context }: any) => {
     };
 
     return (
-        <BaseContainer style={{ minHeight: '100%', padding: '12px' }}>
+        <MainContainer style={{ minHeight: '100%', padding: '12px' }}>
             <BaseLayout>
                 <SimpleBox
                     as={'header'}
@@ -37,7 +37,7 @@ const Content = ({ StoryFn, context }: any) => {
                     <StoryFn {...context} />
                 </BaseBox>
             </BaseLayout>
-        </BaseContainer>
+        </MainContainer>
     );
 };
 

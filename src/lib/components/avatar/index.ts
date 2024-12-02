@@ -1,3 +1,5 @@
-import { Avatar } from './avatar/Avatar';
+import { Avatar, SAvatar, TAvatar } from './avatar/Avatar';
 
-export { Avatar };
+export { Avatar, SAvatar };
+
+export type { TAvatar };

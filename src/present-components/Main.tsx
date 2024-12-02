@@ -1,4 +1,4 @@
-import { BaseContainer } from '@src/lib';
+import { MainContainer } from '@src/lib';
 // import { useThemeContext } from '@src/lib/general';
 import { useState } from 'react';
 import { ShowBox } from './ShowBox';
@@ -76,7 +76,7 @@ export const Main = () => {
     };
 
     return (
-        <BaseContainer>
+        <MainContainer>
             {/* <NotificationProvider> */}
             <div style={{ display: 'flex', position: 'absolute', top: 0, left: 0 }}>
                 <button onClick={() => handler('box')}>Box</button>
@@ -100,6 +100,6 @@ export const Main = () => {
             </div>
             <div>{val}</div>
             {/* </NotificationProvider> */}
-        </BaseContainer>
+        </MainContainer>
     );
 };

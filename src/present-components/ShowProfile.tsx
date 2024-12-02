@@ -60,12 +60,6 @@ const BoxAdaptive = styled(BoxSkeleton)`
     gap: 16px;
 `;
 
-const BoxAdaptive = styled(BoxSkeleton)`
-    align-items: start;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-`;
-
 export const ShowProfile = () => {
     const [skeleton, setSkeleton] = useState(true);
 

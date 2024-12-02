@@ -18,9 +18,9 @@ export default defineConfig({
     build: {
         lib: {
             entry: path.resolve('', 'src/lib/index.ts'),
-            name: 'QWEP-UI-KIT',
+            name: 'QWEP-UI',
             formats: ['es', 'umd'],
-            fileName: (format) => `qwep-ui-kit.${format}.js`,
+            fileName: (format) => `qwep-ui.${format}.js`,
         },
         rollupOptions: {
             external: ['react', 'react-dom'],

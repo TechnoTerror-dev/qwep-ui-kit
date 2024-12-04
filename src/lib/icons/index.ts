@@ -1,4 +1,5 @@
 import { Add } from './Add';
+import { Watches } from './Watches';
 import { AddCircle } from './AddCircle';
 import { Arrow } from './Arrow';
 import { ArrowLine } from './ArrowLine';
@@ -20,6 +21,7 @@ import { CloseCircle } from './CloseCircle';
 import { CustomerService } from './CustomerService';
 import { Download } from './Download';
 import { DownloadArrow } from './DownloadArrow';
+import { Edit } from './Edit';
 import { Email } from './Email';
 import { Error } from './Error';
 import { Eye } from './Eye';
@@ -51,6 +53,7 @@ import { MenuUnfold } from './MenuUnfold';
 import { More } from './More';
 import { Notification } from './Notification';
 import { Pen } from './Pen';
+import { Personalization } from './Personalization';
 import { Phone } from './Phone';
 import { Photo } from './Photo';
 import { Question } from './Question';
@@ -82,6 +85,10 @@ import { UserReceived } from './UserReceived';
 import { UserSettings } from './UserSettings';
 import { UserStar } from './UserStar';
 import { Warning } from './Warning';
+import { ThemeLight } from './ThemeLight';
+import { ThemeDark } from './ThemeDark';
+import { ThemeLightAlt } from './ThemeLightAlt';
+import { ThemeDarkAlt } from './ThemeDarkAlt';
 
 export {
     Add,
@@ -168,6 +175,13 @@ export {
     UserSettings,
     UserStar,
     Warning,
+    Edit,
+    Personalization,
+    Watches,
+    ThemeLight,
+    ThemeDark,
+    ThemeLightAlt,
+    ThemeDarkAlt,
 };
 
 export type { IconSVGContainerProps };

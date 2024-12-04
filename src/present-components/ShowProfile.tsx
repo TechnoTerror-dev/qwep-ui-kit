@@ -77,7 +77,7 @@ export const ShowProfile = () => {
             <Title sizeVariant={'L'} mr={'m-6'}>
                 ShowProfile
             </Title>
-            <Button onClick={skeletonClick} style={{ position: 'absolute', top: 0, left: '50%' }}>
+            <Button onClick={skeletonClick} style={{ position: 'absolute', top: 0, right: 0 }}>
                 {skeleton ? 'Skeleton' : 'None skeleton'}
             </Button>
 

@@ -190,9 +190,9 @@ export const CSSBaseLayout = (l: TypeSSLayout) => css`
         margin: ${l.margin_S};
     }
 
-    @media screen and (min-width: 768px) and (max-width: 1278px) {
+    /* @media screen and (min-width: 768px) and (max-width: 1278px) {
         margin: ${l.margin_M};
-    }
+    } */
 
     @media screen and (min-width: 1279px) {
         margin: ${l.margin_L};

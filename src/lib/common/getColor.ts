@@ -1,12 +1,12 @@
 import { TypeColorScheme } from '../general/colors';
-import { TVariantColor } from '../types/TypeBase';
+import { TBaseProps } from '../index';
 
 export type opacity = '5' | '10' | '20' | '40' | '60' | '80' | '90' | 'b3' | 'dd' | '';
 
 type getColorProps = {
     cs: TypeColorScheme;
     color?: string;
-    variant?: TVariantColor;
+    variant?: TBaseProps.VariantColor;
     disabled?: boolean;
     opacity?: opacity;
     hover?: boolean;

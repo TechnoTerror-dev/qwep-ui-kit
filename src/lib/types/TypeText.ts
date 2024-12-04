@@ -1,14 +1,24 @@
-export enum ETitleVariant {
+enum ETitleVariant {
     L = 'L',
     M = 'M',
     S = 'S',
 }
 
-export type TTitleVariant = 'L' | 'M' | 'S';
+type TTitleVariant = 'L' | 'M' | 'S';
 
-export enum ETextVariant {
+enum ETextVariant {
     TEXT = 'text',
     SUBTEXT = 'subtext',
 }
 
-export type TTextVariant = 'text' | 'subtext';
+type TTextVariant = 'text' | 'subtext';
+
+export const ETextProps = {
+    TitleVariant: ETitleVariant,
+    TextVariant: ETextVariant,
+};
+
+export namespace TTextProps {
+    export type TitleVariant = TTitleVariant;
+    export type TextVariant = TTextVariant;
+}

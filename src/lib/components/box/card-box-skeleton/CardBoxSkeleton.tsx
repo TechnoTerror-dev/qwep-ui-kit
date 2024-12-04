@@ -15,7 +15,7 @@ type SRootProps = {
 } & TCardBox.SRoot;
 
 const SRoot = styled(SCardBox.Root)<SRootProps>`
-    ${(props) => props.$isSkeleton && CSSSkeletonBox(props.$styles.box.boxBorderRadius_2, props.$colors)};
+    ${(props) => props.$isSkeleton && CSSSkeletonBox(props.$styles.box.boxBorderRadius_M, props.$colors)};
 `;
 
 export const CardBoxSkeleton = React.memo(

@@ -4,7 +4,7 @@ import { useColorScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox, TypeSSBtn, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantSize, TMargin, TVariantSize } from '@src/lib/types/TypeBase';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -16,28 +16,28 @@ type TypeStyles = {
 };
 
 type TabProps = {
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     color?: Hex;
-    sizeVariant?: TVariantSize;
+    sizeVariant?: TBaseProps.VariantSize;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
     blocked?: boolean;
 } & React.ComponentPropsWithRef<typeof T.Trigger>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $blocked?: boolean;
-    $sizeVariant: TVariantSize;
+    $sizeVariant: TBaseProps.VariantSize;
     $styles: TypeStyles;
     $colors: TypeColorScheme;
 } & React.ComponentPropsWithRef<typeof T.Trigger>;
 
 const TAB_SIZE = {
-    [EVariantSize.L]: (btn: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.L]: (btn: TypeSSBtn) => css`
         height: ${btn.btnHeight_L};
         padding: ${`${btn.btnPadding_Y_L} ${btn.btnPadding_X_L}`};
     `,
-    [EVariantSize.M]: (btn: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.M]: (btn: TypeSSBtn) => css`
         height: ${btn.btnHeight_M};
         padding: ${`${btn.btnPadding_Y_M} ${btn.btnPadding_X_M}`};
     `,
@@ -54,7 +54,7 @@ const SRoot = styled(T.Trigger)<SRootProps>`
     outline: 0;
     transition: all 400ms;
     border: 1px solid ${({ $colors }) => $colors.system};
-    border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_2};
+    border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_M};
     font-size: ${({ $styles }) => $styles.typography.weightGlobal};
     cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
     ${(props) => TAB_SIZE[props.$sizeVariant](props.$styles.btn)};
@@ -62,7 +62,7 @@ const SRoot = styled(T.Trigger)<SRootProps>`
 
     &[data-state='active'] {
         background-color: ${(props) => props.$colors.secondary};
-        box-shadow: ${(props) => `${props.$styles.box.boxShadow_2} ${props.$colors.lightShadow}`};
+        box-shadow: ${(props) => `${props.$styles.box.boxShadow_M} ${props.$colors.lightShadow}`};
         border-color: ${(props) => props.$colors.secondary};
         font-weight: ${({ $styles }) => $styles.typography.weightItem};
 
@@ -71,7 +71,7 @@ const SRoot = styled(T.Trigger)<SRootProps>`
         }
     }
     &:not([disabled]):hover {
-        box-shadow: ${(props) => `${props.$styles.box.boxShadow_2} ${props.$colors.lightShadow}`};
+        box-shadow: ${(props) => `${props.$styles.box.boxShadow_M} ${props.$colors.lightShadow}`};
     }
     &:disabled {
         color: ${(props) => props.$colors.disabled};
@@ -85,7 +85,7 @@ const SRoot = styled(T.Trigger)<SRootProps>`
 
 export const Tab = React.memo(
     React.forwardRef<HTMLButtonElement, TabProps>(
-        ({ mr, sizeVariant = EVariantSize.L, blocked, $colors, $styles, ...rest }, ref) => {
+        ({ mr, sizeVariant = EBaseProps.VariantSize.L, blocked, $colors, $styles, ...rest }, ref) => {
             const colors = useColorScheme($colors);
             const styles = useStyleScheme(['mr', 'box', 'btn', 'typography'], $styles);
 

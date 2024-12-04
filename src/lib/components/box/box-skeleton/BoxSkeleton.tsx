@@ -23,7 +23,7 @@ type SRootProps = {
 } & TBox.SRoot;
 
 const SRoot = styled(SBox.Root)<SRootProps>`
-    ${(props) => props.$isSkeleton && CSSSkeletonBox(props.$styles.box.boxBorderRadius_2, props.$colors)};
+    ${(props) => props.$isSkeleton && CSSSkeletonBox(props.$styles.box.boxBorderRadius_M, props.$colors)};
 `;
 
 export const BoxSkeleton = React.memo(

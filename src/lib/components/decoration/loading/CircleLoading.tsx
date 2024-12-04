@@ -2,7 +2,7 @@ import { getColor } from '@src/lib/common/getColor';
 import { useColorScheme, useStyleScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSIcon, TypeSSMR } from '@src/lib/general/styleScheme';
-import { EVariantColor, EVariantSize, TMargin, TVariantColor, TVariantSize } from '@src/lib/types/TypeBase';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import { css, keyframes, styled } from 'styled-components';
 
@@ -12,21 +12,21 @@ type TypeStyles = {
 };
 
 type CircleLoadingProps = {
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     color?: Hex;
-    sizeVariant?: TVariantSize;
-    colorVariant?: TVariantColor;
+    sizeVariant?: TBaseProps.VariantSize;
+    colorVariant?: TBaseProps.VariantColor;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $color?: Hex;
     $styles: TypeStyles;
     $colors: TypeColorScheme;
-    $sizeVariant: TVariantSize;
-    $colorVariant: TVariantColor;
+    $sizeVariant: TBaseProps.VariantSize;
+    $colorVariant: TBaseProps.VariantColor;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const spin = keyframes`
@@ -39,11 +39,11 @@ const spin = keyframes`
 `;
 
 const ICON_SIZE = {
-    [EVariantSize.L]: (icon: TypeSSIcon) => css`
+    [EBaseProps.VariantSize.L]: (icon: TypeSSIcon) => css`
         width: ${icon.iconSize_L};
         height: ${icon.iconSize_L};
     `,
-    [EVariantSize.M]: (icon: TypeSSIcon) => css`
+    [EBaseProps.VariantSize.M]: (icon: TypeSSIcon) => css`
         width: ${icon.iconSize_M};
         height: ${icon.iconSize_M};
     `,
@@ -78,8 +78,8 @@ export const CircleLoading = React.memo(
         (
             {
                 mr,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
                 color,
                 $colors,
                 $styles,

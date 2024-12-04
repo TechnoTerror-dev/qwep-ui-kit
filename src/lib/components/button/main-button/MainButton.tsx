@@ -3,16 +3,16 @@ import { itemRippleEffect } from '@src/lib/common/itemRippleEffect.ts';
 import { renderIconButton } from '@src/lib/common/renderIconItem';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EItemIconPosition, EVariantColor, EVariantSize, TItemIconPosition } from '@src/lib/types/TypeBase';
-import { EBtnPosition, EVariantBtn, TBtnPosition } from '@src/lib/types/TypeBtn';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
+import { TButtonProps, EButtonProps } from '@src/lib/types/TypeBtn';
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 import { SButton, TButton } from '../button/Button';
 
 type MainButtonProps = {
-    position?: TBtnPosition;
+    position?: TButtonProps.BtnPosition;
     icon?: React.ReactNode;
-    iconPosition?: TItemIconPosition;
+    iconPosition?: TBaseProps.ItemIconPosition;
     iconContainerProps?: React.HTMLAttributes<HTMLDivElement>;
     contentProps?: React.HTMLAttributes<HTMLDivElement>;
 } & TButton.Main;
@@ -22,16 +22,16 @@ type VariantProps = {
 } & TButton.SRoot;
 
 type SIconContainerProps = {
-    $iconPosition: TItemIconPosition;
+    $iconPosition: TBaseProps.ItemIconPosition;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SContentContainerProps = {
-    $position: TBtnPosition;
+    $position: TButtonProps.BtnPosition;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const SIconContainer = styled.div<SIconContainerProps>`
     ${(props) => {
-        if (props.$iconPosition === EItemIconPosition.RIGHT) {
+        if (props.$iconPosition === EBaseProps.ItemIconPosition.RIGHT) {
             return css`
                 order: 1;
                 margin-left: 6px;
@@ -46,10 +46,10 @@ const SIconContainer = styled.div<SIconContainerProps>`
 `;
 
 const BTN_VARIANT = {
-    [EVariantBtn.CONTAINED]: (props: VariantProps) => css`
+    [EButtonProps.VariantBtn.CONTAINED]: (props: VariantProps) => css`
         color: ${props.$colors.textItem};
     `,
-    [EVariantBtn.TEXT]: (props: VariantProps) => css`
+    [EButtonProps.VariantBtn.TEXT]: (props: VariantProps) => css`
         color: ${getColor({
             cs: props.$colors,
             disabled: props.disabled,
@@ -58,7 +58,7 @@ const BTN_VARIANT = {
             hover: props.hover,
         })};
     `,
-    [EVariantBtn.OUTLINED]: (props: VariantProps) => css`
+    [EButtonProps.VariantBtn.OUTLINED]: (props: VariantProps) => css`
         color: ${getColor({
             cs: props.$colors,
             color: props.$color,
@@ -103,11 +103,11 @@ export const MainButton = React.memo(
         (
             {
                 icon,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
-                variant = EVariantBtn.CONTAINED,
-                position = EBtnPosition.CENTER,
-                iconPosition = EItemIconPosition.LEFT,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
+                variant = EButtonProps.VariantBtn.CONTAINED,
+                position = EButtonProps.BtnPosition.CENTER,
+                iconPosition = EBaseProps.ItemIconPosition.LEFT,
                 _isActiveHover = true,
                 iconContainerProps,
                 contentProps,
@@ -129,7 +129,7 @@ export const MainButton = React.memo(
                     event,
                     getColor({
                         cs: colors,
-                        color: variant === EVariantBtn.CONTAINED ? colors.alpha : rest.color,
+                        color: variant === EButtonProps.VariantBtn.CONTAINED ? colors.alpha : rest.color,
                         variant: colorVariant,
                         opacity: '40',
                     })

@@ -5,9 +5,9 @@ import { TypeSSBox, TypeSSMR } from '@src/lib/general/styleScheme';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { getMargin } from '@src/lib/common/getMargin';
-import { TMargin, TOrientationContent, EOrientationContent } from '@src/lib/types/TypeBase';
+import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
 import { BOX_GAP_VARIANT } from '@src/lib/common-styled-component/StyledComponentBox';
-import { TBoxGapVariant } from '@src/lib/types/TypeBox';
+import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
 
 type TypeStyles = {
     mr: TypeSSMR;
@@ -15,28 +15,28 @@ type TypeStyles = {
 };
 
 type RadioGroupProps = {
-    mr?: TMargin;
-    orientation?: TOrientationContent;
-    boxGapVariant?: TBoxGapVariant;
+    mr?: TBaseProps.Margin;
+    orientation?: TBaseProps.OrientationContent;
+    boxGapVariant?: TBoxProps.BoxGapVariant;
     blocked?: boolean;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
 } & React.ComponentPropsWithRef<typeof Root>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $styles: TypeStyles;
     $blocked?: boolean;
-    $boxGapVariant: TBoxGapVariant;
-    $orientation: TOrientationContent;
+    $boxGapVariant: TBoxProps.BoxGapVariant;
+    $orientation: TBaseProps.OrientationContent;
 } & React.ComponentPropsWithRef<typeof Root>;
 
 const ORIENTATION = {
-    [EOrientationContent.HORIZONTAL]: css`
+    [EBaseProps.OrientationContent.HORIZONTAL]: css`
         flex-direction: row;
         align-items: center;
     `,
-    [EOrientationContent.VERTICAL]: css`
+    [EBaseProps.OrientationContent.VERTICAL]: css`
         flex-direction: column;
         align-items: start;
     `,
@@ -57,7 +57,17 @@ const SRoot = styled(Root)<SRootProps>`
 
 export const RadioGroup = React.memo(
     React.forwardRef<HTMLDivElement, RadioGroupProps>(
-        ({ mr, blocked, $styles, boxGapVariant = 'g-1', orientation = EOrientationContent.VERTICAL, ...rest }, ref) => {
+        (
+            {
+                mr,
+                blocked,
+                $styles,
+                boxGapVariant = EBoxProps.BoxGapVariant.G1,
+                orientation = EBaseProps.OrientationContent.VERTICAL,
+                ...rest
+            },
+            ref
+        ) => {
             const styles = useStyleScheme(['mr', 'box'], $styles);
 
             return (

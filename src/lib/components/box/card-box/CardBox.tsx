@@ -2,7 +2,7 @@ import { CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBo
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TBoxRadiusVariant, TBoxShadowVariant } from '@src/lib/types/TypeBox';
+import { TBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
 import { styled } from 'styled-components';
 import { SBox, TBox } from '../box/Box';
@@ -11,8 +11,8 @@ type CardBoxProps = {
     bg?: Hex;
     boxBorderColor?: Hex;
     boxShadowColor?: Hex;
-    boxShadowVariant?: TBoxShadowVariant;
-    boxRadiusVariant?: TBoxRadiusVariant;
+    boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
     $colors?: TypeColorScheme;
 } & TBox.Main;
 
@@ -21,8 +21,8 @@ type SRootProps = {
     $bg?: Hex;
     $boxBorderColor?: Hex;
     $boxShadowColor?: Hex;
-    $boxShadowVariant?: TBoxShadowVariant;
-    $boxRadiusVariant?: TBoxRadiusVariant;
+    $boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    $boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
 } & TBox.SRoot;
 
 const SRoot = styled(SBox.Root)<SRootProps>`

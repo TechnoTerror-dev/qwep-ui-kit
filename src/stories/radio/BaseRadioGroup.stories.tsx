@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseBox, BaseRadioGroup, BaseRadioItem, TypeRadio, WrapperInput } from '@src/lib';
-import { TPositionInpLabel } from '@src/lib/types/TypeInp';
-import { TVariantColor, TVariantSize, EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
+import { TInputProps.PositionInpLabel } from '@src/lib/types/TypeInp';
+import { TBaseProps.VariantColor, TBaseProps.VariantSize, EBaseProps.VariantColor, EBaseProps.VariantSize } from '@src/lib/types/TypeBase';
 
 interface RadioGroupArgs extends TypeRadio.BaseRadioGroup.Main {
     activeValue?: string;
     disabled?: boolean;
-    positionLabel: TPositionInpLabel;
-    colorVariant: TVariantColor;
-    sizeVariant: TVariantSize;
+    positionLabel: TInputProps.PositionInpLabel;
+    colorVariant: TBaseProps.VariantColor;
+    sizeVariant: TBaseProps.VariantSize;
 }
 
 const meta = {
@@ -24,11 +24,11 @@ const meta = {
         labelColor: { control: 'color' },
         colorVariant: {
             control: 'select',
-            options: Object.values(EVariantColor),
+            options: Object.values(EBaseProps.VariantColor),
         },
         sizeVariant: {
             control: 'select',
-            options: Object.values(EVariantSize),
+            options: Object.values(EBaseProps.VariantSize),
         },
     },
 } satisfies Meta<RadioGroupArgs>;

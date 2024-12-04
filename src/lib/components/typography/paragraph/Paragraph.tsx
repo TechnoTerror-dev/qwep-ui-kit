@@ -2,8 +2,8 @@ import { getMargin } from '@src/lib/common/getMargin';
 import { TypeSSMR } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TMargin } from '@src/lib/types/TypeBase';
-import { ETextVariant } from '@src/lib/types/TypeText';
+import { TBaseProps } from '@src/lib/types/TypeBase';
+import { ETextProps } from '@src/lib/types/TypeText';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SBaseText, TBaseText } from '../base/BaseText';
@@ -13,13 +13,13 @@ type TypeStyles = {
 } & TBaseText.Styles;
 
 type ParagraphProps = {
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     isEllipsis?: boolean;
     $styles?: TypeStyles;
 } & TBaseText.Main;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $styles: TypeStyles;
     $isEllipsis?: boolean;
 } & TBaseText.SRoot;
@@ -37,7 +37,7 @@ const SRoot = styled(SBaseText.Root)<SRootProps>`
 `;
 
 export const Paragraph: React.FC<ParagraphProps> = React.memo(
-    ({ children, mr, sizeVariant = ETextVariant.TEXT, color, isEllipsis, $colors, $styles, ...rest }) => {
+    ({ children, mr, sizeVariant = ETextProps.TextVariant.TEXT, color, isEllipsis, $colors, $styles, ...rest }) => {
         const colors = useColorScheme($colors);
         const styles = useStyleScheme(['typography', 'mr'], $styles);
 

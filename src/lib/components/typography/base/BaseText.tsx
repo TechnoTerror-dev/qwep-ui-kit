@@ -2,7 +2,7 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { ETextVariant, TTextVariant } from '@src/lib/types/TypeText';
+import { ETextProps, TTextProps } from '@src/lib/types/TypeText';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -12,24 +12,24 @@ type TypeStyles = {
 
 type BaseTextProps = {
     color?: Hex;
-    sizeVariant?: TTextVariant;
+    sizeVariant?: TTextProps.TextVariant;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
 type SRootProps = {
-    $sizeVariant: TTextVariant;
+    $sizeVariant: TTextProps.TextVariant;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $color?: Hex;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
 export const TEXT_SIZE = {
-    [ETextVariant.TEXT]: (props: TypeSSTypography) => css`
+    [ETextProps.TextVariant.TEXT]: (props: TypeSSTypography) => css`
         line-height: ${props.lineHeightText};
         font-size: ${props.text};
     `,
-    [ETextVariant.SUBTEXT]: (props: TypeSSTypography) => css`
+    [ETextProps.TextVariant.SUBTEXT]: (props: TypeSSTypography) => css`
         line-height: ${props.lineHeightSubText};
         font-size: ${props.subText};
     `,
@@ -42,7 +42,7 @@ const SRoot = styled.p<SRootProps>`
 `;
 
 export const BaseText: React.FC<BaseTextProps> = React.memo(
-    ({ sizeVariant = ETextVariant.TEXT, color, $colors, $styles, ...rest }) => {
+    ({ sizeVariant = ETextProps.TextVariant.TEXT, color, $colors, $styles, ...rest }) => {
         const colors = useColorScheme($colors);
         const styles = useStyleScheme(['typography'], $styles);
 

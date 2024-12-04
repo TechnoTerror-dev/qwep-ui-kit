@@ -5,8 +5,8 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSBtn, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantColor, EVariantSize, TMargin, TVariantColor, TVariantSize } from '@src/lib/types/TypeBase';
-import { EVariantBtn, TVariantBtn } from '@src/lib/types/TypeBtn';
+import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
+import { TButtonProps, EButtonProps } from '@src/lib/types/TypeBtn';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -18,10 +18,10 @@ type TypeStyles = {
 };
 
 type ButtonProps = {
-    mr?: TMargin;
-    sizeVariant?: TVariantSize;
-    colorVariant?: TVariantColor;
-    variant?: TVariantBtn;
+    mr?: TBaseProps.Margin;
+    sizeVariant?: TBaseProps.VariantSize;
+    colorVariant?: TBaseProps.VariantColor;
+    variant?: TButtonProps.VariantBtn;
     color?: Hex;
     blocked?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
@@ -31,30 +31,30 @@ type ButtonProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $color?: Hex;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $sizeVariant: TVariantSize;
-    $colorVariant: TVariantColor;
-    $variant: TVariantBtn;
+    $sizeVariant: TBaseProps.VariantSize;
+    $colorVariant: TBaseProps.VariantColor;
+    $variant: TButtonProps.VariantBtn;
     $_isActiveHover: boolean;
     $blocked?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const BTN_SIZE = {
-    [EVariantSize.L]: (btn: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.L]: (btn: TypeSSBtn) => css`
         height: ${btn.btnHeight_L};
         padding: ${`${btn.btnPadding_Y_L} ${btn.btnPadding_X_L}`};
     `,
-    [EVariantSize.M]: (btn: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.M]: (btn: TypeSSBtn) => css`
         height: ${btn.btnHeight_M};
         padding: ${`${btn.btnPadding_Y_M} ${btn.btnPadding_X_M}`};
     `,
 };
 
 const BTN_VARIANT = {
-    [EVariantBtn.CONTAINED]: (props: SRootProps) => css`
+    [EButtonProps.VariantBtn.CONTAINED]: (props: SRootProps) => css`
         color: ${props.$colors.textItem};
         background-color: ${getColor({
             cs: props.$colors,
@@ -74,7 +74,7 @@ const BTN_VARIANT = {
             })};
         }
     `,
-    [EVariantBtn.TEXT]: (props: SRootProps) => css`
+    [EButtonProps.VariantBtn.TEXT]: (props: SRootProps) => css`
         color: ${getColor({
             cs: props.$colors,
             disabled: props.disabled,
@@ -94,7 +94,7 @@ const BTN_VARIANT = {
             })};
         }
     `,
-    [EVariantBtn.OUTLINED]: (props: SRootProps) => css`
+    [EButtonProps.VariantBtn.OUTLINED]: (props: SRootProps) => css`
         color: ${getColor({
             cs: props.$colors,
             disabled: props.disabled,
@@ -159,9 +159,9 @@ export const Button = React.memo(
             {
                 mr,
                 color,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
-                variant = EVariantBtn.CONTAINED,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
+                variant = EButtonProps.VariantBtn.CONTAINED,
                 onClick,
                 blocked,
                 $colors,
@@ -179,7 +179,7 @@ export const Button = React.memo(
                     event,
                     getColor({
                         cs: colors,
-                        color: variant === EVariantBtn.CONTAINED ? colors.alpha : color,
+                        color: variant === EButtonProps.VariantBtn.CONTAINED ? colors.alpha : color,
                         variant: colorVariant,
                         opacity: '40',
                     })

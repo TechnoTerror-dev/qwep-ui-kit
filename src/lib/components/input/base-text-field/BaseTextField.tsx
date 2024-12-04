@@ -2,8 +2,7 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSInp, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantColor, EVariantSize, TMargin, TVariantColor, TVariantSize } from '@src/lib/types/TypeBase';
-import { EInpVariant, TInpVariant } from '@src/lib/types/TypeInp';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { SBaseInput, TBaseInput } from './BaseInput';
@@ -17,11 +16,10 @@ type TypeStyles = {
 };
 
 type BaseTextFieldProps = {
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     iconStart?: React.ReactNode;
-    sizeVariant?: TVariantSize;
-    variant?: TInpVariant;
-    colorVariant?: TVariantColor;
+    sizeVariant?: TBaseProps.VariantSize;
+    colorVariant?: TBaseProps.VariantColor;
     color?: Hex;
     blocked?: boolean;
     inputAutofill?: Hex;
@@ -35,7 +33,7 @@ type BaseTextFieldProps = {
 type SInputProps = {
     $color?: Hex;
     $colors: TypeColorScheme;
-    $colorVariant: TVariantColor;
+    $colorVariant: TBaseProps.VariantColor;
 } & TBaseInput.SInput;
 
 const SInput = styled(SBaseInput.Input)<SInputProps>`
@@ -64,9 +62,8 @@ export const BaseTextField = React.memo(
                 mr,
                 blocked,
                 color,
-                variant = EInpVariant.OUTLINED,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
                 _isActiveHover = true,
                 $colors,
                 $styles,
@@ -88,7 +85,6 @@ export const BaseTextField = React.memo(
                     $styles={styles}
                     $color={color}
                     $colorVariant={colorVariant}
-                    $variant={variant}
                     $sizeVariant={sizeVariant}
                     $disabled={rest.disabled}
                     $_isFocused={isFocused}

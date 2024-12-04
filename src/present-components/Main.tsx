@@ -54,7 +54,7 @@ export const Main = () => {
                 <MenuItem value={'profile'}>Profile</MenuItem>
                 <MenuItem value={'menu'}>Menu</MenuItem>
                 <MenuItem value={'icons'}>Icons</MenuItem>
-                <IconButton onClick={themeChange}>
+                <IconButton onClick={themeChange} sizeVariant={'M'}>
                     {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}
                 </IconButton>
             </BoxMenu>

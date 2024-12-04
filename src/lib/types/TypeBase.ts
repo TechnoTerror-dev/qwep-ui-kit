@@ -1,4 +1,4 @@
-export type TMargin =
+type TMargin =
     | 'm-1'
     | 'm-2'
     | 'm-3'
@@ -84,7 +84,7 @@ export type TMargin =
     | 'my-11'
     | 'my-12';
 
-export enum EModalPosition {
+enum EModalPosition {
     BOTTOM = 'bottom',
     TOP = 'top',
     RIGHT = 'right',
@@ -92,48 +92,48 @@ export enum EModalPosition {
     CENTER = 'center',
 }
 
-export type TModalPosition = 'bottom' | 'top' | 'right' | 'left' | 'center';
+type TModalPosition = 'bottom' | 'top' | 'right' | 'left' | 'center';
 
-export enum EVariantSize {
+enum EVariantSize {
     M = 'M',
     L = 'L',
 }
-export type TVariantSize = 'M' | 'L';
+type TVariantSize = 'M' | 'L';
 
-export enum EVariantColor {
+enum EVariantColor {
     ERROR = 'error',
     INFO = 'info',
     WARNING = 'warning',
     SUCCESS = 'success',
     DEFAULT = 'default',
 }
-export type TVariantColor = 'error' | 'info' | 'warning' | 'success' | 'default';
+type TVariantColor = 'error' | 'info' | 'warning' | 'success' | 'default';
 
-export enum EItemIconPosition {
+enum EItemIconPosition {
     RIGHT = 'right',
     LEFT = 'left',
 }
 
-export type TItemIconPosition = 'right' | 'left';
+type TItemIconPosition = 'right' | 'left';
 
-export enum EOrientationContent {
+enum EOrientationContent {
     VERTICAL = 'vertical',
     HORIZONTAL = 'horizontal',
 }
 
-export type TOrientationContent = 'vertical' | 'horizontal';
+type TOrientationContent = 'vertical' | 'horizontal';
 
 ///
-export enum EVariantToast {
+enum EVariantToast {
     INFO = 'info',
     WARNING = 'warning',
     ERROR = 'error',
     SUCCESS = 'success',
 }
 
-export type TVariantToast = 'info' | 'warning' | 'error' | 'success';
+type TVariantToast = 'info' | 'warning' | 'error' | 'success';
 
-export enum ENotificationPosition {
+enum ENotificationPosition {
     BOTTOM_LEFT = 'bottom_left',
     BOTTOM_CENTER = 'bottom_center',
     BOTTOM_RIGHT = 'bottom_right',
@@ -145,7 +145,7 @@ export enum ENotificationPosition {
     TOP_RIGHT = 'top_right',
 }
 
-export type TNotificationPosition =
+type TNotificationPosition =
     | 'bottom_left'
     | 'bottom_center'
     | 'bottom_right'
@@ -155,3 +155,23 @@ export type TNotificationPosition =
     | 'center'
     | 'center_left'
     | 'center_right';
+
+export const EBaseProps = {
+    ModalPosition: EModalPosition,
+    VariantSize: EVariantSize,
+    VariantColor: EVariantColor,
+    ItemIconPosition: EItemIconPosition,
+    OrientationContent: EOrientationContent,
+    VariantToast: EVariantToast,
+    NotificationPosition: ENotificationPosition,
+};
+export namespace TBaseProps {
+    export type Margin = TMargin;
+    export type VariantToast = TVariantToast;
+    export type ModalPosition = TModalPosition;
+    export type VariantSize = TVariantSize;
+    export type VariantColor = TVariantColor;
+    export type ItemIconPosition = TItemIconPosition;
+    export type OrientationContent = TOrientationContent;
+    export type NotificationPosition = TNotificationPosition;
+}

@@ -1,15 +1,15 @@
 import React from 'react';
 import { IconSVGContainerProps, IconSVGContainer } from './IconSVGContainer';
-import { EIconPosition, TIconPosition } from '../types/TypeIcon';
+import { EIconProps, TIconProps } from '../types/TypeIcon';
 
-export type UploadArrowProps = { position?: TIconPosition } & IconSVGContainerProps;
+export type UploadArrowProps = { position?: TIconProps.IconPosition } & IconSVGContainerProps;
 
-export const UploadArrow: React.FC<UploadArrowProps> = ({ position = EIconPosition.BOTTOM, ...rest }) => {
+export const UploadArrow: React.FC<UploadArrowProps> = ({ position = EIconProps.IconPosition.BOTTOM, ...rest }) => {
     const rotate = {
-        [EIconPosition.LEFT]: 'rotate(-90deg)',
-        [EIconPosition.BOTTOM]: 'rotate(180deg)',
-        [EIconPosition.TOP]: 'rotate(0deg)',
-        [EIconPosition.RIGHT]: 'rotate(90deg)',
+        [EIconProps.IconPosition.LEFT]: 'rotate(-90deg)',
+        [EIconProps.IconPosition.BOTTOM]: 'rotate(180deg)',
+        [EIconProps.IconPosition.TOP]: 'rotate(0deg)',
+        [EIconProps.IconPosition.RIGHT]: 'rotate(90deg)',
     };
     return (
         <IconSVGContainer

@@ -1,20 +1,20 @@
 import React from 'react';
 import { IconSVGContainerProps, IconSVGContainer } from './IconSVGContainer';
-import { EIconPosition, TIconPosition } from '../types/TypeIcon';
+import { EIconProps, TIconProps } from '../types/TypeIcon';
 import { styled } from 'styled-components';
 
-export type DownloadArrowProps = { position?: TIconPosition } & IconSVGContainerProps;
+export type DownloadArrowProps = { position?: TIconProps.IconPosition } & IconSVGContainerProps;
 
 const IconSVGContainerDownloadArrow = styled(IconSVGContainer)<{ $rotate?: string }>`
     transform: ${(props) => props.$rotate};
 `;
 
-export const DownloadArrow: React.FC<DownloadArrowProps> = ({ position = EIconPosition.BOTTOM, ...rest }) => {
+export const DownloadArrow: React.FC<DownloadArrowProps> = ({ position = EIconProps.IconPosition.BOTTOM, ...rest }) => {
     const rotate = {
-        [EIconPosition.LEFT]: 'rotate(90deg)',
-        [EIconPosition.BOTTOM]: 'rotate(0deg)',
-        [EIconPosition.TOP]: 'rotate(180deg)',
-        [EIconPosition.RIGHT]: 'rotate(-90deg)',
+        [EIconProps.IconPosition.LEFT]: 'rotate(90deg)',
+        [EIconProps.IconPosition.BOTTOM]: 'rotate(0deg)',
+        [EIconProps.IconPosition.TOP]: 'rotate(180deg)',
+        [EIconProps.IconPosition.RIGHT]: 'rotate(-90deg)',
     };
     return (
         <IconSVGContainerDownloadArrow

@@ -2,7 +2,7 @@ import { getMargin } from '@src/lib/common/getMargin';
 import { useColorScheme, useStyleScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSMR } from '@src/lib/general/styleScheme';
-import { EOrientationContent, TMargin, TOrientationContent } from '@src/lib/types/TypeBase';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import { css, styled } from 'styled-components';
 
@@ -11,8 +11,8 @@ type TypeStyles = {
 };
 
 type SeparatorProps = {
-    mr?: TMargin;
-    orientation?: TOrientationContent;
+    mr?: TBaseProps.Margin;
+    orientation?: TBaseProps.OrientationContent;
     color?: Hex;
     length?: string;
     $colors?: TypeColorScheme;
@@ -20,20 +20,20 @@ type SeparatorProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $color?: Hex;
     $length: string;
-    $orientation: TOrientationContent;
+    $orientation: TBaseProps.OrientationContent;
     $styles: TypeStyles;
     $colors: TypeColorScheme;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const ORIENTATION = {
-    [EOrientationContent.HORIZONTAL]: (length: string) => css`
+    [EBaseProps.OrientationContent.HORIZONTAL]: (length: string) => css`
         width: ${length};
         height: 1px;
     `,
-    [EOrientationContent.VERTICAL]: (length: string) => css`
+    [EBaseProps.OrientationContent.VERTICAL]: (length: string) => css`
         width: 1px;
         height: ${length};
     `,
@@ -49,7 +49,15 @@ const SRoot = styled.div<SRootProps>`
 export const Separator = React.memo(
     React.forwardRef<HTMLDivElement, SeparatorProps>(
         (
-            { mr, length = '100%', color, orientation = EOrientationContent.HORIZONTAL, $colors, $styles, ...rest },
+            {
+                mr,
+                length = '100%',
+                color,
+                orientation = EBaseProps.OrientationContent.HORIZONTAL,
+                $colors,
+                $styles,
+                ...rest
+            },
             ref
         ) => {
             const colors = useColorScheme($colors);

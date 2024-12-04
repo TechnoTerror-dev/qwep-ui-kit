@@ -1,5 +1,5 @@
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
+import { EBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { useColorScheme } from '@src/lib/general';
@@ -51,8 +51,8 @@ export const SubmitCheckbox: React.FC<SubmitCheckboxProps> = React.memo(
         (
             {
                 isLoading,
-                colorVariant = EVariantColor.DEFAULT,
-                sizeVariant = EVariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
+                sizeVariant = EBaseProps.VariantSize.L,
                 _isActiveHover = true,
                 ...rest
             },

@@ -1,4 +1,5 @@
-import { Box, BoxLayout, Button, EPropsBase, Icon, Paragraph, Title, TPropsBase } from '@src/lib';
+import { Box, BoxLayout, Button, Icon, Paragraph, Title } from '@src/lib';
+import { EBaseProps, TBaseProps } from '../lib';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 
@@ -21,28 +22,28 @@ const Item = ({ icon, text }: { icon: React.ReactNode; text: string }) => {
 };
 
 export const ShowIcon = () => {
-    const [size, setSize] = useState<TPropsBase.VariantSize>(EPropsBase.VariantSize.L);
-    const [colorVariant, setColorVariant] = useState<TPropsBase.VariantColor>(EPropsBase.VariantColor.DEFAULT);
+    const [size, setSize] = useState<TBaseProps.VariantSize>(EBaseProps.VariantSize.L);
+    const [colorVariant, setColorVariant] = useState<TBaseProps.VariantColor>(EBaseProps.VariantColor.DEFAULT);
 
     const sizeHandler = () => {
-        if (size === EPropsBase.VariantSize.L) {
-            setSize(EPropsBase.VariantSize.M);
+        if (size === EBaseProps.VariantSize.L) {
+            setSize(EBaseProps.VariantSize.M);
         } else {
-            setSize(EPropsBase.VariantSize.L);
+            setSize(EBaseProps.VariantSize.L);
         }
     };
 
     const colorVariantHandler = () => {
-        if (colorVariant === EPropsBase.VariantColor.DEFAULT) {
-            setColorVariant(EPropsBase.VariantColor.INFO);
-        } else if (colorVariant === EPropsBase.VariantColor.INFO) {
-            setColorVariant(EPropsBase.VariantColor.SUCCESS);
-        } else if (colorVariant === EPropsBase.VariantColor.SUCCESS) {
-            setColorVariant(EPropsBase.VariantColor.WARNING);
-        } else if (colorVariant === EPropsBase.VariantColor.WARNING) {
-            setColorVariant(EPropsBase.VariantColor.ERROR);
-        } else if (colorVariant === EPropsBase.VariantColor.ERROR) {
-            setColorVariant(EPropsBase.VariantColor.DEFAULT);
+        if (colorVariant === EBaseProps.VariantColor.DEFAULT) {
+            setColorVariant(EBaseProps.VariantColor.INFO);
+        } else if (colorVariant === EBaseProps.VariantColor.INFO) {
+            setColorVariant(EBaseProps.VariantColor.SUCCESS);
+        } else if (colorVariant === EBaseProps.VariantColor.SUCCESS) {
+            setColorVariant(EBaseProps.VariantColor.WARNING);
+        } else if (colorVariant === EBaseProps.VariantColor.WARNING) {
+            setColorVariant(EBaseProps.VariantColor.ERROR);
+        } else if (colorVariant === EBaseProps.VariantColor.ERROR) {
+            setColorVariant(EBaseProps.VariantColor.DEFAULT);
         }
     };
     return (

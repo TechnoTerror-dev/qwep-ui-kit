@@ -123,7 +123,7 @@ export const ShowProfile = () => {
                                 icon={<Icon.Photo color={'#000'} />}
                             ></CircleDecorationTitle>
                             <Box boxDisplay={'flex'}>
-                                <Avatar sizeVariant={'large'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
+                                <Avatar sizeVariant={'L'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
                                 <Box
                                     boxDisplay={'flex'}
                                     style={{ flexDirection: 'column', justifyContent: 'space-between' }}

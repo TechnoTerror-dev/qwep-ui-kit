@@ -4,7 +4,7 @@ import { getColor, opacity } from '@src/lib/common/getColor';
 import { itemRippleEffect } from '@src/lib/common/itemRippleEffect';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSBtn, TypeSSTypography } from '@src/lib/general/styleScheme';
-import { TVariantSize, EVariantSize } from '@src/lib/types/TypeBase';
+import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -17,7 +17,7 @@ type TypeStyles = {
 type MenuItemProps = {
     value: string;
     active?: boolean;
-    sizeVariant?: TVariantSize;
+    sizeVariant?: TBaseProps.VariantSize;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
     color?: Hex;
@@ -34,7 +34,7 @@ type SButtonProps = {
     $color?: Hex;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $sizeVariant: TVariantSize;
+    $sizeVariant: TBaseProps.VariantSize;
     $opacityHover?: opacity;
     $opacityActive?: opacity;
     $textColor?: Hex;
@@ -45,11 +45,11 @@ type SButtonProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const BTN_SIZE = {
-    [EVariantSize.L]: (props: SButtonProps) => css`
+    [EBaseProps.VariantSize.L]: (props: SButtonProps) => css`
         height: ${props.$styles.btn.btnHeight_L};
         padding: ${`${props.$styles.btn.btnPadding_Y_L} ${props.$styles.btn.btnPadding_X_L}`};
     `,
-    [EVariantSize.M]: (props: SButtonProps) => css`
+    [EBaseProps.VariantSize.M]: (props: SButtonProps) => css`
         height: ${props.$styles.btn.btnHeight_M};
         padding: ${`${props.$styles.btn.btnPadding_Y_M} ${props.$styles.btn.btnPadding_X_M}`};
     `,
@@ -62,6 +62,8 @@ export const SButton = styled.button<SButtonProps>`
     overflow: hidden;
     line-height: normal;
     outline: 0;
+    width: 100%;
+    white-space: nowrap;
     transition: background-color 400ms;
     background-color: transparent;
     font-size: ${({ $styles }) => $styles.typography.text};
@@ -109,7 +111,7 @@ export const MenuItem = React.memo(
             {
                 active,
                 color,
-                sizeVariant = EVariantSize.L,
+                sizeVariant = EBaseProps.VariantSize.L,
                 onClick,
                 opacityHover,
                 opacityActive,

@@ -2,11 +2,11 @@ import { getMargin } from '@src/lib/common/getMargin';
 import { useColorScheme, useStyleScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSMR } from '@src/lib/general/styleScheme';
-import { TMargin } from '@src/lib/types/TypeBase';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 import React, { useMemo } from 'react';
 import { styled } from 'styled-components';
 import { STitle, TTitle } from '../../typography/title/Title';
-import { ETitleVariant, TTitleVariant } from '@src/lib/types/TypeText';
+import { TTextProps, ETextProps } from '@src/lib/types/TypeText';
 
 type TypeStyles = {
     mr: TypeSSMR;
@@ -14,11 +14,11 @@ type TypeStyles = {
 };
 
 type CircleDecorationTitleProps = {
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     icon: React.ReactNode;
     title: string;
     bgIcon?: Hex;
-    titleSizeVariant?: TTitleVariant;
+    titleSizeVariant?: TTextProps.TitleVariant;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
     titleProps?: TTitle.Main;
@@ -26,7 +26,7 @@ type CircleDecorationTitleProps = {
 } & React.HTMLAttributes<HTMLSpanElement>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $bgIcon?: Hex;
     $styles: TypeStyles;
     $colors: TypeColorScheme;
@@ -62,7 +62,7 @@ export const CircleDecorationTitle = React.memo(
                 $colors,
                 $styles,
                 titleProps,
-                titleSizeVariant = ETitleVariant.M,
+                titleSizeVariant = ETextProps.TitleVariant.M,
                 iconContainerProps,
                 ...rest
             },

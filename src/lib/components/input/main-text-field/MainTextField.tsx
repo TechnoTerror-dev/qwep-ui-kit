@@ -2,11 +2,10 @@ import { getColorIcon } from '@src/lib/common/getColor';
 import { renderIconTextField } from '@src/lib/common/renderIconItem';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
-import { EInpVariant } from '@src/lib/types/TypeInp';
 import React, { useCallback, useMemo, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { SBaseTextField, TBaseTextField } from '../base-text-field/BaseTextField';
+import { EBaseProps } from '@src/lib/types/TypeBase';
 
 type MainTextFieldProps = {
     iconStart?: React.ReactNode;
@@ -80,9 +79,8 @@ export const MainTextField = React.memo(
                 iconsEnd,
                 color,
                 _isActiveHover = true,
-                variant = EInpVariant.OUTLINED,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
                 $colors,
                 $styles,
                 rootProps,
@@ -124,7 +122,6 @@ export const MainTextField = React.memo(
                     $color={color}
                     $colorVariant={colorVariant}
                     $sizeVariant={sizeVariant}
-                    $variant={variant}
                     $disabled={rest.disabled}
                     $blocked={rest.blocked}
                     $_isActiveHover={_isActiveHover}

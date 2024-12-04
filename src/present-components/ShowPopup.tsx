@@ -24,11 +24,11 @@ export const ShowPopup = () => {
                 <Box boxDisplay={'flex'} boxGapVariant={'g-2'}>
                     <BasePopup trigger={<MainButton>Show Base Popup</MainButton>}>
                         <CardBox
-                            boxShadowVariant={'shd-2'}
+                            boxShadowVariant={'M'}
                             boxGapVariant={'g-2'}
                             boxDisplay={'grid'}
                             boxPaddingVariant={'p-3'}
-                            boxRadiusVariant={'br-2'}
+                            boxRadiusVariant={'M'}
                         >
                             <Box boxDisplay={'flex'} style={{ alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Title mr={'mb-2'}>Popup Title</Title>

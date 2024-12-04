@@ -1,13 +1,23 @@
-export enum EVariantBtn {
+enum EVariantBtn {
     TEXT = 'text',
     CONTAINED = 'contained',
     OUTLINED = 'outlined',
 }
-export type TVariantBtn = 'text' | 'contained' | 'outlined';
+type TVariantBtn = 'text' | 'contained' | 'outlined';
 
-export enum EBtnPosition {
+enum EBtnPosition {
     LEFT = 'left',
     CENTER = 'center',
     RIGHT = 'right',
 }
-export type TBtnPosition = 'left' | 'center' | 'right';
+type TBtnPosition = 'left' | 'center' | 'right';
+
+export const EButtonProps = {
+    VariantBtn: EVariantBtn,
+    BtnPosition: EBtnPosition,
+};
+
+export namespace TButtonProps {
+    export type VariantBtn = TVariantBtn;
+    export type BtnPosition = TBtnPosition;
+}

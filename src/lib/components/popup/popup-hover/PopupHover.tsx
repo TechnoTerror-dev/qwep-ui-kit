@@ -2,6 +2,7 @@ import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React from 'react';
 import { SPopup, TPopup } from '../popup/Popup';
+import { EBoxProps } from '@src/lib/types/TypeBox';
 
 type PopupHoverProps = {
     delay?: number;
@@ -14,12 +15,11 @@ export const PopupHover = React.memo(
                 bg,
 
                 delay = 300,
-                boxBorderColor,
                 boxShadowColor,
-                boxShadowVariant = 'shd-2',
-                boxRadiusVariant = 'br-2',
                 boxWidthVariant,
-                boxPaddingVariant = 'p-3',
+                boxShadowVariant = EBoxProps.BoxShadowVariant.ShdM,
+                boxRadiusVariant = EBoxProps.BoxRadiusVariant.BrM,
+                boxPaddingVariant = EBoxProps.BoxPaddingVariant.P3,
                 boxGapVariant,
                 boxDisplay,
 
@@ -75,7 +75,6 @@ export const PopupHover = React.memo(
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}
-                            $boxBorderColor={boxBorderColor}
                             $boxShadowColor={boxShadowColor}
                             $boxShadowVariant={boxShadowVariant}
                             $boxRadiusVariant={boxRadiusVariant}

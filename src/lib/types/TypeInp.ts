@@ -1,12 +1,15 @@
-export enum EInpVariant {
-    OUTLINED = 'outlined',
-}
-export type TInpVariant = 'outlined';
-
-export enum EPositionInpLabel {
+enum EPositionInpLabel {
     LEFT = 'left',
     TOP = 'top',
     RIGHT = 'right',
 }
 
-export type TPositionInpLabel = 'top' | 'left' | 'right';
+type TPositionInpLabel = 'top' | 'left' | 'right';
+
+export const EInputProps = {
+    PositionInpLabel: EPositionInpLabel,
+};
+
+export namespace TInputProps {
+    export type PositionInpLabel = TPositionInpLabel;
+}

@@ -1,13 +1,13 @@
 import { getColor } from '@src/lib/common/getColor';
 import { TypeColorScheme } from '@src/lib/general/colors';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
-import { TVariantColor } from '@src/lib/types/TypeBase';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled from 'styled-components';
 
 type TypeMessage = {
     text?: React.ReactNode;
-    colorVariant?: TVariantColor;
+    colorVariant?: TBaseProps.VariantColor;
 };
 
 type MessageBoxProps = {
@@ -17,7 +17,7 @@ type MessageBoxProps = {
 
 type SRootProps = {
     $colors: TypeColorScheme;
-    $colorVariant: TVariantColor;
+    $colorVariant: TBaseProps.VariantColor;
 } & React.HTMLAttributes<HTMLSpanElement>;
 
 const SRoot = styled.span<SRootProps>`

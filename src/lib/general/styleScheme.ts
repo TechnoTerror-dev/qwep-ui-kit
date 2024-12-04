@@ -80,12 +80,12 @@ export type TypeSSSlider = {
 };
 
 export type TypeSSAvatar = {
-    avatarSize_1: string;
-    avatarSize_2: string;
-    avatarSize_3: string;
-    avatarFontSize_1: string;
-    avatarFontSize_2: string;
-    avatarFontSize_3: string;
+    avatarSize_S: string;
+    avatarSize_M: string;
+    avatarSize_L: string;
+    avatarFontSize_S: string;
+    avatarFontSize_M: string;
+    avatarFontSize_L: string;
     avatarFontWeight: string;
 };
 
@@ -113,20 +113,20 @@ export type TypeSSTypography = {
 };
 
 export type TypeSSBox = {
-    boxBorderRadius_1: string;
-    boxBorderRadius_2: string;
-    boxBorderRadius_3: string;
+    boxBorderRadius_S: string;
+    boxBorderRadius_M: string;
+    boxBorderRadius_L: string;
 
-    boxShadow_1: string;
-    boxShadow_2: string;
-    boxShadow_3: string;
+    boxShadow_S: string;
+    boxShadow_M: string;
+    boxShadow_L: string;
 
-    boxWidth_1: string;
-    boxWidth_2: string;
-    boxWidth_3: string;
-    boxWidth_4: string;
-    boxWidth_5: string;
-    boxWidth_6: string;
+    boxWidth_S: string;
+    boxWidth_M: string;
+    boxWidth_L: string;
+    boxWidth_fit_content: string;
+    boxWidth_auto: string;
+    boxWidth_max: string;
 
     boxPadding_1: string;
     boxPadding_2: string;
@@ -257,12 +257,12 @@ export const styleScheme: TypeSS = {
 
     //avatar
     avatar: {
-        avatarSize_1: '24px',
-        avatarSize_2: '40px',
-        avatarSize_3: '96px',
-        avatarFontSize_1: '8px',
-        avatarFontSize_2: '16px',
-        avatarFontSize_3: '40px',
+        avatarSize_S: '24px',
+        avatarSize_M: '36px',
+        avatarSize_L: '96px',
+        avatarFontSize_S: '8px',
+        avatarFontSize_M: '16px',
+        avatarFontSize_L: '40px',
         avatarFontWeight: '600',
     },
 
@@ -323,20 +323,20 @@ export const styleScheme: TypeSS = {
 
     //box
     box: {
-        boxBorderRadius_1: '8px',
-        boxBorderRadius_2: '12px',
-        boxBorderRadius_3: '20px',
+        boxBorderRadius_S: '8px',
+        boxBorderRadius_M: '12px',
+        boxBorderRadius_L: '20px',
 
-        boxShadow_1: '2px 2px 3px 0px',
-        boxShadow_2: '3px 3px 6px 2px',
-        boxShadow_3: '4px 4px 12px 5px',
+        boxShadow_S: '2px 2px 3px 0px',
+        boxShadow_M: '3px 3px 6px 2px',
+        boxShadow_L: '4px 4px 12px 5px',
 
-        boxWidth_1: '120px',
-        boxWidth_2: '260px',
-        boxWidth_3: '300px',
-        boxWidth_4: '460px',
-        boxWidth_5: '680px',
-        boxWidth_6: '720px',
+        boxWidth_S: '116px',
+        boxWidth_M: '232px',
+        boxWidth_L: '464px',
+        boxWidth_fit_content: 'fit-content',
+        boxWidth_auto: 'auto',
+        boxWidth_max: '100%',
 
         boxPadding_1: '4px',
         boxPadding_2: '8px',

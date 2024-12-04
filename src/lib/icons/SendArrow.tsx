@@ -1,20 +1,20 @@
 import React from 'react';
 import { IconSVGContainerProps, IconSVGContainer } from './IconSVGContainer';
-import { EIconPosition, TIconPosition } from '../types/TypeIcon';
+import { EIconProps, TIconProps } from '../types/TypeIcon';
 import { styled } from 'styled-components';
 
-export type SendArrowProps = { position?: TIconPosition } & IconSVGContainerProps;
+export type SendArrowProps = { position?: TIconProps.IconPosition } & IconSVGContainerProps;
 
 const IconSVGContainerSendArrow = styled(IconSVGContainer)<{ $rotate?: string }>`
     transform: ${(props) => props.$rotate};
 `;
 
-export const SendArrow: React.FC<SendArrowProps> = ({ position = EIconPosition.LEFT, ...rest }) => {
+export const SendArrow: React.FC<SendArrowProps> = ({ position = EIconProps.IconPosition.LEFT, ...rest }) => {
     const rotate = {
-        [EIconPosition.LEFT]: 'rotate(-180deg)',
-        [EIconPosition.BOTTOM]: 'rotate(90deg)',
-        [EIconPosition.TOP]: 'rotate(-90deg)',
-        [EIconPosition.RIGHT]: 'rotate(0)',
+        [EIconProps.IconPosition.LEFT]: 'rotate(-180deg)',
+        [EIconProps.IconPosition.BOTTOM]: 'rotate(90deg)',
+        [EIconProps.IconPosition.TOP]: 'rotate(-90deg)',
+        [EIconProps.IconPosition.RIGHT]: 'rotate(0)',
     };
 
     return (

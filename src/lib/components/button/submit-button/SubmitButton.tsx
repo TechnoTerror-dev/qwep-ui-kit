@@ -5,8 +5,8 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBtn } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EItemIconPosition, EVariantColor, EVariantSize, TVariantColor, TVariantSize } from '@src/lib/types/TypeBase';
-import { EBtnPosition, EVariantBtn, TVariantBtn } from '@src/lib/types/TypeBtn';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
+import { EButtonProps, TButtonProps } from '@src/lib/types/TypeBtn';
 import React, { useMemo } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { CircleLoading, SCircleLoading } from '../../decoration/loading/CircleLoading';
@@ -28,28 +28,28 @@ type SLoadingProps = {
     $disabled?: boolean;
     $colors: TypeColorScheme;
     $styles: TButton.Styles;
-    $colorVariant: TVariantColor;
-    $sizeVariant: TVariantSize;
-    $variant: TVariantBtn;
+    $colorVariant: TBaseProps.VariantColor;
+    $sizeVariant: TBaseProps.VariantSize;
+    $variant: TButtonProps.VariantBtn;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const LOADING_SIZE = {
-    [EVariantSize.L]: (props: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.L]: (props: TypeSSBtn) => css`
         width: ${props.btnLoadingSize_L};
         height: ${props.btnLoadingSize_L};
     `,
-    [EVariantSize.M]: (props: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.M]: (props: TypeSSBtn) => css`
         width: ${props.btnLoadingSize_M};
         height: ${props.btnLoadingSize_M};
     `,
 };
 
 const LOADING_BTN_VARIANT = {
-    [EVariantBtn.CONTAINED]: (props: SLoadingProps) => css`
+    [EButtonProps.VariantBtn.CONTAINED]: (props: SLoadingProps) => css`
         border-top-color: ${props.$colors.textItem};
         border-bottom-color: ${props.$colors.textItem};
     `,
-    [EVariantBtn.TEXT]: (props: SLoadingProps) => {
+    [EButtonProps.VariantBtn.TEXT]: (props: SLoadingProps) => {
         const c = getColor({
             cs: props.$colors,
             color: props.$color,
@@ -60,7 +60,7 @@ const LOADING_BTN_VARIANT = {
             border-bottom-color: ${c};
         `;
     },
-    [EVariantBtn.OUTLINED]: (props: SLoadingProps) => {
+    [EButtonProps.VariantBtn.OUTLINED]: (props: SLoadingProps) => {
         const c = getColor({
             cs: props.$colors,
             color: props.$color,
@@ -116,11 +116,11 @@ export const SubmitButton = React.memo(
         (
             {
                 isLoading,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
-                variant = EVariantBtn.CONTAINED,
-                position = EBtnPosition.CENTER,
-                iconPosition = EItemIconPosition.LEFT,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
+                variant = EButtonProps.VariantBtn.CONTAINED,
+                position = EButtonProps.BtnPosition.CENTER,
+                iconPosition = EBaseProps.ItemIconPosition.LEFT,
                 _isActiveHover = true,
                 loadingProps,
                 $colors,
@@ -141,7 +141,7 @@ export const SubmitButton = React.memo(
                     event,
                     getColor({
                         cs: colors,
-                        color: variant === EVariantBtn.CONTAINED ? colors.alpha : rest.color,
+                        color: variant === EButtonProps.VariantBtn.CONTAINED ? colors.alpha : rest.color,
                         variant: colorVariant,
                         opacity: '40',
                     })

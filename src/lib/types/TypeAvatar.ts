@@ -1,6 +1,14 @@
-export enum EVariantSizeAvatar {
-    S = 'small',
-    M = 'medium',
-    L = 'large',
+enum EVariantSizeAvatar {
+    S = 'S',
+    M = 'M',
+    L = 'L',
 }
-export type TVariantSizeAvatar = 'small' | 'medium' | 'large';
+type TVariantSizeAvatar = 'S' | 'M' | 'L';
+
+export const EAvatarProps = {
+    VariantSizeAvatar: EVariantSizeAvatar,
+};
+
+export namespace TAvatarProps {
+    export type VariantSizeAvatar = TVariantSizeAvatar;
+}

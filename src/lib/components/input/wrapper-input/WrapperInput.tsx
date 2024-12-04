@@ -5,13 +5,13 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TMargin } from '@src/lib/types/TypeBase';
-import { TBoxGapVariant } from '@src/lib/types/TypeBox';
-import { EPositionInpLabel, TPositionInpLabel } from '@src/lib/types/TypeInp';
-import { ETextVariant, TTextVariant } from '@src/lib/types/TypeText';
+import { TBaseProps } from '@src/lib/types/TypeBase';
+import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 import { MessageBox, TMessageBox } from './MessageBox';
+import { TTextProps, ETextProps } from '@src/lib/types/TypeText';
+import { EInputProps, TInputProps } from '@src/lib/types/TypeInp';
 
 type TypeStyles = {
     mr: TypeSSMR;
@@ -23,12 +23,12 @@ type WrapperInputProps = {
     id?: string;
     label?: string;
     width?: string;
-    labelSize?: TTextVariant;
+    labelSize?: TTextProps.TextVariant;
     customLabel?: React.ReactNode;
     required?: boolean;
-    positionLabel?: TPositionInpLabel;
-    mr?: TMargin;
-    boxGapVariant?: TBoxGapVariant;
+    positionLabel?: TInputProps.PositionInpLabel;
+    mr?: TBaseProps.Margin;
+    boxGapVariant?: TBoxProps.BoxGapVariant;
     message?: TMessageBox.Message;
     labelColor?: Hex;
     blocked?: boolean;
@@ -39,20 +39,20 @@ type WrapperInputProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $width?: string;
     $blocked?: boolean;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $positionLabel: TPositionInpLabel;
-    $boxGapVariant: TBoxGapVariant;
+    $positionLabel: TInputProps.PositionInpLabel;
+    $boxGapVariant: TBoxProps.BoxGapVariant;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const POSITION = {
-    [EPositionInpLabel.TOP]: css`
+    [EInputProps.PositionInpLabel.TOP]: css`
         display: grid;
     `,
-    [EPositionInpLabel.RIGHT]: css`
+    [EInputProps.PositionInpLabel.RIGHT]: css`
         display: flex;
         align-items: center;
         > * {
@@ -62,7 +62,7 @@ const POSITION = {
             order: 2;
         }
     `,
-    [EPositionInpLabel.LEFT]: css`
+    [EInputProps.PositionInpLabel.LEFT]: css`
         display: flex;
         align-items: center;
     `,
@@ -120,16 +120,16 @@ export const WrapperInput = React.memo(
                 required,
                 blocked,
                 customLabel,
-                positionLabel = EPositionInpLabel.TOP,
+                positionLabel = EInputProps.PositionInpLabel.TOP,
                 $colors,
                 $styles,
                 label,
                 width,
                 message,
-                boxGapVariant = 'g-3',
+                boxGapVariant = EBoxProps.BoxGapVariant.G3,
                 labelColor,
                 messageProps,
-                labelSize = ETextVariant.TEXT,
+                labelSize = ETextProps.TextVariant.TEXT,
                 labelProps,
                 ...rest
             },

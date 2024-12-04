@@ -3,17 +3,17 @@ import { StyledIconContainer, TypeStyleIconContainer } from '../common-styled-co
 import { Hex, TypeColorScheme } from '../general/colors';
 import { useColorScheme } from '../general/useColorScheme';
 import { useStyleScheme } from '../general/useStyleScheme';
-import { TVariantColor, TMargin, TVariantSize, EVariantColor, EVariantSize } from '../types/TypeBase';
+import { TBaseProps, EBaseProps } from '../types/TypeBase';
 
 export type IconSVGContainerProps = {
     children?: React.ReactNode;
     xmlns?: string;
     viewBox?: string;
-    sizeVariant?: TVariantSize;
-    colorVariant?: TVariantColor;
+    sizeVariant?: TBaseProps.VariantSize;
+    colorVariant?: TBaseProps.VariantColor;
     color?: Hex;
     style?: React.CSSProperties;
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     disabled?: boolean;
     $importantColor?: boolean;
     $colors?: TypeColorScheme;
@@ -24,8 +24,8 @@ export const IconSVGContainer: React.FC<IconSVGContainerProps> = ({
     children,
     xmlns,
     viewBox,
-    sizeVariant = EVariantSize.L,
-    colorVariant = EVariantColor.DEFAULT,
+    sizeVariant = EBaseProps.VariantSize.L,
+    colorVariant = EBaseProps.VariantColor.DEFAULT,
     color,
     style,
     mr,

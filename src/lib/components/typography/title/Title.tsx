@@ -3,8 +3,8 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TMargin } from '@src/lib/types/TypeBase';
-import { ETitleVariant, TTitleVariant } from '@src/lib/types/TypeText';
+import { TBaseProps } from '@src/lib/types/TypeBase';
+import { ETextProps, TTextProps } from '@src/lib/types/TypeText';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -17,25 +17,25 @@ type TitleProps = {
     children?: React.ReactNode;
     color?: Hex;
     isEllipsis?: boolean;
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
-    sizeVariant?: TTitleVariant;
+    sizeVariant?: TTextProps.TitleVariant;
 } & React.HTMLAttributes<HTMLElement>;
 
 type STitleProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $isEllipsis?: boolean;
-    $sizeVariant: TTitleVariant;
+    $sizeVariant: TTextProps.TitleVariant;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $color?: Hex;
 } & React.HTMLAttributes<HTMLElement>;
 
 const SIZE_VARIANT = {
-    [ETitleVariant.L]: (props: TypeSSTypography) => props.title_L,
-    [ETitleVariant.M]: (props: TypeSSTypography) => props.title_M,
-    [ETitleVariant.S]: (props: TypeSSTypography) => props.title_S,
+    [ETextProps.TitleVariant.L]: (props: TypeSSTypography) => props.title_L,
+    [ETextProps.TitleVariant.M]: (props: TypeSSTypography) => props.title_M,
+    [ETextProps.TitleVariant.S]: (props: TypeSSTypography) => props.title_S,
 };
 
 const SRoot = styled.h1<STitleProps>`
@@ -55,7 +55,7 @@ const SRoot = styled.h1<STitleProps>`
 `;
 
 export const Title: React.FC<TitleProps> = React.memo(
-    ({ mr, sizeVariant = ETitleVariant.M, color, isEllipsis, $colors, $styles, ...rest }) => {
+    ({ mr, sizeVariant = ETextProps.TitleVariant.M, color, isEllipsis, $colors, $styles, ...rest }) => {
         const colors = useColorScheme($colors);
         const styles = useStyleScheme(['typography', 'mr'], $styles);
 

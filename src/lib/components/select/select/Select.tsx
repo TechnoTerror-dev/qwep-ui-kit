@@ -4,18 +4,18 @@ import { getColor, getColorIcon, getColorSystem } from '@src/lib/common/getColor
 import { getMargin } from '@src/lib/common/getMargin';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSBox, TypeSSMR, TypeSSSelect, TypeSSTypography } from '@src/lib/general/styleScheme';
-import { TVariantColor, TMargin, TVariantSize, EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
-import { TBtnPosition, EBtnPosition } from '@src/lib/types/TypeBtn';
+import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
+import { TButtonProps, EButtonProps } from '@src/lib/types/TypeBtn';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import * as S from '@radix-ui/react-select';
-import { TBoxPaddingVariant, TBoxShadowVariant } from '@src/lib/types/TypeBox';
 import { BOX_PADDING_VARIANT, BOX_SHADOW_VARIANT } from '@src/lib/common-styled-component/StyledComponentBox';
 import { Arrow } from '@src/lib/icons';
 import { SSelectGroup } from './SelectGroup';
 import { StyledScrollbarItem } from '@src/lib/common-styled-component/StyledBase';
 import { ArrowProps } from '@src/lib/icons/Arrow.tsx';
 import { SSelectComponent, TSelectComponent } from './SelectComponent';
+import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
 
 type TypeStyles = {
     base: TypeSSBase;
@@ -27,17 +27,17 @@ type TypeStyles = {
 
 type SelectProps = {
     children?: React.ReactNode;
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     width?: string;
-    sizeVariant?: TVariantSize;
-    colorVariant?: TVariantColor;
+    sizeVariant?: TBaseProps.VariantSize;
+    colorVariant?: TBaseProps.VariantColor;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
-    boxShadowVariant?: TBoxShadowVariant;
-    boxPaddingVariant?: TBoxPaddingVariant;
+    boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     color?: Hex;
     blocked?: boolean;
-    positionTrigger?: TBtnPosition;
+    positionTrigger?: TButtonProps.BtnPosition;
     maxHeight?: string;
     placeholder?: React.ReactNode;
     _isActiveHover?: boolean;
@@ -51,33 +51,33 @@ type SelectProps = {
 } & React.ComponentPropsWithRef<typeof S.Root>;
 
 type STriggerProps = {
-    $mr?: TMargin;
+    $mr?: TBaseProps.Margin;
     $color?: Hex;
     $width?: string;
     $blocked?: boolean;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $positionTrigger: TBtnPosition;
-    $sizeVariant: TVariantSize;
-    $colorVariant: TVariantColor;
+    $positionTrigger: TButtonProps.BtnPosition;
+    $sizeVariant: TBaseProps.VariantSize;
+    $colorVariant: TBaseProps.VariantColor;
     $_isActiveHover?: boolean;
 } & React.ComponentPropsWithRef<typeof S.Trigger>;
 
 const SELECT_SIZE = {
-    [EVariantSize.L]: (props: TypeSSSelect) => css`
+    [EBaseProps.VariantSize.L]: (props: TypeSSSelect) => css`
         height: ${props.selectHeight_L};
         padding: ${`${props.selectPadding_Y_L} ${props.selectPadding_X_L}`};
     `,
-    [EVariantSize.M]: (props: TypeSSSelect) => css`
+    [EBaseProps.VariantSize.M]: (props: TypeSSSelect) => css`
         height: ${props.selectHeight_M};
         padding: ${`${props.selectPadding_Y_M} ${props.selectPadding_X_M}`};
     `,
 };
 
 const POSITION_TRIGGER = {
-    [EBtnPosition.CENTER]: 'center',
-    [EBtnPosition.LEFT]: 'space-between',
-    [EBtnPosition.RIGHT]: 'right',
+    [EButtonProps.BtnPosition.CENTER]: 'center',
+    [EButtonProps.BtnPosition.LEFT]: 'space-between',
+    [EButtonProps.BtnPosition.RIGHT]: 'right',
 };
 
 const STrigger = styled(S.Trigger)<STriggerProps>`
@@ -236,9 +236,9 @@ type SContentProps = {
     $width?: string;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $colorVariant: TVariantColor;
-    $boxShadowVariant: TBoxShadowVariant;
-    $boxPaddingVariant: TBoxPaddingVariant;
+    $colorVariant: TBaseProps.VariantColor;
+    $boxShadowVariant: TBoxProps.BoxShadowVariant;
+    $boxPaddingVariant: TBoxProps.BoxPaddingVariant;
     $_isActiveHover?: boolean;
 } & React.ComponentPropsWithRef<typeof S.Content>;
 
@@ -304,7 +304,7 @@ type SViewportProps = {
     $color?: Hex;
     $maxHeight?: string;
     $colors: TypeColorScheme;
-    $colorVariant: TVariantColor;
+    $colorVariant: TBaseProps.VariantColor;
     $_isActiveHover?: boolean;
 } & React.ComponentPropsWithRef<typeof S.Viewport>;
 
@@ -331,11 +331,11 @@ export const Select = React.memo(
                 width,
                 maxHeight,
                 placeholder,
-                positionTrigger = EBtnPosition.CENTER,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
-                boxPaddingVariant = 'p-1',
-                boxShadowVariant = 'shd-1',
+                positionTrigger = EButtonProps.BtnPosition.CENTER,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
+                boxPaddingVariant = EBoxProps.BoxPaddingVariant.P1,
+                boxShadowVariant = EBoxProps.BoxShadowVariant.ShdS,
                 blocked,
                 $colors,
                 $styles,

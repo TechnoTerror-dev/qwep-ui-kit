@@ -1,105 +1,86 @@
 import { css } from 'styled-components';
 import { Hex, TypeColorScheme } from '../general/colors';
 import { TypeSSBox, TypeSSLayout } from '../general/styleScheme';
-import {
-    TBoxDisplay,
-    TBoxGapVariant,
-    TBoxPaddingVariant,
-    TBoxRadiusVariant,
-    TBoxShadowVariant,
-    TBoxWidthVariant,
-} from '../types/TypeBox';
+import { EBoxProps, TBoxProps } from '../types/TypeBox';
 import { keyframes } from 'styled-components';
 
-export enum Breakpoints {
-    S = '767px',
-    M = '1280px',
-    L = '1920px',
-}
-
 export const BOX_WIDTH_VARIANT = {
-    ['w-1']: (props: TypeSSBox) => css`
-        max-width: ${props.boxWidth_1};
+    [EBoxProps.BoxWidthVariant.FIT_CONTENT]: (props: TypeSSBox) => css`
+        width: ${props.boxWidth_fit_content};
     `,
-    ['w-2']: (props: TypeSSBox) => css`
-        max-width: ${props.boxWidth_2};
+    [EBoxProps.BoxWidthVariant.MAX]: (props: TypeSSBox) => css`
+        width: ${props.boxWidth_max};
     `,
-    ['w-3']: (props: TypeSSBox) => css`
-        max-width: ${props.boxWidth_3};
+    [EBoxProps.BoxWidthVariant.S]: (props: TypeSSBox) => css`
+        width: ${props.boxWidth_S};
     `,
-    ['w-4']: (props: TypeSSBox) => css`
-        max-width: ${props.boxWidth_4};
+    [EBoxProps.BoxWidthVariant.M]: (props: TypeSSBox) => css`
+        width: ${props.boxWidth_M};
     `,
-    ['w-5']: (props: TypeSSBox) => css`
-        max-width: ${props.boxWidth_5};
-    `,
-    ['w-6']: (props: TypeSSBox) => css`
-        max-width: ${props.boxWidth_6};
-    `,
-    ['w-null']: () => css`
-        width: auto;
+    [EBoxProps.BoxWidthVariant.L]: (props: TypeSSBox) => css`
+        width: ${props.boxWidth_L};
     `,
 };
 
 export const BOX_GAP_VARIANT = {
-    ['g-1']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxGapVariant.G1]: (props: TypeSSBox) => css`
         gap: ${props.boxGap_1};
     `,
-    ['g-2']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxGapVariant.G2]: (props: TypeSSBox) => css`
         gap: ${props.boxGap_2};
     `,
-    ['g-3']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxGapVariant.G3]: (props: TypeSSBox) => css`
         gap: ${props.boxGap_3};
     `,
-    ['g-4']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxGapVariant.G4]: (props: TypeSSBox) => css`
         gap: ${props.boxGap_4};
     `,
-    ['g-5']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxGapVariant.G5]: (props: TypeSSBox) => css`
         gap: ${props.boxGap_5};
     `,
-    ['g-6']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxGapVariant.G6]: (props: TypeSSBox) => css`
         gap: ${props.boxGap_6};
     `,
-    ['g-null']: () => css`
+    [EBoxProps.BoxGapVariant.Null]: () => css`
         gap: 0;
     `,
 };
 
 export const BOX_PADDING_VARIANT = {
-    ['p-1']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxPaddingVariant.P1]: (props: TypeSSBox) => css`
         padding: ${props.boxPadding_1};
     `,
-    ['p-2']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxPaddingVariant.P2]: (props: TypeSSBox) => css`
         padding: ${props.boxPadding_2};
     `,
-    ['p-3']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxPaddingVariant.P3]: (props: TypeSSBox) => css`
         padding: ${props.boxPadding_3};
     `,
-    ['p-4']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxPaddingVariant.P4]: (props: TypeSSBox) => css`
         padding: ${props.boxPadding_4};
     `,
-    ['p-5']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxPaddingVariant.P5]: (props: TypeSSBox) => css`
         padding: ${props.boxPadding_5};
     `,
-    ['p-6']: (props: TypeSSBox) => css`
+    [EBoxProps.BoxPaddingVariant.P6]: (props: TypeSSBox) => css`
         padding: ${props.boxPadding_6};
     `,
-    ['p-null']: () => css`
+    [EBoxProps.BoxPaddingVariant.Null]: () => css`
         padding: 0;
     `,
 };
 
 export const BOX_BORDER_RADIUS = {
-    ['br-1']: (props: TypeSSBox) => css`
-        border-radius: ${props.boxBorderRadius_1};
+    [EBoxProps.BoxRadiusVariant.BrS]: (props: TypeSSBox) => css`
+        border-radius: ${props.boxBorderRadius_S};
     `,
-    ['br-2']: (props: TypeSSBox) => css`
-        border-radius: ${props.boxBorderRadius_2};
+    [EBoxProps.BoxRadiusVariant.BrM]: (props: TypeSSBox) => css`
+        border-radius: ${props.boxBorderRadius_M};
     `,
-    ['br-3']: (props: TypeSSBox) => css`
-        border-radius: ${props.boxBorderRadius_3};
+    [EBoxProps.BoxRadiusVariant.BrL]: (props: TypeSSBox) => css`
+        border-radius: ${props.boxBorderRadius_L};
     `,
-    ['br-null']: () => css`
+    [EBoxProps.BoxRadiusVariant.Null]: () => css`
         border-radius: 0;
     `,
 };
@@ -111,25 +92,25 @@ export type StyledBoxShadowVariantProps = {
 };
 
 export const BOX_SHADOW_VARIANT = {
-    ['shd-1']: (props: StyledBoxShadowVariantProps) => css`
-        box-shadow: ${`${props.$box.boxShadow_1}`} ${props.$boxShadowColor ?? props.$colors.shadowColor};
+    [EBoxProps.BoxShadowVariant.ShdS]: (props: StyledBoxShadowVariantProps) => css`
+        box-shadow: ${`${props.$box.boxShadow_S}`} ${props.$boxShadowColor ?? props.$colors.shadowColor};
     `,
-    ['shd-2']: (props: StyledBoxShadowVariantProps) => css`
-        box-shadow: ${`${props.$box.boxShadow_2}`} ${props.$boxShadowColor ?? props.$colors.shadowColor};
+    [EBoxProps.BoxShadowVariant.ShdM]: (props: StyledBoxShadowVariantProps) => css`
+        box-shadow: ${`${props.$box.boxShadow_M}`} ${props.$boxShadowColor ?? props.$colors.shadowColor};
     `,
-    ['shd-3']: (props: StyledBoxShadowVariantProps) => css`
-        box-shadow: ${`${props.$box.boxShadow_3}`} ${props.$boxShadowColor ?? props.$colors.shadowColor};
+    [EBoxProps.BoxShadowVariant.ShdL]: (props: StyledBoxShadowVariantProps) => css`
+        box-shadow: ${`${props.$box.boxShadow_L}`} ${props.$boxShadowColor ?? props.$colors.shadowColor};
     `,
-    ['shd-null']: () => css`
+    [EBoxProps.BoxShadowVariant.Null]: () => css`
         box-shadow: none;
     `,
 };
 
 export type CSSBaseBoxProps = {
-    $boxWidthVariant?: TBoxWidthVariant;
-    $boxPaddingVariant?: TBoxPaddingVariant;
-    $boxGapVariant?: TBoxGapVariant;
-    $boxDisplay?: TBoxDisplay;
+    $boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    $boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
+    $boxGapVariant?: TBoxProps.BoxGapVariant;
+    $boxDisplay?: TBoxProps.BoxDisplay;
     $styles: TypeSSBox;
 };
 
@@ -146,10 +127,9 @@ export const CSSBaseBox = (props: CSSBaseBoxProps) => css`
 export type CSSSimplePropsBox = {
     $styles: TypeSSBox;
     $colors: TypeColorScheme;
-    $boxBorderColor?: Hex;
     $boxShadowColor?: Hex;
-    $boxShadowVariant?: TBoxShadowVariant;
-    $boxRadiusVariant?: TBoxRadiusVariant;
+    $boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    $boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
 };
 
 export const CSSSimpleBox = (props: CSSSimplePropsBox) => css`
@@ -160,10 +140,6 @@ export const CSSSimpleBox = (props: CSSSimplePropsBox) => css`
         $colors: props.$colors,
         $boxShadowColor: props.$boxShadowColor,
     })}
-    ${props.$boxBorderColor &&
-    css`
-        border: 1px solid ${props.$boxBorderColor};
-    `}
 `;
 
 export const CSSBoxLayout = (l: TypeSSLayout) => css`

@@ -210,7 +210,7 @@ export const ShowBox = () => {
                     <SCard
                         boxPaddingVariant={'p-2'}
                         role={'button'}
-                        boxRadiusVariant={'br-2'}
+                        boxRadiusVariant={'M'}
                         onClick={() => radioClick('1')}
                     >
                         <RadioItem value={'1'} />
@@ -218,7 +218,7 @@ export const ShowBox = () => {
                     <SCard
                         boxPaddingVariant={'p-2'}
                         role={'button'}
-                        boxRadiusVariant={'br-2'}
+                        boxRadiusVariant={'M'}
                         onClick={() => radioClick('2')}
                     >
                         <RadioItem value={'2'} />
@@ -226,7 +226,7 @@ export const ShowBox = () => {
                     <SCard
                         boxPaddingVariant={'p-2'}
                         role={'button'}
-                        boxRadiusVariant={'br-2'}
+                        boxRadiusVariant={'M'}
                         onClick={() => radioClick('3')}
                     >
                         <RadioItem sizeVariant={'M'} value={'3'} />
@@ -234,7 +234,7 @@ export const ShowBox = () => {
                     <SCard
                         boxPaddingVariant={'p-2'}
                         role={'button'}
-                        boxRadiusVariant={'br-2'}
+                        boxRadiusVariant={'M'}
                         onClick={() => radioClick('4')}
                     >
                         <RadioItem sizeVariant={'M'} value={'4'} />
@@ -316,7 +316,7 @@ export const ShowBox = () => {
                                 icon={<Icon.Photo color={'#000'} />}
                             ></CircleDecorationTitle>
                             <Box boxDisplay={'flex'}>
-                                <Avatar sizeVariant={'large'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
+                                <Avatar sizeVariant={'L'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
                                 <Box
                                     boxDisplay={'flex'}
                                     style={{ flexDirection: 'column', justifyContent: 'space-between' }}

@@ -2,8 +2,6 @@ import { useColorScheme } from '@src/lib/general/useColorScheme';
 import InputMask from 'react-input-mask';
 import * as P from '@radix-ui/react-popover';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantColor, EVariantSize, TVariantColor } from '@src/lib/types/TypeBase';
-import { EInpVariant } from '@src/lib/types/TypeInp';
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { SBaseTextField, TBaseTextField } from '../base-text-field/BaseTextField';
@@ -12,6 +10,7 @@ import { SBaseText, TBaseText } from '../../typography/base/BaseText';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox } from '@src/lib/general/styleScheme';
 import { getColor } from '@src/lib/common/getColor';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 
 type TypeStyles = {
     box: TypeSSBox;
@@ -50,18 +49,18 @@ type SPopupContentProps = {
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $color?: Hex;
-    $colorVariant?: TVariantColor;
+    $colorVariant?: TBaseProps.VariantColor;
 } & React.ComponentPropsWithRef<typeof P.Content>;
 
 const SPopupContent = styled(P.Content)<SPopupContentProps>`
     display: grid;
     background-color: ${({ $colors }) => $colors.backgroundBox};
     padding: ${({ $styles }) => $styles.box.boxPadding_2};
-    border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_1};
-    box-shadow: ${({ $styles, $colors }) => `${$styles.box.boxShadow_2} ${$colors.lightShadow}`};
+    border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_S};
+    box-shadow: ${({ $styles, $colors }) => `${$styles.box.boxShadow_M} ${$colors.lightShadow}`};
     ${SPopupListItem} {
         padding: ${({ $styles }) => $styles.box.boxPadding_1};
-        border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_1};
+        border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_S};
         &:hover {
             background-color: ${(props) =>
                 getColor({
@@ -93,9 +92,8 @@ export const PhoneTextField = React.memo(
                 defaultIconId,
                 color,
                 _isActiveHover = true,
-                variant = EInpVariant.OUTLINED,
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
                 $colors,
                 $styles,
                 rootProps,
@@ -133,7 +131,6 @@ export const PhoneTextField = React.memo(
                     $color={color}
                     $colorVariant={colorVariant}
                     $sizeVariant={sizeVariant}
-                    $variant={variant}
                     $disabled={rest.disabled}
                     $blocked={rest.blocked}
                     $_isActiveHover={_isActiveHover}

@@ -4,8 +4,8 @@ import { renderIconButton } from '@src/lib/common/renderIconItem';
 import { TypeSSBtn } from '@src/lib/general/styleScheme';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { EVariantColor, EVariantSize } from '@src/lib/types/TypeBase';
-import { EVariantBtn } from '@src/lib/types/TypeBtn';
+import { EBaseProps } from '@src/lib/types/TypeBase';
+import { EButtonProps } from '@src/lib/types/TypeBtn';
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 import { SButton, TButton } from '../button/Button';
@@ -17,10 +17,10 @@ type VariantProps = {
 } & TButton.SRoot;
 
 const BTN_ICON_VARIANT = {
-    [EVariantBtn.CONTAINED]: (props: VariantProps) => css`
+    [EButtonProps.VariantBtn.CONTAINED]: (props: VariantProps) => css`
         color: ${props.$colors.textItem};
     `,
-    [EVariantBtn.TEXT]: (props: VariantProps) => css`
+    [EButtonProps.VariantBtn.TEXT]: (props: VariantProps) => css`
         color: ${getColor({
             cs: props.$colors,
             disabled: props.disabled,
@@ -29,7 +29,7 @@ const BTN_ICON_VARIANT = {
             hover: props.hover,
         })};
     `,
-    [EVariantBtn.OUTLINED]: (props: VariantProps) => css`
+    [EButtonProps.VariantBtn.OUTLINED]: (props: VariantProps) => css`
         color: ${getColor({
             cs: props.$colors,
             color: props.$color,
@@ -41,11 +41,11 @@ const BTN_ICON_VARIANT = {
 };
 
 const SIZE_VARIANT_ROUND = {
-    [EVariantSize.L]: (btn: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.L]: (btn: TypeSSBtn) => css`
         width: ${btn.btnHeight_L};
         height: ${btn.btnHeight_L};
     `,
-    [EVariantSize.M]: (btn: TypeSSBtn) => css`
+    [EBaseProps.VariantSize.M]: (btn: TypeSSBtn) => css`
         width: ${btn.btnHeight_M};
         height: ${btn.btnHeight_M};
     `,
@@ -82,9 +82,9 @@ export const IconButton = React.memo(
         (
             {
                 borderRadius = 'default',
-                sizeVariant = EVariantSize.L,
-                colorVariant = EVariantColor.DEFAULT,
-                variant = EVariantBtn.CONTAINED,
+                sizeVariant = EBaseProps.VariantSize.L,
+                colorVariant = EBaseProps.VariantColor.DEFAULT,
+                variant = EButtonProps.VariantBtn.CONTAINED,
                 _isActiveHover = true,
                 $colors,
                 $styles,
@@ -109,7 +109,7 @@ export const IconButton = React.memo(
                     event,
                     getColor({
                         cs: colors,
-                        color: variant === EVariantBtn.CONTAINED ? colors.alpha : rest.color,
+                        color: variant === EButtonProps.VariantBtn.CONTAINED ? colors.alpha : rest.color,
                         variant: colorVariant,
                         opacity: '40',
                     })

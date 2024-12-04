@@ -3,8 +3,8 @@ import { CSSBaseBox } from '@src/lib/common-styled-component/StyledComponentBox.
 import { getMargin } from '@src/lib/common/getMargin';
 import { TypeSSBox, TypeSSMR } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TMargin, TOrientationContent } from '@src/lib/types/TypeBase';
-import { TBoxGapVariant, TBoxPaddingVariant, TBoxWidthVariant } from '@src/lib/types/TypeBox.ts';
+import { TBaseProps } from '@src/lib/types/TypeBase';
+import { TBoxProps } from '@src/lib/types/TypeBox.ts';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,15 +14,15 @@ type TypeStyles = {
 };
 
 type Box = {
-    boxWidthVariant?: TBoxWidthVariant;
-    boxPaddingVariant?: TBoxPaddingVariant;
-    boxGapVariant?: TBoxGapVariant;
-    mr?: TMargin;
+    boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
+    boxGapVariant?: TBoxProps.BoxGapVariant;
+    mr?: TBaseProps.Margin;
     $styles?: TypeStyles;
 };
 
 type TypeTabsListProps = {
-    orientation?: TOrientationContent;
+    orientation?: TBaseProps.OrientationContent;
 } & Box &
     React.ComponentPropsWithRef<typeof T.List>;
 
@@ -34,9 +34,9 @@ type TabsProps = {
     React.ComponentPropsWithRef<typeof T.Root>;
 
 type SBox = {
-    $mr?: TMargin;
-    $boxWidthVariant?: TBoxWidthVariant;
-    $boxPaddingVariant?: TBoxPaddingVariant;
+    $mr?: TBaseProps.Margin;
+    $boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    $boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     $styles: TypeStyles;
 };
 
@@ -61,7 +61,7 @@ const SRoot = styled(T.Root)<SRootProps>`
 `;
 
 type SListProps = {
-    $orientation: TOrientationContent;
+    $orientation: TBaseProps.OrientationContent;
 } & SBox &
     React.ComponentPropsWithRef<typeof T.List>;
 

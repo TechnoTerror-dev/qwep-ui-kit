@@ -5,14 +5,8 @@ import { css, styled } from 'styled-components';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import { getMargin } from '@src/lib/common/getMargin';
-import { EOrientationContent, TMargin, TOrientationContent, TVariantSize, EVariantSize } from '@src/lib/types/TypeBase';
-import {
-    TBoxGapVariant,
-    TBoxPaddingVariant,
-    TBoxRadiusVariant,
-    TBoxShadowVariant,
-    TBoxWidthVariant,
-} from '@src/lib/types/TypeBox';
+import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
+import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { opacity } from '@src/lib/common/getColor';
 import { TMenuItem } from './MenuItem';
@@ -25,21 +19,20 @@ type TypeStyles = {
 };
 
 type BoxMenuProps = {
-    mr?: TMargin;
-    orientation?: TOrientationContent;
-    boxWidthVariant?: TBoxWidthVariant;
-    boxPaddingVariant?: TBoxPaddingVariant;
-    boxGapVariant?: TBoxGapVariant;
+    mr?: TBaseProps.Margin;
+    orientation?: TBaseProps.OrientationContent;
+    boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
+    boxGapVariant?: TBoxProps.BoxGapVariant;
     bg?: Hex;
-    boxBorderColor?: Hex;
     boxShadowColor?: Hex;
-    boxShadowVariant?: TBoxShadowVariant;
-    boxRadiusVariant?: TBoxRadiusVariant;
+    boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
     onChangeActiveItem?: (value: string) => void | Promise<void>;
     activeItem?: string;
 
     //items
-    itemSizeVariant?: TVariantSize;
+    itemSizeVariant?: TBaseProps.VariantSize;
     itemColor?: Hex;
     itemOpacityHover?: opacity;
     itemOpacityActive?: opacity;
@@ -55,23 +48,23 @@ type SRootProps = {
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $bg?: Hex;
-    $orientation: TOrientationContent;
+    $orientation: TBaseProps.OrientationContent;
     $boxBorderColor?: Hex;
     $boxShadowColor?: Hex;
-    $boxShadowVariant?: TBoxShadowVariant;
-    $boxRadiusVariant?: TBoxRadiusVariant;
-    $boxWidthVariant?: TBoxWidthVariant;
-    $boxPaddingVariant?: TBoxPaddingVariant;
-    $boxGapVariant?: TBoxGapVariant;
-    $mr?: TMargin;
+    $boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    $boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
+    $boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    $boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
+    $boxGapVariant?: TBoxProps.BoxGapVariant;
+    $mr?: TBaseProps.Margin;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const ORIENTATION = {
-    [EOrientationContent.HORIZONTAL]: css`
+    [EBaseProps.OrientationContent.HORIZONTAL]: css`
         display: inline-flex;
         align-items: center;
     `,
-    [EOrientationContent.VERTICAL]: css`
+    [EBaseProps.OrientationContent.VERTICAL]: css`
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -81,12 +74,11 @@ const ORIENTATION = {
 
 const SRoot = styled.div<SRootProps>`
     position: relative;
-    width: fit-content;
+    box-sizing: border-box;
     background-color: ${(props) => props.$bg ?? props.$colors.secondary};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
-            $boxBorderColor: props.$boxBorderColor,
             $boxShadowColor: props.$boxShadowColor,
             $boxShadowVariant: props.$boxShadowVariant,
             $boxRadiusVariant: props.$boxRadiusVariant,
@@ -109,19 +101,18 @@ export const BoxMenu = React.memo(
             {
                 mr,
                 boxWidthVariant,
-                boxPaddingVariant = 'p-1',
+                boxPaddingVariant = EBoxProps.BoxPaddingVariant.P1,
                 bg,
-                boxGapVariant = 'g-1',
-                boxBorderColor,
-                boxRadiusVariant = 'br-1',
-                boxShadowVariant = 'shd-1',
+                boxGapVariant = EBoxProps.BoxGapVariant.G1,
+                boxRadiusVariant = EBoxProps.BoxRadiusVariant.BrS,
+                boxShadowVariant = EBoxProps.BoxShadowVariant.ShdS,
                 boxShadowColor,
-                orientation = EOrientationContent.HORIZONTAL,
+                orientation = EBaseProps.OrientationContent.HORIZONTAL,
 
                 onChangeActiveItem,
                 activeItem,
 
-                itemSizeVariant = EVariantSize.L,
+                itemSizeVariant = EBaseProps.VariantSize.L,
                 itemColor,
                 itemOpacityHover,
                 itemOpacityActive,
@@ -137,6 +128,8 @@ export const BoxMenu = React.memo(
             const colors = useColorScheme($colors);
             const styles = useStyleScheme(['box', 'mr', 'btn', 'typography'], $styles);
             const [activeValue, setActiveValue] = useState<string>(activeItem ?? '');
+
+            console.log('AAAA', boxGapVariant, boxRadiusVariant, boxShadowVariant);
 
             const handleClick = useCallback(
                 (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -200,7 +193,6 @@ export const BoxMenu = React.memo(
                     $boxPaddingVariant={boxPaddingVariant}
                     $boxGapVariant={boxGapVariant}
                     $bg={bg}
-                    $boxBorderColor={boxBorderColor}
                     $boxRadiusVariant={boxRadiusVariant}
                     $boxShadowVariant={boxShadowVariant}
                     $boxShadowColor={boxShadowColor}

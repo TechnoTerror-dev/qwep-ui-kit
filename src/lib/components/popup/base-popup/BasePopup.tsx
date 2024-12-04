@@ -2,12 +2,12 @@ import * as P from '@radix-ui/react-popover';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import React from 'react';
 import styled from 'styled-components';
-import { TMargin } from '@src/lib/types/TypeBase';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 
 type BasePopupProps = {
     trigger: React.ReactNode;
     isHoverMode?: boolean;
-    mr?: TMargin;
+    mr?: TBaseProps.Margin;
     bg?: Hex;
     $colors?: TypeColorScheme;
     triggerProps?: React.ComponentPropsWithRef<typeof P.Trigger>;

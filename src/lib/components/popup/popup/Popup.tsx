@@ -6,14 +6,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { SBasePopup, TBasePopup } from '../base-popup/BasePopup';
 import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
-import {
-    TBoxDisplay,
-    TBoxGapVariant,
-    TBoxPaddingVariant,
-    TBoxRadiusVariant,
-    TBoxShadowVariant,
-    TBoxWidthVariant,
-} from '@src/lib/types/TypeBox';
+import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
 
 type TypeStyles = {
     mr: TypeSSMR;
@@ -22,14 +15,13 @@ type TypeStyles = {
 };
 
 type PopupProps = {
-    boxBorderColor?: Hex;
     boxShadowColor?: Hex;
-    boxShadowVariant?: TBoxShadowVariant;
-    boxRadiusVariant?: TBoxRadiusVariant;
-    boxWidthVariant?: TBoxWidthVariant;
-    boxPaddingVariant?: TBoxPaddingVariant;
-    boxGapVariant?: TBoxGapVariant;
-    boxDisplay?: TBoxDisplay;
+    boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
+    boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
+    boxGapVariant?: TBoxProps.BoxGapVariant;
+    boxDisplay?: TBoxProps.BoxDisplay;
     maxHeight?: string;
     color?: Hex;
     $styles?: TypeStyles;
@@ -46,12 +38,12 @@ type SContentProps = {
     $maxHeight?: string;
     $boxBorderColor?: Hex;
     $boxShadowColor?: Hex;
-    $boxShadowVariant?: TBoxShadowVariant;
-    $boxRadiusVariant?: TBoxRadiusVariant;
-    $boxWidthVariant?: TBoxWidthVariant;
-    $boxPaddingVariant?: TBoxPaddingVariant;
-    $boxGapVariant?: TBoxGapVariant;
-    $boxDisplay?: TBoxDisplay;
+    $boxShadowVariant?: TBoxProps.BoxShadowVariant;
+    $boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
+    $boxWidthVariant?: TBoxProps.BoxWidthVariant;
+    $boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
+    $boxGapVariant?: TBoxProps.BoxGapVariant;
+    $boxDisplay?: TBoxProps.BoxDisplay;
 } & TBasePopup.SContent;
 
 const opacity_SContentEffect = keyframes`
@@ -69,7 +61,6 @@ const SContent = styled(SBasePopup.Content)<SContentProps>`
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
-            $boxBorderColor: props.$boxBorderColor,
             $boxShadowColor: props.$boxShadowColor,
             $boxShadowVariant: props.$boxShadowVariant,
             $boxRadiusVariant: props.$boxRadiusVariant,
@@ -92,13 +83,11 @@ export const Popup = React.memo(
             {
                 trigger,
                 bg,
-
-                boxBorderColor,
                 boxShadowColor,
-                boxShadowVariant = 'shd-2',
-                boxRadiusVariant = 'br-2',
                 boxWidthVariant,
-                boxPaddingVariant = 'p-3',
+                boxShadowVariant = EBoxProps.BoxShadowVariant.ShdM,
+                boxRadiusVariant = EBoxProps.BoxRadiusVariant.BrM,
+                boxPaddingVariant = EBoxProps.BoxPaddingVariant.P3,
                 boxGapVariant,
                 boxDisplay,
 
@@ -107,7 +96,6 @@ export const Popup = React.memo(
                 triggerProps,
                 portalProps,
                 contentProps,
-
                 ...rest
             },
             ref
@@ -125,7 +113,6 @@ export const Popup = React.memo(
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}
-                            $boxBorderColor={boxBorderColor}
                             $boxShadowColor={boxShadowColor}
                             $boxShadowVariant={boxShadowVariant}
                             $boxRadiusVariant={boxRadiusVariant}

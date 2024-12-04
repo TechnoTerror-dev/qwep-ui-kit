@@ -1,4 +1,18 @@
-import { BasePopup, Box, BoxLayout, CardBox, MainButton, Paragraph, Popup, Separator, Title } from '@src/lib';
+import {
+    BasePopup,
+    Box,
+    BoxLayout,
+    CardBox,
+    ClosePopupButton,
+    Icon,
+    IconButton,
+    MainButton,
+    Paragraph,
+    Popup,
+    PopupHover,
+    Separator,
+    Title,
+} from '@src/lib';
 
 export const ShowPopup = () => {
     return (
@@ -16,19 +30,66 @@ export const ShowPopup = () => {
                             boxPaddingVariant={'p-3'}
                             boxRadiusVariant={'br-2'}
                         >
-                            <Title mr={'mb-2'}>Popup Title</Title>
+                            <Box boxDisplay={'flex'} style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                                <Title mr={'mb-2'}>Popup Title</Title>
+                                <ClosePopupButton>
+                                    <IconButton
+                                        borderRadius={'round'}
+                                        colorVariant={'error'}
+                                        sizeVariant={'M'}
+                                        onClick={() => console.log('close popup')}
+                                    >
+                                        <Icon.Close />
+                                    </IconButton>
+                                </ClosePopupButton>
+                            </Box>
                             <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
                             <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
                         </CardBox>
                     </BasePopup>
                     <Popup trigger={<MainButton>Show Popup</MainButton>}>
-                        <Title mr={'mb-2'}>Popup Title</Title>
+                        <Box boxDisplay={'flex'} style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Title mr={'mb-2'}>Popup Title</Title>
+                            <ClosePopupButton>
+                                <IconButton
+                                    borderRadius={'round'}
+                                    colorVariant={'error'}
+                                    sizeVariant={'M'}
+                                    onClick={() => console.log('close popup')}
+                                >
+                                    <Icon.Close />
+                                </IconButton>
+                            </ClosePopupButton>
+                        </Box>
                         <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
                         <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
                     </Popup>
                 </Box>
 
                 <Separator mr={'my-9'} />
+                <Box boxDisplay={'flex'} boxGapVariant={'g-2'}>
+                    <PopupHover trigger={<MainButton>Show Hover Popup</MainButton>}>
+                        <Box
+                            boxDisplay={'flex'}
+                            mr={'mb-2'}
+                            style={{ alignItems: 'center', justifyContent: 'space-between' }}
+                        >
+                            <Title mr={'mb-2'}>Popup Title</Title>
+                            <ClosePopupButton>
+                                <IconButton
+                                    borderRadius={'round'}
+                                    colorVariant={'error'}
+                                    sizeVariant={'M'}
+                                    onClick={() => console.log('close popup')}
+                                >
+                                    <Icon.Close />
+                                </IconButton>
+                            </ClosePopupButton>
+                        </Box>
+                        <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
+                        <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
+                    </PopupHover>
+                </Box>
             </BoxLayout>
         </>
     );

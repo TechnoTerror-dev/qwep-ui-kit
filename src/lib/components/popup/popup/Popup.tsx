@@ -3,7 +3,7 @@ import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { SBasePopup, TBasePopup } from '../base-popup/BasePopup';
 import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import {
@@ -54,6 +54,15 @@ type SContentProps = {
     $boxDisplay?: TBoxDisplay;
 } & TBasePopup.SContent;
 
+const opacity_SContentEffect = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`;
+
 const SContent = styled(SBasePopup.Content)<SContentProps>`
     overflow: hidden;
     background-color: ${({ $colors, $bg }) => $bg ?? $colors.backgroundBox};
@@ -74,6 +83,7 @@ const SContent = styled(SBasePopup.Content)<SContentProps>`
             $styles: props.$styles.box,
             $boxDisplay: props.$boxDisplay,
         })};
+    animation: ${opacity_SContentEffect} 0.3s ease-in-out;
 `;
 
 export const Popup = React.memo(

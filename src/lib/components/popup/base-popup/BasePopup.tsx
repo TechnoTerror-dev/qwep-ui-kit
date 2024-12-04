@@ -6,6 +6,7 @@ import { TMargin } from '@src/lib/types/TypeBase';
 
 type BasePopupProps = {
     trigger: React.ReactNode;
+    isHoverMode?: boolean;
     mr?: TMargin;
     bg?: Hex;
     $colors?: TypeColorScheme;

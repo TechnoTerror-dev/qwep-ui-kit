@@ -9,7 +9,6 @@ import { SBox, TBox } from '../box/Box';
 
 type CardBoxProps = {
     bg?: Hex;
-    boxBorderColor?: Hex;
     boxShadowColor?: Hex;
     boxShadowVariant?: TBoxProps.BoxShadowVariant;
     boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
@@ -30,7 +29,6 @@ const SRoot = styled(SBox.Root)<SRootProps>`
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
-            $boxBorderColor: props.$boxBorderColor,
             $boxShadowColor: props.$boxShadowColor,
             $boxShadowVariant: props.$boxShadowVariant,
             $boxRadiusVariant: props.$boxRadiusVariant,
@@ -49,7 +47,6 @@ export const CardBox = React.memo(
                 boxPaddingVariant,
                 boxGapVariant,
                 boxDisplay,
-                boxBorderColor,
                 boxRadiusVariant,
                 boxShadowVariant,
                 boxShadowColor,
@@ -74,7 +71,6 @@ export const CardBox = React.memo(
                     $boxGapVariant={boxGapVariant}
                     $boxDisplay={boxDisplay}
                     $bg={bg}
-                    $boxBorderColor={boxBorderColor}
                     $boxRadiusVariant={boxRadiusVariant}
                     $boxShadowVariant={boxShadowVariant}
                     $boxShadowColor={boxShadowColor}

@@ -30,7 +30,6 @@ export const CardBoxSkeleton = React.memo(
                 boxPaddingVariant,
                 boxGapVariant,
                 boxDisplay,
-                boxBorderColor,
                 boxRadiusVariant,
                 boxShadowVariant,
                 boxShadowColor,
@@ -56,7 +55,6 @@ export const CardBoxSkeleton = React.memo(
                     $boxGapVariant={boxGapVariant}
                     $boxDisplay={boxDisplay}
                     $bg={bg}
-                    $boxBorderColor={boxBorderColor}
                     $boxRadiusVariant={boxRadiusVariant}
                     $boxShadowVariant={boxShadowVariant}
                     $boxShadowColor={boxShadowColor}

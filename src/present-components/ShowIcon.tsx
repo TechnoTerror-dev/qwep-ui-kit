@@ -331,6 +331,43 @@ export const ShowIcon = () => {
                         text={'SendArrow BOTTOM'}
                     />
                 </WrapBox>
+                <Title>Filled</Title>
+
+                <WrapBox boxDisplay={'flex'} boxGapVariant={'g-2'} mr={'mb-3'}>
+                    <Item
+                        icon={<Icon.BuildingFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'BuildingFilled'}
+                    />
+                    <Item
+                        icon={<Icon.BarChartFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'BarChartFilled'}
+                    />
+                    <Item
+                        icon={<Icon.UserFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'UserFilled'}
+                    />
+                    <Item
+                        icon={<Icon.QWEPFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'QWEPFilled'}
+                    />
+                    <Item icon={<Icon.AppFilled colorVariant={colorVariant} sizeVariant={size} />} text={'AppFilled'} />
+                    <Item
+                        icon={<Icon.SettingsFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'SettingsFilled'}
+                    />
+                    <Item
+                        icon={<Icon.BuildingAltFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'BuildingAltFilled'}
+                    />
+                    <Item
+                        icon={<Icon.TabletFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'TabletFilled'}
+                    />
+                    <Item
+                        icon={<Icon.QuestionFilled colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'QuestionFilled'}
+                    />
+                </WrapBox>
             </BoxLayout>
         </>
     );

@@ -89,6 +89,15 @@ import { ThemeLight } from './ThemeLight';
 import { ThemeDark } from './ThemeDark';
 import { ThemeLightAlt } from './ThemeLightAlt';
 import { ThemeDarkAlt } from './ThemeDarkAlt';
+import { BuildingFilled } from './BuildingFilled';
+import { BarChartFilled } from './BarChartFilled';
+import { UserFilled } from './UserFilled';
+import { QWEPFilled } from './QWEPFilled';
+import { AppFilled } from './AppFilled';
+import { SettingsFilled } from './SettingsFilled';
+import { BuildingAltFilled } from './BuildingAltFilled';
+import { TabletFilled } from './TabletFilled';
+import { QuestionFilled } from './QuestionFilled';
 
 export {
     Add,
@@ -182,6 +191,15 @@ export {
     ThemeDark,
     ThemeLightAlt,
     ThemeDarkAlt,
+    BuildingFilled,
+    BarChartFilled,
+    UserFilled,
+    QWEPFilled,
+    AppFilled,
+    SettingsFilled,
+    BuildingAltFilled,
+    TabletFilled,
+    QuestionFilled,
 };
 
 export type { IconSVGContainerProps };

@@ -58,14 +58,14 @@ export const ShowList = () => {
                         role={'button'}
                         isNoWrapSubTitle
                         isNoWrapTitle
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.QWEPFilled />}
                         title={'QWEP'}
                         subTitle={parseNoWrapText('Проценка, прайсы,/#br/заказы, ассистент')}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.BarChartFilled />}
                         title={'DATA'}
                         subTitle={parseNoWrapText('Аналитика цен,/#br/работа с аналогами')}
                     />
@@ -74,7 +74,7 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.UserFilled />}
                         title={'UCS'}
                         subTitle={parseNoWrapText('Контроль эффективности/#br/процесса закупок')}
                     />
@@ -82,7 +82,7 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.AppFilled />}
                         title={'Панель управления'}
                         subTitle={parseNoWrapText('Администрирование/#br/пользователей')}
                     />
@@ -92,14 +92,14 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.SettingsFilled />}
                         title={'Настройки компании'}
                         subTitle={'Редактирование компании'}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.BuildingAltFilled />}
                         title={'Мои компании'}
                         subTitle={'Список ваших компаний'}
                     />
@@ -110,11 +110,11 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.TabletFilled />}
                         title={'Лицензии и оплата'}
                         subTitle={parseNoWrapText('Активные подписки/#br/и продление')}
                     />
-                    <MenuItemList icon={<Icon.BankCard />} title={'Техподдержка'} subTitle={'Вопросы'} />
+                    <MenuItemList icon={<Icon.QuestionFilled />} title={'Техподдержка'} subTitle={'Вопросы'} />
                 </MenuList>
             </MenuCard>
 
@@ -125,19 +125,19 @@ export const ShowList = () => {
                     </WorkspaceName>
                     <Separator />
                 </Box>
-                <MenuList title={'ПРИЛОЖЕНИЯ'} boxPaddingVariant={'p-4'}>
+                <MenuList title={'O'} boxPaddingVariant={'p-4'}>
                     <MenuItemList
                         role={'button'}
                         isNoWrapSubTitle
                         isNoWrapTitle
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.QWEPFilled />}
                         title={'QWEP'}
                         subTitle={parseNoWrapText('Проценка, прайсы,/#br/заказы, ассистент')}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.BarChartFilled />}
                         title={'DATA'}
                         subTitle={parseNoWrapText('Аналитика цен,/#br/работа с аналогами')}
                     />
@@ -146,7 +146,7 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.UserFilled />}
                         title={'UCS'}
                         subTitle={parseNoWrapText('Контроль эффективности/#br/процесса закупок')}
                     />
@@ -154,39 +154,39 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.AppFilled />}
                         title={'Панель управления'}
                         subTitle={parseNoWrapText('Администрирование/#br/пользователей')}
                     />
                 </MenuList>
-                <MenuList title={'КОМПАНИИ'}>
+                <MenuList title={'O'}>
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.SettingsFilled />}
                         title={'Настройки компании'}
                         subTitle={'Редактирование компании'}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.BuildingAltFilled />}
                         title={'Мои компании'}
                         subTitle={'Список ваших компаний'}
                     />
                 </MenuList>
 
-                <MenuList title={'ОБЩЕЕ'} mr={'mb-6'} style={{ marginTop: 'auto' }}>
+                <MenuList title={'O'} mr={'mb-6'} style={{ marginTop: 'auto' }}>
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
                         role={'button'}
-                        icon={<Icon.BankCard />}
+                        icon={<Icon.TabletFilled />}
                         title={'Лицензии и оплата'}
                         subTitle={parseNoWrapText('Активные подписки/#br/и продление')}
                     />
-                    <MenuItemList icon={<Icon.BankCard />} title={'Техподдержка'} subTitle={'Вопросы'} />
+                    <MenuItemList icon={<Icon.QuestionFilled />} title={'Техподдержка'} subTitle={'Вопросы'} />
                 </MenuList>
             </MenuCardHidden>
         </>

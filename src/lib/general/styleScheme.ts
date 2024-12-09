@@ -377,6 +377,6 @@ export const styleScheme: TypeSS = {
     },
     list: {
         paddingTitle: '4px 28px 4px 16px',
-        paddingItem: '16px 12px 4px 16px',
+        paddingItem: '8px 12px 8px 16px',
     },
 };

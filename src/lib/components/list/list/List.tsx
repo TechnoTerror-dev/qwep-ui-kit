@@ -1,38 +1,50 @@
+import { StyledScrollbarItem } from '@src/lib/common-styled-component/StyledBase';
 import { CSSBaseBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import { getMargin } from '@src/lib/common/getMargin';
+import { TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox, TypeSSMR } from '@src/lib/general/styleScheme';
+import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { TBaseProps } from '@src/lib/types/TypeBase';
 import { TBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 type TypeStyles = {
-    box: TypeSSBox;
     mr: TypeSSMR;
+    box: TypeSSBox;
 };
 
-export type BoxProps = {
+type ListProps = {
     mr?: TBaseProps.Margin;
+    height?: string;
     boxWidthVariant?: TBoxProps.BoxWidthVariant;
     boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     boxGapVariant?: TBoxProps.BoxGapVariant;
     boxDisplay?: TBoxProps.BoxDisplay;
-    as?: keyof JSX.IntrinsicElements;
+    $colors?: TypeColorScheme;
     $styles?: TypeStyles;
-} & React.HTMLAttributes<HTMLDivElement>;
+    _isActiveHover?: boolean;
+} & React.ButtonHTMLAttributes<HTMLUListElement>;
 
 type SRootProps = {
+    $mr?: TBaseProps.Margin;
+    $height?: string;
     $boxWidthVariant?: TBoxProps.BoxWidthVariant;
     $boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     $boxGapVariant?: TBoxProps.BoxGapVariant;
     $boxDisplay?: TBoxProps.BoxDisplay;
-    $mr?: TBaseProps.Margin;
+    $colors: TypeColorScheme;
     $styles: TypeStyles;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.ButtonHTMLAttributes<HTMLUListElement>;
 
-const SRoot = styled.div<SRootProps>`
+export const SRoot = styled.ul<SRootProps>`
     box-sizing: border-box;
+    list-style-type: none;
+    position: relative;
+    overflow-y: auto;
+    height: ${(props) => props.$height ?? 'auto'};
+    ${(props) => getMargin(props.$styles.mr, props.$mr)};
     ${(props) =>
         CSSBaseBox({
             $boxWidthVariant: props.$boxWidthVariant,
@@ -41,38 +53,31 @@ const SRoot = styled.div<SRootProps>`
             $styles: props.$styles.box,
             $boxDisplay: props.$boxDisplay,
         })};
-    ${(props) => getMargin(props.$styles.mr, props.$mr)};
+    ${(props) =>
+        StyledScrollbarItem({
+            $colors: props.$colors,
+        })}
 `;
 
-export const Box = React.memo(
-    React.forwardRef<HTMLDivElement, BoxProps>(
+export const List = React.memo(
+    React.forwardRef<HTMLUListElement, ListProps>(
         (
             {
                 mr,
-                boxWidthVariant,
-                boxDisplay,
-                boxPaddingVariant,
-                boxGapVariant,
-                as: Component = 'div',
+
+                height,
+                $colors,
                 $styles,
+
                 ...rest
             },
             ref
         ) => {
-            const styles = useStyleScheme(['box', 'mr'], $styles);
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['mr', 'box'], $styles);
 
             return (
-                <SRoot
-                    ref={ref}
-                    as={Component}
-                    $styles={styles}
-                    $mr={mr}
-                    $boxWidthVariant={boxWidthVariant}
-                    $boxPaddingVariant={boxPaddingVariant}
-                    $boxGapVariant={boxGapVariant}
-                    $boxDisplay={boxDisplay}
-                    {...rest}
-                >
+                <SRoot ref={ref} $colors={colors} $height={height} $styles={styles} $mr={mr} {...rest}>
                     {rest.children}
                 </SRoot>
             );
@@ -81,13 +86,13 @@ export const Box = React.memo(
 );
 
 //export component
-export const SBox = {
+export const SList = {
     Root: SRoot,
 };
 
 //export type
-export namespace TBox {
-    export type Main = BoxProps;
+export namespace TList {
     export type Styles = TypeStyles;
+    export type Main = ListProps;
     export type SRoot = SRootProps;
 }

@@ -96,6 +96,7 @@ export const ShowProfile = () => {
                                 <Paragraph>управлять аккаунтом и настройками безопасности</Paragraph>
                             </CardBoxSkeleton>
                             <CardBoxSkeleton
+                                style={{ flexWrap: 'wrap' }}
                                 isSkeleton={skeleton}
                                 boxDisplay={'flex'}
                                 boxGapVariant={'g-3'}

@@ -66,5 +66,5 @@ export const SParagraph = {
 export namespace TParagraph {
     export type Styles = TypeStyles;
     export type Main = ParagraphProps;
-    export type SParagraph = SRootProps;
+    export type SRoot = SRootProps;
 }

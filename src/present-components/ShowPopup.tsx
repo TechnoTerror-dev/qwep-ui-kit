@@ -48,8 +48,12 @@ export const ShowPopup = () => {
                         </CardBox>
                     </BasePopup>
                     <Popup trigger={<MainButton>Show Popup</MainButton>}>
-                        <Box boxDisplay={'flex'} style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Title mr={'mb-2'}>Popup Title</Title>
+                        <Box
+                            boxDisplay={'flex'}
+                            mr={'mb-2'}
+                            style={{ alignItems: 'center', justifyContent: 'space-between' }}
+                        >
+                            <Title>Popup Title</Title>
                             <ClosePopupButton>
                                 <IconButton
                                     borderRadius={'round'}

@@ -6,12 +6,14 @@ import { ShowPopup } from './ShowPopup';
 import { ShowProfile } from './ShowProfile';
 import { ShowMenu } from './ShowMenu';
 import { ShowIcon } from './ShowIcon';
+import { ShowList } from './ShowList';
 
 const pages = {
     box: <ShowBox />,
     popup: <ShowPopup />,
     profile: <ShowProfile />,
     menu: <ShowMenu />,
+    list: <ShowList />,
     icons: <ShowIcon />,
 };
 
@@ -54,6 +56,7 @@ export const Main = () => {
                 <MenuItem value={'profile'}>Profile</MenuItem>
                 <MenuItem value={'menu'}>Menu</MenuItem>
                 <MenuItem value={'icons'}>Icons</MenuItem>
+                <MenuItem value={'list'}>List</MenuItem>
                 <IconButton onClick={themeChange} sizeVariant={'M'}>
                     {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}
                 </IconButton>

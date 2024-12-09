@@ -96,6 +96,11 @@ export type TypeSSRadio = {
     radioSizeIndicator_M: string;
 };
 
+export type TypeSSList = {
+    paddingTitle: string;
+    paddingItem: string;
+};
+
 export type TypeSSTypography = {
     // size
     text: string;
@@ -190,6 +195,9 @@ export type TypeSS = {
 
     //box layout
     layout: TypeSSLayout;
+
+    // list
+    list: TypeSSList;
 } & {
     [key: string]: string | { [key: string]: string | object };
 };
@@ -341,9 +349,9 @@ export const styleScheme: TypeSS = {
         boxPadding_1: '4px',
         boxPadding_2: '8px',
         boxPadding_3: '12px',
-        boxPadding_4: '20px',
-        boxPadding_5: '28px',
-        boxPadding_6: '36px',
+        boxPadding_4: '16px',
+        boxPadding_5: '20px',
+        boxPadding_6: '28px',
 
         boxGap_1: '4px',
         boxGap_2: '8px',
@@ -366,5 +374,9 @@ export const styleScheme: TypeSS = {
         margin_L: '68px 30px',
         margin_M: '40px 20px',
         margin_S: '40px 15px',
+    },
+    list: {
+        paddingTitle: '4px 28px 4px 16px',
+        paddingItem: '16px 12px 4px 16px',
     },
 };

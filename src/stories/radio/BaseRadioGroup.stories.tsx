@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseBox, BaseRadioGroup, BaseRadioItem, TypeRadio, WrapperInput } from '@src/lib';
-import { TInputProps.PositionInpLabel } from '@src/lib/types/TypeInp';
-import { TBaseProps.VariantColor, TBaseProps.VariantSize, EBaseProps.VariantColor, EBaseProps.VariantSize } from '@src/lib/types/TypeBase';
+import { TInputProps } from '@src/lib/types/TypeInp';
+import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
 
 interface RadioGroupArgs extends TypeRadio.BaseRadioGroup.Main {
     activeValue?: string;
@@ -21,7 +21,6 @@ const meta = {
             control: 'text',
             description: 'Value of the selected radio button',
         },
-        labelColor: { control: 'color' },
         colorVariant: {
             control: 'select',
             options: Object.values(EBaseProps.VariantColor),
@@ -66,7 +65,6 @@ export const Main: Story = {
         positionLabel: 'right',
         colorVariant: 'default',
         sizeVariant: 'M',
-        label: 'Default',
         activeValue: '1',
     },
 };

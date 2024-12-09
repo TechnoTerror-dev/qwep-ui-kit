@@ -7,6 +7,7 @@ import { ShowProfile } from './ShowProfile';
 import { ShowMenu } from './ShowMenu';
 import { ShowIcon } from './ShowIcon';
 import { ShowList } from './ShowList';
+import { ShowSlider } from './ShowSlider';
 
 const pages = {
     box: <ShowBox />,
@@ -15,6 +16,7 @@ const pages = {
     menu: <ShowMenu />,
     list: <ShowList />,
     icons: <ShowIcon />,
+    slider: <ShowSlider />,
 };
 
 export const Main = () => {
@@ -57,6 +59,8 @@ export const Main = () => {
                 <MenuItem value={'menu'}>Menu</MenuItem>
                 <MenuItem value={'icons'}>Icons</MenuItem>
                 <MenuItem value={'list'}>List</MenuItem>
+                <MenuItem value={'slider'}>Slider</MenuItem>
+
                 <IconButton onClick={themeChange} sizeVariant={'M'}>
                     {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}
                 </IconButton>

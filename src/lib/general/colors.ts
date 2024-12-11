@@ -99,7 +99,7 @@ export const colorsDark: TypeColorScheme = {
 
     //other
     lightElem: '#A9C1CF',
-    lightShadow: '#AABDE840',
+    lightShadow: '#00000000',
     backgroundInfo: '#18338C',
     backgroundSuccess: '#12512A',
     backgroundWarning: '#7B2A0E',

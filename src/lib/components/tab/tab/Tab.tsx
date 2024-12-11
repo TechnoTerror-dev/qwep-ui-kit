@@ -53,6 +53,7 @@ const SRoot = styled(T.Trigger)<SRootProps>`
     background-color: transparent;
     outline: 0;
     transition: all 400ms;
+    color: ${(props) => props.$colors.text};
     border: 1px solid ${({ $colors }) => $colors.system};
     border-radius: ${({ $styles }) => $styles.box.boxBorderRadius_M};
     font-size: ${({ $styles }) => $styles.typography.weightGlobal};

@@ -79,10 +79,11 @@ export const CircleDecorationTitle = React.memo(
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                     },
+                    color: colors.text,
                     //@ts-ignore
                     ...icon?.props,
                 });
-            }, [icon]);
+            }, [icon, colors]);
 
             return (
                 <SRoot ref={ref} $bgIcon={bgIcon} $colors={colors} $styles={styles} $mr={mr} {...rest}>

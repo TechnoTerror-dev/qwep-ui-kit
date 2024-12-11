@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseBox, BaseDialog, SimpleButton, SimpleTextField } from '../../lib';
-import { TBaseDialog } from '../../lib/components/dialog/base-dialog/BaseDialog';
+import { TBaseDialog } from '../../lib/components/dialog/dialog/Dialog';
 import { useState } from 'react';
 
 const meta = {

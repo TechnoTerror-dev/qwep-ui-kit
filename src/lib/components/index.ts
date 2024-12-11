@@ -7,7 +7,7 @@ export * from './checkbox';
 export * from './select';
 export * from './popup';
 export * from './slider';
-// export * from './dialog';
+export * from './dialog';
 export * from './typography';
 export * from './list';
 export * from './avatar';

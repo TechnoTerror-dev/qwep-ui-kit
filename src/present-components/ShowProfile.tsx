@@ -119,10 +119,7 @@ export const ShowProfile = () => {
 
                     <TabContent value={'t-1'} boxDisplay={'block'}>
                         <BoxAdaptive boxDisplay={'grid'} isSkeleton={skeleton}>
-                            <CircleDecorationTitle
-                                title={'Фото'}
-                                icon={<Icon.Photo color={'#000'} />}
-                            ></CircleDecorationTitle>
+                            <CircleDecorationTitle title={'Фото'} icon={<Icon.Photo />}></CircleDecorationTitle>
                             <Box boxDisplay={'flex'}>
                                 <Avatar sizeVariant={'L'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
                                 <Box
@@ -149,10 +146,7 @@ export const ShowProfile = () => {
                         </BoxAdaptive>
                         <Separator mr={'my-9'} />
                         <BoxAdaptive boxDisplay={'grid'} isSkeleton={skeleton}>
-                            <CircleDecorationTitle
-                                title={'Учетные данные'}
-                                icon={<Icon.Pen color={'#000'} />}
-                            ></CircleDecorationTitle>
+                            <CircleDecorationTitle title={'Учетные данные'} icon={<Icon.Pen />}></CircleDecorationTitle>
                             <Box boxDisplay={'flex'} boxGapVariant={'g-4'} style={{ flexDirection: 'column' }}>
                                 <Box boxDisplay={'flex'} boxGapVariant={'g-4'}>
                                     <WrapperInput positionLabel={'top'} id={'1'} label={'Имя'}>

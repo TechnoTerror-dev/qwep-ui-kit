@@ -10,6 +10,13 @@ import { ShowList } from './ShowList';
 import { ShowSlider } from './ShowSlider';
 import { ShowDialog } from './ShowDialog';
 import { ShowNotification } from './ShowNotification';
+import { styled } from 'styled-components';
+
+const SMenu = styled(BoxMenu)`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+`;
 
 const pages = {
     box: <ShowBox />,
@@ -45,19 +52,7 @@ export const Main = () => {
     return (
         <MainContainer>
             <NotificationProvider>
-                <BoxMenu
-                    style={{
-                        display: 'flex',
-                        position: 'absolute',
-                        top: '10px',
-                        left: '50%',
-
-                        transform: 'translateX(-50%)',
-                    }}
-                    activeItem={pageName}
-                    itemSizeVariant={'M'}
-                    onChangeActiveItem={menuHandler}
-                >
+                <SMenu activeItem={pageName} itemSizeVariant={'M'} onChangeActiveItem={menuHandler}>
                     <MenuItem value={'box'}>Box</MenuItem>
                     <MenuItem value={'popup'}>Popup</MenuItem>
                     <MenuItem value={'profile'}>Profile</MenuItem>
@@ -66,12 +61,14 @@ export const Main = () => {
                     <MenuItem value={'list'}>List</MenuItem>
                     <MenuItem value={'slider'}>Slider</MenuItem>
                     <MenuItem value={'dialog'}>Dialog</MenuItem>
-                    <MenuItem value={'notification'}>Notification</MenuItem>
+                    <MenuItem style={{ width: '100%' }} value={'notification'}>
+                        Notification
+                    </MenuItem>
 
                     <IconButton onClick={themeChange} sizeVariant={'M'}>
                         {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}
                     </IconButton>
-                </BoxMenu>
+                </SMenu>
                 {/* @ts-ignore */}
                 {pages[pageName]}
             </NotificationProvider>

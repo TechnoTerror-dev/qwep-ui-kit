@@ -141,14 +141,16 @@ const NotificationProvider = ({
         <NotificationContext.Provider value={contextValue}>
             {children}
             {Object.entries(notificationsByPosition).map(([position, { notifications, portalProps }]) => {
-                return (
-                    <NotificationPortal
-                        key={position}
-                        {...portalProps}
-                        notifications={notifications}
-                        position={position as TBaseProps.NotificationPosition}
-                    />
-                );
+                if (notifications.length) {
+                    return (
+                        <NotificationPortal
+                            key={position}
+                            {...portalProps}
+                            notifications={notifications}
+                            position={position as TBaseProps.NotificationPosition}
+                        />
+                    );
+                }
             })}
         </NotificationContext.Provider>
     );

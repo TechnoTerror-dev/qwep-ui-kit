@@ -326,7 +326,7 @@ export const ShowBox = () => {
                             <Box boxDisplay={'flex'}>
                                 <SAvatar
                                     sizeVariant={'L'}
-                                    // src={url1}
+                                    src={url1}
                                     // onBlur={() => console.log('FSFDFSDFSD')}
                                     fallbackProps={{
                                         onMouseLeave: () => console.log('fgfd'),

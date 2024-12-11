@@ -63,6 +63,7 @@ export const SButton = styled.button<SButtonProps>`
     line-height: normal;
     outline: 0;
     width: 100%;
+    min-width: fit-content;
     white-space: nowrap;
     transition: background-color 400ms;
     background-color: transparent;

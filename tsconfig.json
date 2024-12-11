@@ -4,11 +4,17 @@
         "declaration": true,
         "outDir": "dist/types",
         "paths": {
-            "@src/*": ["src/*"]
+            "@src/*": [
+                "src/*"
+            ]
         },
         "target": "ES2021",
         "useDefineForClassFields": true,
-        "lib": ["ES2021", "DOM", "DOM.Iterable"],
+        "lib": [
+            "ES2021",
+            "DOM",
+            "DOM.Iterable"
+        ],
         "module": "ESNext",
         "skipLibCheck": true,
         "moduleResolution": "bundler",
@@ -25,7 +31,12 @@
     // "include": [
     //     "src/lib"
     // ],
-    "exclude": ["node_modules", "dist", "build", "some_other_dir"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "build",
+        "some_other_dir"
+    ],
     "references": [
         {
             "path": "./tsconfig.node.json"

@@ -46,6 +46,14 @@ const SBtn = styled.button`
     background-color: transparent;
 `;
 
+const SAvatar = styled(Avatar)`
+    cursor: pointer;
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.2);
+    }
+`;
+
 const SCard = styled(CardBox)`
     cursor: pointer;
     background-color: #10251d9e;
@@ -316,7 +324,17 @@ export const ShowBox = () => {
                                 icon={<Icon.Photo color={'#000'} />}
                             ></CircleDecorationTitle>
                             <Box boxDisplay={'flex'}>
-                                <Avatar sizeVariant={'L'} src={url1} alt={'Сатоши Накамото'} mr={'mr-7'} />
+                                <SAvatar
+                                    sizeVariant={'L'}
+                                    // src={url1}
+                                    // onBlur={() => console.log('FSFDFSDFSD')}
+                                    fallbackProps={{
+                                        onMouseLeave: () => console.log('fgfd'),
+                                    }}
+                                    onMouseLeave={() => console.log('fgfd')}
+                                    alt={'Сатоши Накамото'}
+                                    mr={'mr-7'}
+                                />
                                 <Box
                                     boxDisplay={'flex'}
                                     style={{ flexDirection: 'column', justifyContent: 'space-between' }}

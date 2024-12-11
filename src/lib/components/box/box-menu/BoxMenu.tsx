@@ -129,8 +129,6 @@ export const BoxMenu = React.memo(
             const styles = useStyleScheme(['box', 'mr', 'btn', 'typography'], $styles);
             const [activeValue, setActiveValue] = useState<string>(activeItem ?? '');
 
-            console.log('AAAA', boxGapVariant, boxRadiusVariant, boxShadowVariant);
-
             const handleClick = useCallback(
                 (event: React.MouseEvent<HTMLButtonElement>) => {
                     const newValue = event.currentTarget.getAttribute('value');

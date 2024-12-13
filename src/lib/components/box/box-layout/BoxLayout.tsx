@@ -39,7 +39,7 @@ const SRoot = styled.div<SRootProps>`
 const SWrapper = styled.div<SWrapperProps>`
     position: relative;
     margin: 0 auto;
-    background-color: ${(props) => props.$wrapperBg ?? props.$colors.backgroundBox};
+    background-color: ${(props) => props.$wrapperBg ?? props.$colors.layoutBox};
     ${(props) => CSSBoxLayout(props.$styles.layout)};
     ${CSSBaseLayoutStart}
 `;

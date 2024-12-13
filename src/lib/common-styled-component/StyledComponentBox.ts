@@ -186,9 +186,13 @@ const backgroundPosition_SkeletonEffect = keyframes`
 
 export const CSSSkeletonBox = (borderRadius: string, colors: TypeColorScheme) => css`
     border-radius: ${borderRadius};
-    background-color: ${colors.system};
     overflow: hidden;
-    background: linear-gradient(90deg, ${colors.system} 0%, ${colors.disabled} 50%, ${colors.system} 100%);
+    background: linear-gradient(
+        90deg,
+        ${colors.backgroundBox} 0%,
+        ${colors.disabled} 50%,
+        ${colors.backgroundBox} 100%
+    );
     background-size: 200% 100%;
     animation:
         ${backgroundPosition_SkeletonEffect} 2s infinite,

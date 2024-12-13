@@ -66,6 +66,7 @@ export const ShowColors = () => {
                 <Title>Base</Title>
                 <Box mr={'my-3'} boxDisplay={'flex'} boxGapVariant={'g-3'}>
                     <ColorBox color={colors.background} text={'background'} />
+                    <ColorBox color={colors.layoutBox} text={'layoutBox'} />
                     <ColorBox color={colors.backgroundBox} text={'backgroundBox'} />
                     <ColorBox color={colors.backgroundTooltip} text={'backgroundTooltip'} />
                     <ColorBox color={colors.disabled} text={'disabled'} />

@@ -27,6 +27,7 @@ export type TypeColorScheme = {
 
     //base
     background: Hex;
+    layoutBox: Hex;
     backgroundBox: Hex;
     backgroundTooltip: Hex;
     disabled: Hex;
@@ -74,6 +75,7 @@ export const colorsLight: TypeColorScheme = {
 
     //base
     background: '#CBD5E1',
+    layoutBox: '#ffffff',
     backgroundBox: '#ffffff',
     backgroundTooltip: '#1f1f1fc8',
     disabled: '#B9BCBE',
@@ -94,11 +96,11 @@ export const colorsLight: TypeColorScheme = {
 
 export const colorsDark: TypeColorScheme = {
     primary: '#3B82F6',
-    secondary: '#1E293B',
-    system: '#E2E8F0',
+    secondary: '#334155',
+    system: '#475569',
 
     //other
-    lightElem: '#A9C1CF',
+    lightElem: '#94A3B8',
     lightShadow: '#00000000',
     backgroundInfo: '#18338C',
     backgroundSuccess: '#12512A',
@@ -109,7 +111,7 @@ export const colorsDark: TypeColorScheme = {
     primaryItem: '#3B82F6',
     primaryItemActive: '#2563EB',
     successItem: '#22C55E',
-    successItemActive: '#6A34A',
+    successItemActive: '#16A34A',
     infoItem: '#60A5FA',
     infoItemActive: '#3B82F6',
     errorItem: '#EF4444',
@@ -119,15 +121,16 @@ export const colorsDark: TypeColorScheme = {
 
     //base
     background: '#121923',
+    layoutBox: '#1E293B',
     backgroundBox: '#1E293B',
-    backgroundTooltip: '#334155',
-    disabled: '#CBD5E1',
+    backgroundTooltip: '#334155c8',
+    disabled: '#64748B',
     shadowColor: '#00000000',
 
     //text
     title: '#F8FAFC',
     text: '#A9C1CF',
-    subText: '#475569',
+    subText: '#F3F4F6',
     textItem: '#F8FAFC',
     link: '#3B82F6',
     linkActive: '#2563EB',

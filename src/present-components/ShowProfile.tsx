@@ -12,7 +12,6 @@ import {
     CircleDecorationTitle,
     Avatar,
     BoxSkeleton,
-    CardBoxSkeleton,
 } from '@src/lib';
 import { MainTextField, PhoneTextField, WrapperInput } from '@src/lib/components/input';
 
@@ -90,12 +89,12 @@ export const ShowProfile = () => {
                             boxDisplay={'flex'}
                             style={{ justifyContent: 'space-between', alignItems: 'end', flexWrap: 'wrap' }}
                         >
-                            <CardBoxSkeleton isSkeleton={skeleton}>
+                            <BoxSkeleton isSkeleton={skeleton}>
                                 <Title mr={'mb-3'}>Настройки профиля</Title>
                                 <Paragraph>Вы можете менять свои личные данные,</Paragraph>
                                 <Paragraph>управлять аккаунтом и настройками безопасности</Paragraph>
-                            </CardBoxSkeleton>
-                            <CardBoxSkeleton
+                            </BoxSkeleton>
+                            <BoxSkeleton
                                 style={{ flexWrap: 'wrap' }}
                                 isSkeleton={skeleton}
                                 boxDisplay={'flex'}
@@ -111,7 +110,7 @@ export const ShowProfile = () => {
                                 <Tab key={3} value={'t-3'} disabled>
                                     Интерфейс
                                 </Tab>
-                            </CardBoxSkeleton>
+                            </BoxSkeleton>
                         </BoxAdaptive>
                     }
                 >

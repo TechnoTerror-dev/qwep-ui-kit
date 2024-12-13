@@ -12,6 +12,7 @@ import { ShowDialog } from './ShowDialog';
 import { ShowNotification } from './ShowNotification';
 import { styled } from 'styled-components';
 import { ShowTooltip } from './ShowTooltip';
+import { ShowColors } from './ShowColors';
 
 const SMenu = styled(BoxMenu)`
     position: absolute;
@@ -26,6 +27,7 @@ const pages = {
     menu: <ShowMenu />,
     list: <ShowList />,
     icons: <ShowIcon />,
+    colors: <ShowColors />,
     slider: <ShowSlider />,
     dialog: <ShowDialog />,
     notification: <ShowNotification />,
@@ -59,12 +61,13 @@ export const Main = () => {
                     <MenuItem value={'popup'}>Popup</MenuItem>
                     <MenuItem value={'profile'}>Profile</MenuItem>
                     <MenuItem value={'menu'}>Menu</MenuItem>
-                    <MenuItem value={'icons'}>Icons</MenuItem>
                     <MenuItem value={'list'}>List</MenuItem>
                     <MenuItem value={'slider'}>Slider</MenuItem>
                     <MenuItem value={'dialog'}>Dialog</MenuItem>
                     <MenuItem value={'notification'}>Notification</MenuItem>
                     <MenuItem value={'tooltip'}>Tooltip</MenuItem>
+                    <MenuItem value={'icons'}>Icons</MenuItem>
+                    <MenuItem value={'colors'}>Colors</MenuItem>
 
                     <IconButton onClick={themeChange} sizeVariant={'M'}>
                         {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}

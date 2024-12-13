@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BaseBox, BaseTooltip, SimpleButton } from '../../lib';
-import { TBaseTooltip } from '../../lib/components/tooltip/base-tooltip/BaseTooltip';
+import { TBaseTooltip } from '../../lib/components/tooltip/tooltip/Tooltip';
 
 const meta = {
     title: 'Components/tooltip/BaseTooltip',

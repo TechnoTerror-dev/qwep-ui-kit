@@ -11,6 +11,7 @@ import { ShowSlider } from './ShowSlider';
 import { ShowDialog } from './ShowDialog';
 import { ShowNotification } from './ShowNotification';
 import { styled } from 'styled-components';
+import { ShowTooltip } from './ShowTooltip';
 
 const SMenu = styled(BoxMenu)`
     position: absolute;
@@ -28,6 +29,7 @@ const pages = {
     slider: <ShowSlider />,
     dialog: <ShowDialog />,
     notification: <ShowNotification />,
+    tooltip: <ShowTooltip />,
 };
 
 export const Main = () => {
@@ -61,9 +63,8 @@ export const Main = () => {
                     <MenuItem value={'list'}>List</MenuItem>
                     <MenuItem value={'slider'}>Slider</MenuItem>
                     <MenuItem value={'dialog'}>Dialog</MenuItem>
-                    <MenuItem style={{ width: '100%' }} value={'notification'}>
-                        Notification
-                    </MenuItem>
+                    <MenuItem value={'notification'}>Notification</MenuItem>
+                    <MenuItem value={'tooltip'}>Tooltip</MenuItem>
 
                     <IconButton onClick={themeChange} sizeVariant={'M'}>
                         {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}

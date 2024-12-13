@@ -1,9 +1,8 @@
 export * from './box';
 export * from './button';
 export * from './input';
-
 export * from './checkbox';
-// export * from './tooltip';
+export * from './tooltip';
 export * from './select';
 export * from './popup';
 export * from './slider';

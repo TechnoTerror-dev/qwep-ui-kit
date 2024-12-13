@@ -79,6 +79,12 @@ export type TypeSSSlider = {
     thumbSize_M: string;
 };
 
+export type TypeSSTooltip = {
+    padding: string;
+    borderRadius: string;
+    boxShadow: string;
+};
+
 export type TypeSSAvatar = {
     avatarSize_S: string;
     avatarSize_M: string;
@@ -198,6 +204,9 @@ export type TypeSS = {
 
     // list
     list: TypeSSList;
+
+    //tooltip
+    tooltip: TypeSSTooltip;
 } & {
     [key: string]: string | { [key: string]: string | object };
 };
@@ -378,5 +387,10 @@ export const styleScheme: TypeSS = {
     list: {
         paddingTitle: '4px 28px 4px 16px',
         paddingItem: '8px 12px 8px 16px',
+    },
+    tooltip: {
+        padding: '8px 12px',
+        borderRadius: '4px',
+        boxShadow: '2px 2px 3px 0px',
     },
 };

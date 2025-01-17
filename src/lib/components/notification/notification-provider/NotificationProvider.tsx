@@ -36,6 +36,7 @@ export type TypeOptions = TypeOptionsBase | TypeOptionsCustom;
 
 export type TypeNotificationContext = {
     alert: (options: TypeOptions) => void;
+    onCloseHandler: (id: string, position: TBaseProps.NotificationPosition) => void;
 };
 
 export type TypeNotificationProvider = {
@@ -136,6 +137,7 @@ const NotificationProvider = ({
 
     const contextValue: TypeNotificationContext = {
         alert,
+        onCloseHandler,
     };
     return (
         <NotificationContext.Provider value={contextValue}>
@@ -165,3 +167,9 @@ const useNotificationContext = (): TypeNotificationContext => {
 };
 
 export { useNotificationContext, NotificationProvider };
+
+export namespace TNotification {
+    export type Options = TypeOptions;
+    export type OptionsBase = TypeOptionsBase;
+    export type OptionsCustom = TypeOptionsCustom;
+}

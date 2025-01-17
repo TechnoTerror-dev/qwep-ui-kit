@@ -2,6 +2,7 @@ import {
     Box,
     BoxLayout,
     Button,
+    CardBox,
     EBaseProps,
     Select,
     SelectItem,
@@ -10,9 +11,19 @@ import {
     useNotificationContext,
 } from '@src/lib';
 import { useState } from 'react';
+import { styled } from 'styled-components';
+
+const CustomNotification = styled(CardBox)`
+    position: fixed;
+    top: 50%;
+    transform: translateX(-50%);
+    background-color: #4a9b62;
+    width: 250px;
+`;
 
 export const ShowNotification = () => {
-    const { alert } = useNotificationContext();
+    const { alert, onCloseHandler } = useNotificationContext();
+
     const [color, setColor] = useState<TBaseProps.VariantToast>(EBaseProps.VariantToast.ERROR);
     const positions = Object.values(EBaseProps.NotificationPosition);
     const colorVariants = Object.values(EBaseProps.VariantToast);
@@ -35,6 +46,31 @@ export const ShowNotification = () => {
             },
         });
     };
+
+    const customShow = () => {
+        alert({
+            duration: 3000,
+            id: 'custom_notification',
+            position: EBaseProps.NotificationPosition.TOP_CENTER,
+            type: 'custom',
+            content: (
+                <CustomNotification boxPaddingVariant={'p-3'} boxRadiusVariant={'M'}>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quas repellat neque sunt culpa
+                    officiis, aut illo. Quas quae, mollitia magni debitis odit maiores quis eum fugit iure molestias
+                    laudantium!
+                    <Button
+                        mr={'mt-3'}
+                        onClick={() =>
+                            onCloseHandler('custom_notification', EBaseProps.NotificationPosition.TOP_CENTER)
+                        }
+                    >
+                        Close
+                    </Button>
+                </CustomNotification>
+            ),
+        });
+    };
+
     return (
         <>
             <Title sizeVariant={'L'} mr={'m-6'}>
@@ -65,6 +101,9 @@ export const ShowNotification = () => {
                         );
                     })}
                 </Box>
+                <Button mr={'mt-3'} onClick={() => customShow()}>
+                    Custom
+                </Button>
             </BoxLayout>
         </>
     );

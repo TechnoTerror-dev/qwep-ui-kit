@@ -5,6 +5,7 @@ import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { TBaseProps } from '@src/lib/types/TypeBase';
 import { TBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 import { styled } from 'styled-components';
 
 type TypeStyles = {

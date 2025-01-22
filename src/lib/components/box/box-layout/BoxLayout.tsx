@@ -4,6 +4,7 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSLayout } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 import { styled } from 'styled-components';
 
 type TypeStyles = {
@@ -11,9 +12,11 @@ type TypeStyles = {
 };
 type WrapperProps = {
     wrapperBg?: Hex;
+    as?: keyof JSX.IntrinsicElements;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export type BoxLayoutProps = {
+    as?: keyof JSX.IntrinsicElements;
     wrapperProps?: WrapperProps;
     $styles?: TypeStyles;
     $colors?: TypeColorScheme;
@@ -45,18 +48,20 @@ const SWrapper = styled.div<SWrapperProps>`
 `;
 
 export const BoxLayout = React.memo(
-    React.forwardRef<HTMLDivElement, BoxLayoutProps>(({ wrapperProps, $styles, $colors, ...rest }, ref) => {
-        const colors = useColorScheme($colors);
-        const styles = useStyleScheme(['layout'], $styles);
+    React.forwardRef<HTMLDivElement, BoxLayoutProps>(
+        ({ as: Root = 'div', wrapperProps, $styles, $colors, ...rest }, ref) => {
+            const colors = useColorScheme($colors);
+            const styles = useStyleScheme(['layout'], $styles);
 
-        return (
-            <SRoot ref={ref} $styles={styles} {...rest}>
-                <SWrapper $styles={styles} $colors={colors} {...wrapperProps}>
-                    {rest.children}
-                </SWrapper>
-            </SRoot>
-        );
-    })
+            return (
+                <SRoot as={Root} ref={ref} $styles={styles} {...rest}>
+                    <SWrapper $styles={styles} $colors={colors} {...wrapperProps}>
+                        {rest.children}
+                    </SWrapper>
+                </SRoot>
+            );
+        }
+    )
 );
 
 //export component

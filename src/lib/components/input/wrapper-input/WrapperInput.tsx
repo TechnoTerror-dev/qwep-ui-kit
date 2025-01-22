@@ -139,7 +139,9 @@ export const WrapperInput = React.memo(
             const styles = useStyleScheme(['box', 'mr', 'typography'], $styles);
 
             const renderItem = useMemo(() => {
-                return React.cloneElement(children as React.ReactElement, { id });
+                return React.isValidElement<{ id?: string }>(children)
+                    ? React.cloneElement(children, { id })
+                    : children;
             }, [children, id]);
 
             return (

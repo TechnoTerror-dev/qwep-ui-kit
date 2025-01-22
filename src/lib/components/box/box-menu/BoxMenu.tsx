@@ -148,22 +148,25 @@ export const BoxMenu = React.memo(
 
             const renderItems = useMemo(() => {
                 return React.Children.map(rest.children, (child: React.ReactNode) => {
-                    if (React.isValidElement(child) && child.props.value) {
-                        return React.cloneElement(child, {
-                            onClick: handleClick,
-                            active: Boolean(child.props.value === activeValue),
-                            sizeVariant: itemSizeVariant,
-                            color: itemColor,
-                            opacityHover: itemOpacityHover,
-                            opacityActive: itemOpacityActive,
-                            textColor: itemTextColor,
-                            textColorActive: itemTextColorActive,
-                            $styles,
-                            $colors,
-                            tabIndex: 0,
-                            'aria-pressed': child.props.value === activeValue ? 'true' : 'false',
-                            ...child.props,
-                        });
+                    if (React.isValidElement<TMenuItem.Main>(child) && child.props.value) {
+                        return React.cloneElement(
+                            child as React.ReactElement<{ value?: string | number; active?: boolean }>,
+                            {
+                                onClick: handleClick,
+                                active: Boolean(child.props.value === activeValue),
+                                sizeVariant: itemSizeVariant,
+                                color: itemColor,
+                                opacityHover: itemOpacityHover,
+                                opacityActive: itemOpacityActive,
+                                textColor: itemTextColor,
+                                textColorActive: itemTextColorActive,
+                                $styles,
+                                $colors,
+                                tabIndex: 0,
+                                'aria-pressed': child.props.value === activeValue ? 'true' : 'false',
+                                ...child.props,
+                            }
+                        );
                     }
                     return child;
                 });

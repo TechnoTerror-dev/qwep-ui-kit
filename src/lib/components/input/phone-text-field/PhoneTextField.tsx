@@ -1,5 +1,4 @@
 import { useColorScheme } from '@src/lib/general/useColorScheme';
-import InputMask from 'react-input-mask';
 import * as P from '@radix-ui/react-popover';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React, { useCallback, useState } from 'react';
@@ -11,6 +10,7 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox } from '@src/lib/general/styleScheme';
 import { getColor } from '@src/lib/common/getColor';
 import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
+import { IMaskMixin, ReactElementProps } from 'react-imask';
 
 type TypeStyles = {
     box: TypeSSBox;
@@ -21,6 +21,7 @@ type TypeIcon = {
     title: string;
     icon: React.ReactNode;
     mask: string;
+    placeholder: string;
     iconProps?: IconSVGContainerProps;
 };
 
@@ -83,115 +84,133 @@ const SPopupText = styled(SBaseText.Root)<TBaseText.SRoot>`
     margin-left: 8px;
 `;
 
-export const PhoneTextField = React.memo(
-    React.forwardRef<HTMLInputElement, PhoneTextFieldProps>(
-        (
-            {
-                mr,
-                configList = [],
-                defaultIconId,
-                color,
-                _isActiveHover = true,
-                sizeVariant = EBaseProps.VariantSize.L,
-                colorVariant = EBaseProps.VariantColor.DEFAULT,
-                $colors,
-                $styles,
-                rootProps,
-                popupItemText,
-                popupRootProps,
-                popupTriggerProps,
-                popupContentProps,
-                popupPortalProps,
-                popupItemProps,
-                ...rest
-            },
-            ref
-        ) => {
-            const colors = useColorScheme($colors);
-            const styles = useStyleScheme(['base', 'inp', 'box', 'typography', 'mr'], $styles);
-            const [isFocused, setIsFocused] = useState(false);
-            const handleFocus = useCallback(() => !rest.disabled && setIsFocused(true), [rest.disabled]);
-            const handleBlur = useCallback(() => !rest.disabled && setIsFocused(false), [rest.disabled]);
-            const [iconId, setIconId] = useState<string>(defaultIconId ?? configList[0].id);
-            const [open, setOpen] = useState(false);
+type MyMaskedProps = ReactElementProps<HTMLInputElement> & {
+    inputRef?: React.Ref<HTMLInputElement>;
+    mask?: string;
+    $colors: TypeColorScheme;
+    $styles: TypeStyles;
+    $color?: Hex;
+    $colorVariant: TBaseProps.VariantColor;
+};
 
-            const currentMask = configList.find((item) => item.id === iconId)?.mask || '';
-            const inputMaskKey = `input-mask-${iconId}`;
-
-            const handleIconChange = (item: TypeIcon) => {
-                setIconId(item.id);
-                setOpen(false);
-            };
-
-            return (
-                <SBaseTextField.Root
-                    $mr={mr}
-                    $colors={colors}
-                    $styles={styles}
-                    $color={color}
-                    $colorVariant={colorVariant}
-                    $sizeVariant={sizeVariant}
-                    $disabled={rest.disabled}
-                    $blocked={rest.blocked}
-                    $_isActiveHover={_isActiveHover}
-                    $_isFocused={isFocused}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                    {...rootProps}
-                >
-                    <P.Root open={open} {...popupRootProps}>
-                        <SPopupTrigger onClick={() => setOpen(true)} {...popupTriggerProps}>
-                            {configList.find((icon) => icon.id === iconId)?.icon ?? configList[0].icon}
-                        </SPopupTrigger>
-                        <P.Portal {...popupPortalProps}>
-                            <SPopupContent
-                                $colors={colors}
-                                $colorVariant={colorVariant}
-                                $styles={styles}
-                                $color={color}
-                                sideOffset={8}
-                                onInteractOutside={(e) => e && setOpen(false)}
-                                {...popupContentProps}
-                            >
-                                {configList.map((item) => (
-                                    <SPopupListItem
-                                        key={item.id}
-                                        onClick={() => handleIconChange(item)}
-                                        {...popupItemProps}
-                                    >
-                                        {item.icon}
-                                        <SPopupText
-                                            $colors={colors}
-                                            $styles={styles}
-                                            $sizeVariant={'subtext'}
-                                            {...popupItemText}
-                                        >
-                                            {item.title}
-                                        </SPopupText>
-                                    </SPopupListItem>
-                                ))}
-                            </SPopupContent>
-                        </P.Portal>
-                    </P.Root>
-                    <InputMask mask={currentMask} maskChar="_" key={inputMaskKey} {...rest}>
-                        {(inputProps) => (
-                            <SBaseTextField.Input
-                                ref={ref}
-                                placeholder={rest.placeholder || currentMask.replace(/9/g, '_')}
-                                $styles={{ typography: styles.typography }}
-                                $colors={colors}
-                                $color={color}
-                                $colorVariant={colorVariant}
-                                {...inputProps}
-                            />
-                        )}
-                    </InputMask>
-                </SBaseTextField.Root>
-            );
-        }
-    )
+const MaskedStyledInput = IMaskMixin<HTMLInputElement, MyMaskedProps>(
+    ({ inputRef, $styles, $colors, $color, $colorVariant, ...props }) => {
+        return (
+            <SBaseTextField.Input
+                {...props}
+                ref={inputRef}
+                $styles={{ typography: $styles.typography }}
+                $colors={$colors}
+                $color={$color}
+                $colorVariant={$colorVariant}
+            />
+        );
+    }
 );
 
+export const PhoneTextField = React.forwardRef<HTMLInputElement, PhoneTextFieldProps>(
+    (
+        {
+            mr,
+            configList = [],
+            defaultIconId,
+            color,
+            _isActiveHover = true,
+            sizeVariant = EBaseProps.VariantSize.L,
+            colorVariant = EBaseProps.VariantColor.DEFAULT,
+            $colors,
+            $styles,
+            rootProps,
+            popupItemText,
+            popupRootProps,
+            popupTriggerProps,
+            popupContentProps,
+            popupPortalProps,
+            popupItemProps,
+            ...rest
+        },
+        ref
+    ) => {
+        const colors = useColorScheme($colors);
+        const styles = useStyleScheme(['base', 'inp', 'box', 'typography', 'mr'], $styles);
+        const [isFocused, setIsFocused] = useState(false);
+        const handleFocus = useCallback(() => !rest.disabled && setIsFocused(true), [rest.disabled]);
+        const handleBlur = useCallback(() => !rest.disabled && setIsFocused(false), [rest.disabled]);
+        const [iconId, setIconId] = useState<string>(defaultIconId ?? configList[0].id);
+        const [open, setOpen] = useState(false);
+
+        const currentMask = configList.find((item) => item.id === iconId);
+
+        const handleIconChange = (item: TypeIcon) => {
+            setIconId(item.id);
+            setOpen(false);
+        };
+
+        return (
+            <SBaseTextField.Root
+                ref={ref}
+                $mr={mr}
+                $colors={colors}
+                $styles={styles}
+                $color={color}
+                $colorVariant={colorVariant}
+                $sizeVariant={sizeVariant}
+                $disabled={rest.disabled}
+                $blocked={rest.blocked}
+                $_isActiveHover={_isActiveHover}
+                $_isFocused={isFocused}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                {...rootProps}
+            >
+                <P.Root open={open} {...popupRootProps}>
+                    <SPopupTrigger onClick={() => setOpen(true)} {...popupTriggerProps}>
+                        {configList.find((icon) => icon.id === iconId)?.icon ?? configList[0].icon}
+                    </SPopupTrigger>
+                    <P.Portal {...popupPortalProps}>
+                        <SPopupContent
+                            $colors={colors}
+                            $colorVariant={colorVariant}
+                            $styles={styles}
+                            $color={color}
+                            sideOffset={8}
+                            onInteractOutside={(e) => e && setOpen(false)}
+                            {...popupContentProps}
+                        >
+                            {configList.map((item) => (
+                                <SPopupListItem
+                                    key={item.id}
+                                    onClick={() => handleIconChange(item)}
+                                    {...popupItemProps}
+                                >
+                                    {item.icon}
+                                    <SPopupText
+                                        $colors={colors}
+                                        $styles={styles}
+                                        $sizeVariant={'subtext'}
+                                        {...popupItemText}
+                                    >
+                                        {item.title}
+                                    </SPopupText>
+                                </SPopupListItem>
+                            ))}
+                        </SPopupContent>
+                    </P.Portal>
+                </P.Root>
+
+                <MaskedStyledInput
+                    mask={currentMask?.mask}
+                    placeholder={currentMask?.placeholder}
+                    $colors={colors}
+                    $colorVariant={colorVariant}
+                    $styles={styles}
+                    $color={color}
+                    {...rest}
+                />
+            </SBaseTextField.Root>
+        );
+    }
+);
 //export component
 export const SPhoneTextField = {
     Root: SBaseTextField.Root,

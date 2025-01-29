@@ -37,7 +37,7 @@ export const ShowNotification = () => {
             title: 'Alert',
             message: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed eveniet placeat modi eligendi temporibus`,
             variant: color,
-            duration: 3000,
+            duration: 30000,
             position: value,
             type: 'base',
             isBlur: true,

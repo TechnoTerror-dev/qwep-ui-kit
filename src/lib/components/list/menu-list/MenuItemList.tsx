@@ -15,7 +15,7 @@ type TypeStyles = {
 } & TItemList.Styles;
 
 type MenuItemListProps = {
-    title?: React.ReactNode;
+    topic?: React.ReactNode;
     isNoWrapTitle?: boolean;
     isNoWrapSubTitle?: boolean;
     color?: Hex;
@@ -107,7 +107,7 @@ export const MenuItemList = React.memo(
             {
                 mr,
                 icon,
-                title,
+                topic,
                 subTitle,
                 colorTitle,
                 colorSubTitle,
@@ -144,7 +144,7 @@ export const MenuItemList = React.memo(
                 >
                     <div {...iconContainerProps}>{icon}</div>
                     <div {...contentProps}>
-                        {title && (
+                        {topic && (
                             <STitle
                                 $color={colorTitle}
                                 $sizeVariant={ETextProps.TextVariant.TEXT}
@@ -153,7 +153,7 @@ export const MenuItemList = React.memo(
                                 $styles={styles}
                                 {...titleProps}
                             >
-                                {title}
+                                {topic}
                             </STitle>
                         )}
                         {subTitle && (

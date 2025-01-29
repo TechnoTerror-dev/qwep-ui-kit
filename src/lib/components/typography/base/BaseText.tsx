@@ -22,7 +22,8 @@ type SRootProps = {
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $color?: Hex;
-} & React.HTMLAttributes<HTMLParagraphElement>;
+} & React.HTMLAttributes<HTMLParagraphElement> &
+    React.HTMLAttributes<HTMLElement>;
 
 export const TEXT_SIZE = {
     [ETextProps.TextVariant.TEXT]: (props: TypeSSTypography) => css`

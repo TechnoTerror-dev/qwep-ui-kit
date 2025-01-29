@@ -11,13 +11,11 @@ type TypeStyles = {
 
 type ItemListProps = {
     mr?: TBaseProps.Margin;
-
     $styles?: TypeStyles;
 } & React.ButtonHTMLAttributes<HTMLLIElement>;
 
 type SRootProps = {
     $mr?: TBaseProps.Margin;
-
     $styles: TypeStyles;
 } & React.ButtonHTMLAttributes<HTMLLIElement>;
 

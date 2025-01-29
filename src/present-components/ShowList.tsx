@@ -1,4 +1,4 @@
-import { Box, CardBox, Icon, MenuItemList, MenuList, Paragraph, Separator } from '@src/lib';
+import { Box, CardBox, Icon, MenuItemList, MenuList, Paragraph, Separator, Title } from '@src/lib';
 import { useColorScheme } from '@src/lib/general';
 import React, { JSX } from 'react';
 import { styled } from 'styled-components';
@@ -59,14 +59,14 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         icon={<Icon.QWEPFilled />}
-                        title={'QWEP'}
+                        topic={'QWEP'}
                         subTitle={parseNoWrapText('Проценка, прайсы,/#br/заказы, ассистент')}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
                         icon={<Icon.BarChartFilled />}
-                        title={'DATA'}
+                        topic={'DATA'}
                         subTitle={parseNoWrapText('Аналитика цен,/#br/работа с аналогами')}
                     />
                     <MenuItemList
@@ -75,7 +75,7 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.UserFilled />}
-                        title={'UCS'}
+                        topic={'UCS'}
                         subTitle={parseNoWrapText('Контроль эффективности/#br/процесса закупок')}
                     />
                     <MenuItemList
@@ -83,7 +83,7 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.AppFilled />}
-                        title={'Панель управления'}
+                        topic={'Панель управления'}
                         subTitle={parseNoWrapText('Администрирование/#br/пользователей')}
                     />
                 </MenuList>
@@ -93,14 +93,14 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.SettingsFilled />}
-                        title={'Настройки компании'}
+                        topic={'Настройки компании'}
                         subTitle={'Редактирование компании'}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
                         icon={<Icon.BuildingAltFilled />}
-                        title={'Мои компании'}
+                        topic={'Мои компании'}
                         subTitle={'Список ваших компаний'}
                     />
                 </MenuList>
@@ -111,7 +111,7 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.TabletFilled />}
-                        title={'Лицензии и оплата'}
+                        topic={'Лицензии и оплата'}
                         subTitle={parseNoWrapText('Активные подписки/#br/и продление')}
                     />
                     <MenuItemList icon={<Icon.QuestionFilled />} title={'Техподдержка'} subTitle={'Вопросы'} />
@@ -131,14 +131,14 @@ export const ShowList = () => {
                         isNoWrapSubTitle
                         isNoWrapTitle
                         icon={<Icon.QWEPFilled />}
-                        title={'QWEP'}
+                        topic={<Title style={{ marginLeft: '-4px' }}>QWEP</Title>}
                         subTitle={parseNoWrapText('Проценка, прайсы,/#br/заказы, ассистент')}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
                         icon={<Icon.BarChartFilled />}
-                        title={'DATA'}
+                        topic={'DATA'}
                         subTitle={parseNoWrapText('Аналитика цен,/#br/работа с аналогами')}
                     />
                     <MenuItemList
@@ -147,7 +147,7 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.UserFilled />}
-                        title={'UCS'}
+                        topic={'UCS'}
                         subTitle={parseNoWrapText('Контроль эффективности/#br/процесса закупок')}
                     />
                     <MenuItemList
@@ -155,7 +155,7 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.AppFilled />}
-                        title={'Панель управления'}
+                        topic={'Панель управления'}
                         subTitle={parseNoWrapText('Администрирование/#br/пользователей')}
                     />
                 </MenuList>
@@ -165,14 +165,14 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.SettingsFilled />}
-                        title={'Настройки компании'}
+                        topic={'Настройки компании'}
                         subTitle={'Редактирование компании'}
                     />
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
                         icon={<Icon.BuildingAltFilled />}
-                        title={'Мои компании'}
+                        topic={<div>grjgireigjir</div>}
                         subTitle={'Список ваших компаний'}
                     />
                 </MenuList>
@@ -183,7 +183,7 @@ export const ShowList = () => {
                         isNoWrapTitle
                         role={'button'}
                         icon={<Icon.TabletFilled />}
-                        title={'Лицензии и оплата'}
+                        topic={'Лицензии и оплата'}
                         subTitle={parseNoWrapText('Активные подписки/#br/и продление')}
                     />
                     <MenuItemList icon={<Icon.QuestionFilled />} title={'Техподдержка'} subTitle={'Вопросы'} />

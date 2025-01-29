@@ -124,7 +124,6 @@ export type TypeSSTypography = {
 };
 
 export type TypeSSBox = {
-    isBlur: string;
     blurCount: string;
     backgroundOpacity: string;
 
@@ -371,9 +370,8 @@ export const styleScheme: TypeSS = {
 
     //box
     box: {
-        isBlur: '',
         blurCount: '8px',
-        backgroundOpacity: 'dd',
+        backgroundOpacity: '',
 
         boxBorderRadius_S: '8px',
         boxBorderRadius_M: '12px',
@@ -406,7 +404,7 @@ export const styleScheme: TypeSS = {
     },
     layout: {
         blurCount: '8px',
-        backgroundOpacity: 'dd',
+        backgroundOpacity: '',
 
         borderRadius: '40px',
 
@@ -434,16 +432,16 @@ export const styleScheme: TypeSS = {
 
     dialog: {
         blurCount: '8px',
-        backgroundOpacity: 'dd',
+        backgroundOpacity: '',
     },
 
     menu: {
         blurCount: '8px',
-        backgroundOpacity: 'dd',
+        backgroundOpacity: '',
     },
 
     popup: {
         blurCount: '8px',
-        backgroundOpacity: 'dd',
+        backgroundOpacity: '',
     },
 };

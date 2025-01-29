@@ -13,6 +13,7 @@ export const PopupHover = React.memo(
             {
                 trigger,
                 bg,
+                isBlur,
 
                 delay = 300,
                 boxShadowColor,
@@ -36,7 +37,7 @@ export const PopupHover = React.memo(
             const [isOpen, setIsOpen] = React.useState(false);
             const closeTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
             const colors = useColorScheme($colors);
-            const styles = useStyleScheme(['mr', 'box', 'typography'], $styles);
+            const styles = useStyleScheme(['mr', 'box', 'typography', 'popup'], $styles);
 
             const handleMouseEnter = () => {
                 if (closeTimeout.current) {
@@ -72,6 +73,7 @@ export const PopupHover = React.memo(
                     </SPopup.Trigger>
                     <SPopup.Portal {...portalProps}>
                         <SPopup.Content
+                            $isBlur={isBlur}
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}

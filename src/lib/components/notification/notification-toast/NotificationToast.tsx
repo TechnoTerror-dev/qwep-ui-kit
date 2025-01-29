@@ -1,5 +1,5 @@
 import { Icon } from '@src/lib';
-import { CSSBaseBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import { CSSBaseBox, CSSBlurEffect } from '@src/lib/common-styled-component/StyledComponentBox';
 import { getColor } from '@src/lib/common/getColor';
 import { useColorScheme } from '@src/lib/general';
 import { TypeColorScheme } from '@src/lib/general/colors';
@@ -26,6 +26,7 @@ type NotificationToastProps = {
 
 type BaseProps = {
     position: TBaseProps.NotificationPosition;
+    isBlur?: boolean;
     variant?: TBaseProps.VariantToast;
     iconSizeVariant?: TBaseProps.VariantSize;
     isClose?: boolean;
@@ -39,6 +40,7 @@ type BaseProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
+    $isBlur?: boolean;
     $variant: TBaseProps.VariantToast;
     $position: TBaseProps.NotificationPosition;
     $boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
@@ -136,12 +138,14 @@ const ANIMATION_VARIANT = {
 const createGradient = (startColor: string, endColor: string) => `linear-gradient(180deg, ${startColor}, ${endColor})`;
 
 const COLOR_VARIANT = {
-    [EBaseProps.VariantToast.INFO]: (colors: TypeColorScheme) => createGradient(colors.backgroundInfo, 'transparent'),
+    [EBaseProps.VariantToast.INFO]: (colors: TypeColorScheme) =>
+        createGradient(colors.backgroundInfo, `${colors.backgroundInfo}50`),
     [EBaseProps.VariantToast.WARNING]: (colors: TypeColorScheme) =>
-        createGradient(colors.backgroundWarning, 'transparent'),
-    [EBaseProps.VariantToast.ERROR]: (colors: TypeColorScheme) => createGradient(colors.backgroundError, 'transparent'),
+        createGradient(colors.backgroundWarning, `${colors.backgroundWarning}50`),
+    [EBaseProps.VariantToast.ERROR]: (colors: TypeColorScheme) =>
+        createGradient(colors.backgroundError, `${colors.backgroundError}50`),
     [EBaseProps.VariantToast.SUCCESS]: (colors: TypeColorScheme) =>
-        createGradient(colors.backgroundSuccess, 'transparent'),
+        createGradient(colors.backgroundSuccess, `${colors.backgroundSuccess}50`),
 };
 
 const applyBoxShadow = ($styles: TypeSSBox, $colors: TypeColorScheme) =>
@@ -200,6 +204,12 @@ const SRoot = styled.div<SRootProps>`
             $boxGapVariant: props.$boxGapVariant,
             $styles: props.$styles.box,
         })};
+
+    ${(props) => {
+        if (props.$isBlur) {
+            return CSSBlurEffect({ $blurCount: props.$styles.box.blurCount });
+        }
+    }}
 `;
 
 const iconVariant = {
@@ -222,6 +232,7 @@ export const NotificationToast: React.FC<NotificationToastProps> = React.memo(
         id = '1',
         title,
         count = 1,
+        isBlur,
         message,
         position = EBaseProps.NotificationPosition.BOTTOM_RIGHT,
         onClose,
@@ -241,6 +252,7 @@ export const NotificationToast: React.FC<NotificationToastProps> = React.memo(
 
         return (
             <SRoot
+                $isBlur={isBlur}
                 $styles={styles}
                 $colors={colors}
                 $position={position}

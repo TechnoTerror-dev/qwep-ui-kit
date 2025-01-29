@@ -1,4 +1,4 @@
-import { CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import { CSSBlurEffect, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
@@ -10,6 +10,7 @@ import { SBox, TBox } from '../box/Box';
 type CardBoxProps = {
     bg?: Hex;
     boxShadowColor?: Hex;
+    isBlur?: boolean;
     boxShadowVariant?: TBoxProps.BoxShadowVariant;
     boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
     $colors?: TypeColorScheme;
@@ -18,6 +19,7 @@ type CardBoxProps = {
 type SRootProps = {
     $colors: TypeColorScheme;
     $bg?: Hex;
+    $isBlur?: boolean;
     $boxBorderColor?: Hex;
     $boxShadowColor?: Hex;
     $boxShadowVariant?: TBoxProps.BoxShadowVariant;
@@ -25,7 +27,7 @@ type SRootProps = {
 } & TBox.SRoot;
 
 const SRoot = styled(SBox.Root)<SRootProps>`
-    background-color: ${(props) => props.$bg ?? props.$colors.backgroundBox};
+    background-color: ${(props) => props.$bg ?? `${props.$colors.backgroundBox}${props.$styles.box.backgroundOpacity}`};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
@@ -34,6 +36,12 @@ const SRoot = styled(SBox.Root)<SRootProps>`
             $boxRadiusVariant: props.$boxRadiusVariant,
             $styles: props.$styles.box,
         })};
+
+    ${(props) => {
+        if (props.$isBlur) {
+            return CSSBlurEffect({ $blurCount: props.$styles.box.blurCount });
+        }
+    }}
 `;
 
 export const CardBox = React.memo(
@@ -43,6 +51,7 @@ export const CardBox = React.memo(
                 as: Component = 'div',
                 mr,
                 bg,
+                isBlur,
                 boxWidthVariant,
                 boxPaddingVariant,
                 boxGapVariant,
@@ -63,6 +72,7 @@ export const CardBox = React.memo(
                 <SRoot
                     ref={ref}
                     as={Component}
+                    $isBlur={isBlur}
                     $styles={styles}
                     $colors={colors}
                     $mr={mr}

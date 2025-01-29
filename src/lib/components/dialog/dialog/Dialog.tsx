@@ -2,20 +2,22 @@ import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { getColor } from '@src/lib/common/getColor';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
-import { TypeSSBox } from '@src/lib/general/styleScheme';
+import { TypeSSBox, TypeSSDialog } from '@src/lib/general/styleScheme';
 import React from 'react';
 import styled from 'styled-components';
 import { StyledScrollbarItem } from '@src/lib/common-styled-component/StyledBase';
 import * as D from '@radix-ui/react-dialog';
 import { TBoxProps, EBoxProps } from '@src/lib/types/TypeBox';
-import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import { CSSBaseBox, CSSSimpleBox, CSSBlurEffect } from '@src/lib/common-styled-component/StyledComponentBox';
 import { SDialogComponent, TDialogComponent } from './DialogComponents';
 
 type TypeStyles = {
     box: TypeSSBox;
+    dialog: TypeSSDialog;
 };
 
 type DialogProps = {
+    isBlur?: boolean;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
     bg?: Hex;
@@ -26,7 +28,6 @@ type DialogProps = {
     boxWidthVariant?: TBoxProps.BoxWidthVariant;
     boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     boxGapVariant?: TBoxProps.BoxGapVariant;
-    overlayBlur?: string;
     overlayColor?: Hex;
     contentWidth?: string;
     portalProps?: React.ComponentPropsWithoutRef<typeof D.Portal>;
@@ -37,18 +38,16 @@ type DialogProps = {
 type SOverlayProps = {
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $overlayBlur?: string;
     $overlayColor?: Hex;
 } & TDialogComponent.SOverlay;
 
 const SOverlay = styled(SDialogComponent.Overlay)<SOverlayProps>`
-    backdrop-filter: blur(${(props) => props.$overlayBlur ?? '0px'});
-
     background-color: ${(props) =>
         getColor({ cs: props.$colors, color: props.$overlayColor ?? props.$colors.omega, opacity: '90' })};
 `;
 
 type SContentProps = {
+    $isBlur?: boolean;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $contentWidth?: string;
@@ -64,11 +63,13 @@ type SContentProps = {
 
 const SContent = styled(SDialogComponent.Content)<SContentProps>`
     position: relative;
-    background-color: ${(props) => props.$bg ?? props.$colors.backgroundBox};
+    background-color: ${(props) =>
+        props.$bg ?? `${props.$colors.backgroundBox}${props.$styles.dialog.backgroundOpacity}`};
     width: calc(100vw - 60px);
     max-width: ${(props) => props.$contentWidth ?? '768px'};
     overflow-x: 'hidden';
     overflow-y: auto;
+
     ${(props) =>
         StyledScrollbarItem({
             $colors: props.$colors,
@@ -89,6 +90,12 @@ const SContent = styled(SDialogComponent.Content)<SContentProps>`
             $boxRadiusVariant: props.$boxRadiusVariant,
             $styles: props.$styles.box,
         })};
+
+    ${(props) => {
+        if (props.$isBlur) {
+            return CSSBlurEffect({ $blurCount: props.$styles.dialog.blurCount });
+        }
+    }};
 `;
 
 export const Dialog = React.memo(
@@ -96,6 +103,7 @@ export const Dialog = React.memo(
         (
             {
                 bg,
+                isBlur,
                 boxShadowColor,
                 boxShadowVariant,
                 boxDisplay,
@@ -104,7 +112,6 @@ export const Dialog = React.memo(
                 contentWidth,
                 boxWidthVariant,
                 boxGapVariant,
-                overlayBlur,
                 overlayColor,
                 $colors,
                 $styles,
@@ -116,20 +123,15 @@ export const Dialog = React.memo(
             ref
         ) => {
             const colors = useColorScheme($colors);
-            const styles = useStyleScheme(['box'], $styles);
+            const styles = useStyleScheme(['box', 'dialog'], $styles);
 
             return (
                 <D.Root {...rest}>
                     <D.Portal {...portalProps}>
-                        <SOverlay
-                            $colors={colors}
-                            $styles={styles}
-                            $overlayColor={overlayColor}
-                            $overlayBlur={overlayBlur}
-                            {...overlayProps}
-                        >
+                        <SOverlay $colors={colors} $styles={styles} $overlayColor={overlayColor} {...overlayProps}>
                             <SContent
                                 ref={ref}
+                                $isBlur={isBlur}
                                 $colors={colors}
                                 $styles={styles}
                                 $boxPaddingVariant={boxPaddingVariant}

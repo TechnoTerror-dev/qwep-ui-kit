@@ -40,6 +40,7 @@ export const ShowNotification = () => {
             duration: 3000,
             position: value,
             type: 'base',
+            isBlur: true,
             portalProps: {
                 boxGapVariant: 'g-2',
                 boxPaddingVariant: 'p-5',

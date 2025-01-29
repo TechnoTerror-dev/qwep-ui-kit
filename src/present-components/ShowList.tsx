@@ -1,6 +1,6 @@
 import { Box, CardBox, Icon, MenuItemList, MenuList, Paragraph, Separator } from '@src/lib';
 import { useColorScheme } from '@src/lib/general';
-import React from 'react';
+import React, { JSX } from 'react';
 import { styled } from 'styled-components';
 
 const MenuCard = styled(CardBox)`
@@ -46,7 +46,7 @@ export const ShowList = () => {
 
     return (
         <>
-            <MenuCard boxDisplay={'grid'} boxShadowVariant={'M'}>
+            <MenuCard isBlur boxDisplay={'grid'} boxShadowVariant={'M'}>
                 <Box boxPaddingVariant={'p-3'}>
                     <WorkspaceName mr={'mb-3'} color={colors.lightElem}>
                         Сумотори

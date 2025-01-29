@@ -26,6 +26,11 @@ const SRoot = styled.div<SRootProps>`
     min-height: 100vh;
     background: ${(props) => props.$background ?? props.$colors.background};
 
+    background-image: url('https://i.ibb.co/xSDtqGg/1bd75bbd0408.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     ${(props) =>
         StyledScrollbarItem({
             $colors: props.$colors,

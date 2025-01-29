@@ -1,4 +1,9 @@
-import { CSSBaseLayout, CSSBaseLayoutStart, CSSBoxLayout } from '@src/lib/common-styled-component/StyledComponentBox';
+import {
+    CSSBaseLayout,
+    CSSBaseLayoutStart,
+    CSSBlurEffect,
+    CSSBoxLayout,
+} from '@src/lib/common-styled-component/StyledComponentBox';
 import { useColorScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSLayout } from '@src/lib/general/styleScheme';
@@ -17,6 +22,7 @@ type WrapperProps = {
 
 export type BoxLayoutProps = {
     as?: keyof JSX.IntrinsicElements;
+    isBlur?: boolean;
     wrapperProps?: WrapperProps;
     $styles?: TypeStyles;
     $colors?: TypeColorScheme;
@@ -27,6 +33,7 @@ type SRootProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SWrapperProps = {
+    $isBlur?: boolean;
     $wrapperBg?: Hex;
     $styles: TypeStyles;
     $colors: TypeColorScheme;
@@ -42,20 +49,27 @@ const SRoot = styled.div<SRootProps>`
 const SWrapper = styled.div<SWrapperProps>`
     position: relative;
     margin: 0 auto;
-    background-color: ${(props) => props.$wrapperBg ?? props.$colors.layoutBox};
+    background-color: ${(props) =>
+        props.$wrapperBg ?? `${props.$colors.layoutBox}${props.$styles.layout.backgroundOpacity}`};
     ${(props) => CSSBoxLayout(props.$styles.layout)};
-    ${CSSBaseLayoutStart}
+    ${CSSBaseLayoutStart};
+
+    ${(props) => {
+        if (props.$isBlur) {
+            return CSSBlurEffect({ $blurCount: props.$styles.layout.blurCount });
+        }
+    }}
 `;
 
 export const BoxLayout = React.memo(
     React.forwardRef<HTMLDivElement, BoxLayoutProps>(
-        ({ as: Root = 'div', wrapperProps, $styles, $colors, ...rest }, ref) => {
+        ({ as: Root = 'div', isBlur, wrapperProps, $styles, $colors, ...rest }, ref) => {
             const colors = useColorScheme($colors);
             const styles = useStyleScheme(['layout'], $styles);
 
             return (
                 <SRoot as={Root} ref={ref} $styles={styles} {...rest}>
-                    <SWrapper $styles={styles} $colors={colors} {...wrapperProps}>
+                    <SWrapper $styles={styles} $colors={colors} $isBlur={isBlur} {...wrapperProps}>
                         {rest.children}
                     </SWrapper>
                 </SRoot>

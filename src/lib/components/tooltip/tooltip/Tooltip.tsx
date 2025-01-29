@@ -48,7 +48,7 @@ const SContent = styled(STooltipComponent.Content)<SContentProps>`
                 box-shadow: ${`${props.$styles.tooltip.boxShadow} ${props.$colors.shadowColor}`};
             `;
         }
-    }}
+    }};
 `;
 
 export const Tooltip = React.memo(

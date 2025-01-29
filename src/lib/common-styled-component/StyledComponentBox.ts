@@ -151,7 +151,6 @@ export const CSSBoxLayout = (l: TypeSSLayout) => css`
     }
 
     @media screen and (min-width: 768px) and (max-width: 1278px) {
-        /* max-width: ${l.width_M}; */
         padding: ${l.padding_M};
     }
 
@@ -193,6 +192,7 @@ export const CSSSkeletonBox = (borderRadius: string, colors: TypeColorScheme) =>
         ${colors.disabled} 50%,
         ${colors.backgroundBox} 100%
     );
+
     background-size: 200% 100%;
     animation:
         ${backgroundPosition_SkeletonEffect} 2s infinite,
@@ -213,4 +213,14 @@ const opacity_BoxLayoutEffect = keyframes`
 
 export const CSSBaseLayoutStart = () => css`
     animation: ${opacity_BoxLayoutEffect} 0.5s ease-in-out;
+`;
+
+export type CSSBlurEffectProps = {
+    $blurCount?: string;
+};
+
+export const CSSBlurEffect = ({ $blurCount }: CSSBlurEffectProps) => css`
+    backdrop-filter: blur(${$blurCount && !isNaN(Number($blurCount)) ? `${$blurCount}px` : '8px'}) saturate(110%);
+    -webkit-backdrop-filter: blur(${$blurCount && !isNaN(Number($blurCount)) ? `${$blurCount}px` : '8px'})
+        saturate(110%);
 `;

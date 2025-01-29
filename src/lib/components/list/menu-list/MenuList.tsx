@@ -13,7 +13,7 @@ type TypeStyles = {
 } & TList.Styles;
 
 type MenuListProps = {
-    title?: React.ReactNode;
+    topic?: React.ReactNode;
     titleProps?: TParagraph.Main;
     $styles?: TypeStyles;
 } & TList.Main;
@@ -35,13 +35,13 @@ export const SRoot = styled(SList.Root)<SRootProps>`
 
 export const MenuList = React.memo(
     React.forwardRef<HTMLUListElement, MenuListProps>(
-        ({ mr, title, height, $colors, $styles, titleProps, ...rest }, ref) => {
+        ({ mr, topic, height, $colors, $styles, titleProps, ...rest }, ref) => {
             const colors = useColorScheme($colors);
             const styles = useStyleScheme(['mr', 'box', 'typography', 'list'], $styles);
 
             return (
                 <SRoot ref={ref} $colors={colors} $height={height} $styles={styles} $mr={mr} {...rest}>
-                    {title && (
+                    {topic && (
                         <STitle
                             $color={colors.lightElem}
                             $colors={colors}
@@ -49,7 +49,7 @@ export const MenuList = React.memo(
                             $sizeVariant={ETextProps.TextVariant.TEXT}
                             {...titleProps}
                         >
-                            {title}
+                            {topic}
                         </STitle>
                     )}
                     {rest.children}

@@ -17,7 +17,13 @@ const StyledContext = createContext<TypeStyledContext>({
 
 export const StyledProvider = ({ children, currentStyles = {}, addCustomStyles = {} }: TypeStyledProvider) => {
     const sanitizedCurrentStyles = Object.fromEntries(
-        Object.entries(currentStyles).filter(([, value]) => value !== undefined)
+        Object.entries(currentStyles)
+            .filter(([value]) => value !== undefined)
+            .map(([name, value]) => {
+                const base = styleScheme[name] || {};
+                //@ts-ignore
+                return [name, { ...base, ...value }];
+            })
     );
 
     const sanitizedCustomStyles = Object.fromEntries(

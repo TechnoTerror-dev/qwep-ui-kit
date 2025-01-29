@@ -15,9 +15,18 @@ const Root = () => {
                     customBackground: { backgroundColor: 'lightblue', padding: '10px' },
                     customButton: { color: 'white', backgroundColor: 'darkblue' },
                 }}
-                // currentStyles={{
-                //     base: { borderRadiusItem: '12px' },
-                // }}
+                currentStyles={{
+                    layout: { backgroundOpacity: 'dd' },
+                    dialog: {
+                        backgroundOpacity: 'dd',
+                    },
+                    menu: {
+                        backgroundOpacity: 'dd',
+                    },
+                    popup: {
+                        backgroundOpacity: 'dd',
+                    },
+                }}
             >
                 <Main />
             </StyledProvider>

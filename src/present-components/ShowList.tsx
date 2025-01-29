@@ -53,7 +53,7 @@ export const ShowList = () => {
                     </WorkspaceName>
                     <Separator />
                 </Box>
-                <MenuList title={'ПРИЛОЖЕНИЯ'} boxPaddingVariant={'p-4'}>
+                <MenuList topic={'ПРИЛОЖЕНИЯ'} boxPaddingVariant={'p-4'}>
                     <MenuItemList
                         role={'button'}
                         isNoWrapSubTitle
@@ -87,7 +87,7 @@ export const ShowList = () => {
                         subTitle={parseNoWrapText('Администрирование/#br/пользователей')}
                     />
                 </MenuList>
-                <MenuList title={'КОМПАНИИ'}>
+                <MenuList topic={'КОМПАНИИ'}>
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
@@ -105,7 +105,7 @@ export const ShowList = () => {
                     />
                 </MenuList>
 
-                <MenuList title={'ОБЩЕЕ'} mr={'mb-6'} style={{ marginTop: 'auto' }}>
+                <MenuList topic={'ОБЩЕЕ'} mr={'mb-6'} style={{ marginTop: 'auto' }}>
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
@@ -114,7 +114,7 @@ export const ShowList = () => {
                         topic={'Лицензии и оплата'}
                         subTitle={parseNoWrapText('Активные подписки/#br/и продление')}
                     />
-                    <MenuItemList icon={<Icon.QuestionFilled />} title={'Техподдержка'} subTitle={'Вопросы'} />
+                    <MenuItemList icon={<Icon.QuestionFilled />} topic={'Техподдержка'} subTitle={'Вопросы'} />
                 </MenuList>
             </MenuCard>
 
@@ -125,7 +125,7 @@ export const ShowList = () => {
                     </WorkspaceName>
                     <Separator />
                 </Box>
-                <MenuList title={'O'} boxPaddingVariant={'p-4'}>
+                <MenuList topic={'O'} boxPaddingVariant={'p-4'}>
                     <MenuItemList
                         role={'button'}
                         isNoWrapSubTitle
@@ -159,7 +159,7 @@ export const ShowList = () => {
                         subTitle={parseNoWrapText('Администрирование/#br/пользователей')}
                     />
                 </MenuList>
-                <MenuList title={'O'}>
+                <MenuList topic={'O'}>
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
@@ -177,7 +177,7 @@ export const ShowList = () => {
                     />
                 </MenuList>
 
-                <MenuList title={'O'} mr={'mb-6'} style={{ marginTop: 'auto' }}>
+                <MenuList topic={'O'} mr={'mb-6'} style={{ marginTop: 'auto' }}>
                     <MenuItemList
                         isNoWrapSubTitle
                         isNoWrapTitle
@@ -186,7 +186,7 @@ export const ShowList = () => {
                         topic={'Лицензии и оплата'}
                         subTitle={parseNoWrapText('Активные подписки/#br/и продление')}
                     />
-                    <MenuItemList icon={<Icon.QuestionFilled />} title={'Техподдержка'} subTitle={'Вопросы'} />
+                    <MenuItemList icon={<Icon.QuestionFilled />} topic={'Техподдержка'} subTitle={'Вопросы'} />
                 </MenuList>
             </MenuCardHidden>
         </>

@@ -4,10 +4,15 @@ import { StyledProvider } from './lib/general/StyledContext';
 import { ThemeProvider, TypeColorTheme } from './lib/general/ThemeContext';
 import { Main } from './present-components/Main';
 import './styles/index.css';
+// import { Button } from './lib';
 
 const Root = () => {
     const storedThemeName = localStorage.getItem('theme');
+    // const [flag, setFlag] = useState('dd');
 
+    // const AAA = () => {
+    //     setFlag('00');
+    // };
     return (
         <ThemeProvider colorThemeName={storedThemeName as TypeColorTheme}>
             <StyledProvider
@@ -18,7 +23,7 @@ const Root = () => {
                 currentStyles={{
                     layout: { backgroundOpacity: 'dd' },
                     dialog: {
-                        backgroundOpacity: 'dd',
+                        backgroundOpacity: 'ac',
                     },
                     menu: {
                         backgroundOpacity: 'dd',

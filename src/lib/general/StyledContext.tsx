@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState, useContext } from 'react';
+import { createContext, ReactNode, useState, useContext, useEffect } from 'react';
 import { TypeSS, styleScheme } from './styleScheme';
 
 export type TypeStyledContext = {
@@ -16,27 +16,33 @@ const StyledContext = createContext<TypeStyledContext>({
 });
 
 export const StyledProvider = ({ children, currentStyles = {}, addCustomStyles = {} }: TypeStyledProvider) => {
-    const sanitizedCurrentStyles = Object.fromEntries(
-        Object.entries(currentStyles)
-            .filter(([value]) => value !== undefined)
-            .map(([name, value]) => {
-                const base = styleScheme[name] || {};
-                //@ts-ignore
-                return [name, { ...base, ...value }];
-            })
-    );
+    const calculateStyles = () => {
+        const sanitizedCurrentStyles = Object.fromEntries(
+            Object.entries(currentStyles)
+                .filter(([, value]) => value !== undefined)
+                .map(([name, value]) => {
+                    const base = styleScheme[name] || {};
+                    //@ts-ignore
+                    return [name, { ...base, ...value }];
+                })
+        );
 
-    const sanitizedCustomStyles = Object.fromEntries(
-        Object.entries(addCustomStyles).filter(([, value]) => value !== undefined)
-    );
+        const sanitizedCustomStyles = Object.fromEntries(
+            Object.entries(addCustomStyles).filter(([, value]) => value !== undefined)
+        );
 
-    const initialStyles: TypeSS = {
-        ...styleScheme,
-        ...sanitizedCurrentStyles,
-        ...sanitizedCustomStyles,
+        return {
+            ...styleScheme,
+            ...sanitizedCurrentStyles,
+            ...sanitizedCustomStyles,
+        };
     };
 
-    const [styles] = useState<TypeSS>(initialStyles);
+    const [styles, setStyles] = useState<TypeSS>(calculateStyles());
+
+    useEffect(() => {
+        setStyles(calculateStyles());
+    }, [currentStyles, addCustomStyles]);
 
     const contextValue: TypeStyledContext = {
         currentStyles: styles,

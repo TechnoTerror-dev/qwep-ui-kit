@@ -408,7 +408,7 @@ export const styleScheme: TypeSS = {
 
         borderRadius: '40px',
 
-        width_L: '1060px',
+        width_L: '1092px',
         width_M: '768px',
         width_S: '100%',
 

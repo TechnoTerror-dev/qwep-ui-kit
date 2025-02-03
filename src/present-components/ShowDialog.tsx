@@ -1,4 +1,4 @@
-import { Box, BoxLayout, Button, Dialog, Icon, IconButton, Paragraph, Title } from '@src/lib';
+import { Box, BoxLayout, Button, Dialog, Icon, IconButton, Paragraph, Select, SelectItem, Title } from '@src/lib';
 
 const SHeader = styled(Box)`
     align-items: center;
@@ -30,6 +30,24 @@ export const ShowDialog = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ante id ex ultricies
                             vulputate. Nulla facilisi.
                         </Paragraph>
+                        <Select mr={'m-3'} placeholder={'Default select'}>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                            <SelectItem value={'1'}>Item 1</SelectItem>
+                            <SelectItem value={'2'}>Item 2</SelectItem>
+                        </Select>
                         <Paragraph>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ante id ex ultricies
                             vulputate. Nulla facilisi.

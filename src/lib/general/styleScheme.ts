@@ -124,9 +124,6 @@ export type TypeSSTypography = {
 };
 
 export type TypeSSBox = {
-    blurCount: string;
-    backgroundOpacity: string;
-
     boxBorderRadius_S: string;
     boxBorderRadius_M: string;
     boxBorderRadius_L: string;
@@ -158,9 +155,6 @@ export type TypeSSBox = {
 };
 
 export type TypeSSLayout = {
-    blurCount: string;
-    backgroundOpacity: string;
-
     borderRadius: string;
 
     width_L: string;
@@ -174,21 +168,6 @@ export type TypeSSLayout = {
     margin_L: string;
     margin_M: string;
     margin_S: string;
-};
-
-export type TypeSSMenu = {
-    blurCount: string;
-    backgroundOpacity: string;
-};
-
-export type TypeSSDialog = {
-    blurCount: string;
-    backgroundOpacity: string;
-};
-
-export type TypeSSPopup = {
-    blurCount: string;
-    backgroundOpacity: string;
 };
 
 export type TypeSS = {
@@ -228,15 +207,6 @@ export type TypeSS = {
 
     //tooltip
     tooltip: TypeSSTooltip;
-
-    // menu
-    menu: TypeSSMenu;
-
-    // popup
-    popup: TypeSSPopup;
-
-    // dialog
-    dialog: TypeSSDialog;
 } & {
     [key: string]: string | { [key: string]: string | object };
 };
@@ -370,9 +340,6 @@ export const styleScheme: TypeSS = {
 
     //box
     box: {
-        blurCount: '8px',
-        backgroundOpacity: '',
-
         boxBorderRadius_S: '8px',
         boxBorderRadius_M: '12px',
         boxBorderRadius_L: '20px',
@@ -403,9 +370,6 @@ export const styleScheme: TypeSS = {
         boxGap_6: '36px',
     },
     layout: {
-        blurCount: '8px',
-        backgroundOpacity: '',
-
         borderRadius: '40px',
 
         width_L: '1092px',
@@ -428,20 +392,5 @@ export const styleScheme: TypeSS = {
         padding: '8px 12px',
         borderRadius: '4px',
         boxShadow: '2px 2px 3px 0px',
-    },
-
-    dialog: {
-        blurCount: '8px',
-        backgroundOpacity: '',
-    },
-
-    menu: {
-        blurCount: '8px',
-        backgroundOpacity: '',
-    },
-
-    popup: {
-        blurCount: '8px',
-        backgroundOpacity: '',
     },
 };

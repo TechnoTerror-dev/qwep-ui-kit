@@ -94,6 +94,12 @@ enum EModalPosition {
 
 type TModalPosition = 'bottom' | 'top' | 'right' | 'left' | 'center';
 
+type TBackgroundStyles = {
+    isBlur?: boolean;
+    backgroundOpacity?: string;
+    isHoverBlur?: boolean;
+};
+
 enum EVariantSize {
     M = 'M',
     L = 'L',
@@ -174,4 +180,5 @@ export namespace TBaseProps {
     export type ItemIconPosition = TItemIconPosition;
     export type OrientationContent = TOrientationContent;
     export type NotificationPosition = TNotificationPosition;
+    export type BackgroundStyles = TBackgroundStyles;
 }

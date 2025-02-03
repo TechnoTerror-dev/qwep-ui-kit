@@ -13,7 +13,7 @@ export const PopupHover = React.memo(
             {
                 trigger,
                 bg,
-                isBlur,
+                bgStyles,
 
                 delay = 300,
                 boxShadowColor,
@@ -73,7 +73,7 @@ export const PopupHover = React.memo(
                     </SPopup.Trigger>
                     <SPopup.Portal {...portalProps}>
                         <SPopup.Content
-                            $isBlur={isBlur}
+                            $bgStyles={bgStyles}
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}

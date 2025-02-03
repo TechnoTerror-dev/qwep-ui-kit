@@ -84,7 +84,13 @@ export const ShowProfile = () => {
             <Button onClick={skeletonClick} style={{ position: 'absolute', top: 0, right: 0 }}>
                 {skeleton ? 'Skeleton' : 'None skeleton'}
             </Button>
-            <BoxLayout>
+            <BoxLayout
+                bgStyles={{
+                    isBlur: true,
+                    isHoverBlur: true,
+                    backgroundOpacity: 'ac',
+                }}
+            >
                 <Tabs
                     defaultValue={'t-1'}
                     tabs={

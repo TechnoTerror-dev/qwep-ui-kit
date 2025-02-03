@@ -56,7 +56,15 @@ export const Main = () => {
     return (
         <MainContainer>
             <NotificationProvider>
-                <SMenu activeItem={pageName} itemSizeVariant={'M'} onChangeActiveItem={menuHandler}>
+                <SMenu
+                    activeItem={pageName}
+                    itemSizeVariant={'M'}
+                    onChangeActiveItem={menuHandler}
+                    bgStyles={{
+                        isBlur: true,
+                        backgroundOpacity: 'dd',
+                    }}
+                >
                     <MenuItem value={'box'}>Box</MenuItem>
                     <MenuItem value={'popup'}>Popup</MenuItem>
                     <MenuItem value={'profile'}>Profile</MenuItem>

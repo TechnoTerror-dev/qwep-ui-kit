@@ -46,7 +46,7 @@ export const ShowList = () => {
 
     return (
         <>
-            <MenuCard isBlur boxDisplay={'grid'} boxShadowVariant={'M'}>
+            <MenuCard boxDisplay={'grid'} boxShadowVariant={'M'}>
                 <Box boxPaddingVariant={'p-3'}>
                     <WorkspaceName mr={'mb-3'} color={colors.lightElem}>
                         Сумотори

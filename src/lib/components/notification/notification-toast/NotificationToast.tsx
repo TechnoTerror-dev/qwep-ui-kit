@@ -1,5 +1,5 @@
 import { Icon } from '@src/lib';
-import { CSSBaseBox, CSSBlurEffect } from '@src/lib/common-styled-component/StyledComponentBox';
+import { CSSBaseBox } from '@src/lib/common-styled-component/StyledComponentBox';
 import { getColor } from '@src/lib/common/getColor';
 import { useColorScheme } from '@src/lib/general';
 import { TypeColorScheme } from '@src/lib/general/colors';
@@ -139,13 +139,13 @@ const createGradient = (startColor: string, endColor: string) => `linear-gradien
 
 const COLOR_VARIANT = {
     [EBaseProps.VariantToast.INFO]: (colors: TypeColorScheme) =>
-        createGradient(colors.backgroundInfo, `${colors.backgroundInfo}50`),
+        createGradient(colors.backgroundInfo, `${colors.backgroundInfo}20`),
     [EBaseProps.VariantToast.WARNING]: (colors: TypeColorScheme) =>
-        createGradient(colors.backgroundWarning, `${colors.backgroundWarning}50`),
+        createGradient(colors.backgroundWarning, `${colors.backgroundWarning}20`),
     [EBaseProps.VariantToast.ERROR]: (colors: TypeColorScheme) =>
-        createGradient(colors.backgroundError, `${colors.backgroundError}50`),
+        createGradient(colors.backgroundError, `${colors.backgroundError}20`),
     [EBaseProps.VariantToast.SUCCESS]: (colors: TypeColorScheme) =>
-        createGradient(colors.backgroundSuccess, `${colors.backgroundSuccess}50`),
+        createGradient(colors.backgroundSuccess, `${colors.backgroundSuccess}20`),
 };
 
 const applyBoxShadow = ($styles: TypeSSBox, $colors: TypeColorScheme) =>
@@ -207,7 +207,10 @@ const SRoot = styled.div<SRootProps>`
 
     ${(props) => {
         if (props.$isBlur) {
-            return CSSBlurEffect({ $blurCount: props.$styles.box.blurCount });
+            return css`
+                backdrop-filter: blur(8px) saturate(110%);
+                -webkit-backdrop-filter: blur(8px) saturate(110%);
+            `;
         }
     }}
 `;

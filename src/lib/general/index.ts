@@ -8,12 +8,9 @@ import {
     TypeSSBox,
     TypeSSBtn,
     TypeSSCheckbox,
-    TypeSSDialog,
     TypeSSIcon,
     TypeSSInp,
     TypeSSMR,
-    TypeSSMenu,
-    TypeSSPopup,
     TypeSSRadio,
     TypeSSSelect,
     TypeSSSlider,
@@ -60,7 +57,4 @@ export namespace TypeGeneral {
     export type SSRadio = Copy<TypeSSRadio>;
     export type SSTypography = Copy<TypeSSTypography>;
     export type SSBox = Copy<TypeSSBox>;
-    export type SSMenu = Copy<TypeSSMenu>;
-    export type SSPopup = Copy<TypeSSPopup>;
-    export type SSDialog = Copy<TypeSSDialog>;
 }

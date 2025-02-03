@@ -1,22 +1,27 @@
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
-import { TypeSSBox, TypeSSMR, TypeSSPopup, TypeSSTypography } from '@src/lib/general/styleScheme';
+import { TypeSSBox, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { SBasePopup, TBasePopup } from '../base-popup/BasePopup';
-import { CSSBaseBox, CSSSimpleBox, CSSBlurEffect } from '@src/lib/common-styled-component/StyledComponentBox';
+import {
+    CSSBaseBox,
+    CSSSimpleBox,
+    CSSBlurEffect,
+    CSSBackgroundEffect,
+} from '@src/lib/common-styled-component/StyledComponentBox';
 import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 
 type TypeStyles = {
     mr: TypeSSMR;
     box: TypeSSBox;
     typography: TypeSSTypography;
-    popup: TypeSSPopup;
 };
 
 type PopupProps = {
-    isBlur?: boolean;
+    bgStyles?: TBaseProps.BackgroundStyles;
     boxShadowColor?: Hex;
     boxShadowVariant?: TBoxProps.BoxShadowVariant;
     boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
@@ -32,7 +37,7 @@ type PopupProps = {
 } & TBasePopup.Main;
 
 type SContentProps = {
-    $isBlur?: boolean;
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $bg?: Hex;
@@ -60,8 +65,6 @@ const opacity_SContentEffect = keyframes`
 
 const SContent = styled(SBasePopup.Content)<SContentProps>`
     overflow: hidden;
-    background-color: ${({ $styles, $colors, $bg }) =>
-        $bg ?? `${$colors.backgroundBox}${$styles.popup.backgroundOpacity}`};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
@@ -80,11 +83,14 @@ const SContent = styled(SBasePopup.Content)<SContentProps>`
         })};
     animation: ${opacity_SContentEffect} 0.3s ease-in-out;
 
-    ${(props) => {
-        if (props.$isBlur) {
-            return CSSBlurEffect({ $blurCount: props.$styles.popup.blurCount });
-        }
-    }};
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.backgroundBox,
+            bg: props.$bg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
+
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
 `;
 
 export const Popup = React.memo(
@@ -92,7 +98,7 @@ export const Popup = React.memo(
         (
             {
                 trigger,
-                isBlur,
+                bgStyles,
                 bg,
                 boxShadowColor,
                 boxWidthVariant,
@@ -112,7 +118,7 @@ export const Popup = React.memo(
             ref
         ) => {
             const colors = useColorScheme($colors);
-            const styles = useStyleScheme(['mr', 'box', 'typography', 'popup'], $styles);
+            const styles = useStyleScheme(['mr', 'box', 'typography'], $styles);
 
             return (
                 <SBasePopup.Root {...rest}>
@@ -121,7 +127,7 @@ export const Popup = React.memo(
                     </SBasePopup.Trigger>
                     <SBasePopup.Portal {...portalProps}>
                         <SContent
-                            $isBlur={isBlur}
+                            $bgStyles={bgStyles}
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}

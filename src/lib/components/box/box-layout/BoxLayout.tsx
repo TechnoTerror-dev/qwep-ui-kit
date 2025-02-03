@@ -1,4 +1,5 @@
 import {
+    CSSBackgroundEffect,
     CSSBaseLayout,
     CSSBaseLayoutStart,
     CSSBlurEffect,
@@ -8,6 +9,7 @@ import { useColorScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSLayout } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import { JSX } from 'react/jsx-runtime';
 import { styled } from 'styled-components';
@@ -22,7 +24,7 @@ type WrapperProps = {
 
 export type BoxLayoutProps = {
     as?: keyof JSX.IntrinsicElements;
-    isBlur?: boolean;
+    bgStyles?: TBaseProps.BackgroundStyles;
     wrapperProps?: WrapperProps;
     $styles?: TypeStyles;
     $colors?: TypeColorScheme;
@@ -33,7 +35,7 @@ type SRootProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SWrapperProps = {
-    $isBlur?: boolean;
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $wrapperBg?: Hex;
     $styles: TypeStyles;
     $colors: TypeColorScheme;
@@ -42,34 +44,33 @@ type SWrapperProps = {
 const SRoot = styled.div<SRootProps>`
     position: relative;
     max-width: 100%;
-
     ${(props) => CSSBaseLayout(props.$styles.layout)};
 `;
 
 const SWrapper = styled.div<SWrapperProps>`
     position: relative;
     margin: 0 auto;
-    background-color: ${(props) =>
-        props.$wrapperBg ?? `${props.$colors.layoutBox}${props.$styles.layout.backgroundOpacity}`};
     ${(props) => CSSBoxLayout(props.$styles.layout)};
     ${CSSBaseLayoutStart};
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.layoutBox,
+            bg: props.$wrapperBg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
 
-    ${(props) => {
-        if (props.$isBlur) {
-            return CSSBlurEffect({ $blurCount: props.$styles.layout.blurCount });
-        }
-    }}
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
 `;
 
 export const BoxLayout = React.memo(
     React.forwardRef<HTMLDivElement, BoxLayoutProps>(
-        ({ as: Root = 'div', isBlur, wrapperProps, $styles, $colors, ...rest }, ref) => {
+        ({ as: Root = 'div', bgStyles, wrapperProps, $styles, $colors, ...rest }, ref) => {
             const colors = useColorScheme($colors);
             const styles = useStyleScheme(['layout'], $styles);
 
             return (
                 <SRoot as={Root} ref={ref} $styles={styles} {...rest}>
-                    <SWrapper $styles={styles} $colors={colors} $isBlur={isBlur} {...wrapperProps}>
+                    <SWrapper $styles={styles} $colors={colors} $bgStyles={bgStyles} {...wrapperProps}>
                         {rest.children}
                     </SWrapper>
                 </SRoot>

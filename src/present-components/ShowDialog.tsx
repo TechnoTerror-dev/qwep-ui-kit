@@ -15,11 +15,21 @@ export const ShowDialog = () => {
             <Title sizeVariant={'L'} mr={'m-6'}>
                 ShowDialog
             </Title>
-            <BoxLayout isBlur>
+            <BoxLayout>
                 <Box boxDisplay={'flex'} boxGapVariant={'g-2'}>
                     <Button onClick={() => setOpen(true)}>Open Modal</Button>
 
-                    <Dialog isBlur boxDisplay={'grid'} open={open} onOpenChange={setOpen} boxGapVariant={'g-3'}>
+                    <Dialog
+                        bgStyles={{
+                            isBlur: true,
+                            isHoverBlur: true,
+                            backgroundOpacity: 'ac',
+                        }}
+                        boxDisplay={'grid'}
+                        open={open}
+                        onOpenChange={setOpen}
+                        boxGapVariant={'g-3'}
+                    >
                         <SHeader boxDisplay={'flex'}>
                             <Title>Modal</Title>
                             <IconButton onClick={() => setOpen(false)} borderRadius={'round'} colorVariant={'error'}>

@@ -1,9 +1,14 @@
-import { TypeSSBox, TypeSSBtn, TypeSSMenu, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
+import { TypeSSBox, TypeSSBtn, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { css, styled } from 'styled-components';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
-import { CSSBaseBox, CSSBlurEffect, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import {
+    CSSBackgroundEffect,
+    CSSBaseBox,
+    CSSBlurEffect,
+    CSSSimpleBox,
+} from '@src/lib/common-styled-component/StyledComponentBox';
 import { getMargin } from '@src/lib/common/getMargin';
 import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
 import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
@@ -16,18 +21,17 @@ type TypeStyles = {
     mr: TypeSSMR;
     btn: TypeSSBtn;
     typography: TypeSSTypography;
-    menu: TypeSSMenu;
 };
 
 type BoxMenuProps = {
     mr?: TBaseProps.Margin;
+    bgStyles?: TBaseProps.BackgroundStyles;
     orientation?: TBaseProps.OrientationContent;
     boxWidthVariant?: TBoxProps.BoxWidthVariant;
     boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     boxGapVariant?: TBoxProps.BoxGapVariant;
     bg?: Hex;
     boxShadowColor?: Hex;
-    isBlur?: boolean;
     boxShadowVariant?: TBoxProps.BoxShadowVariant;
     boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
     onChangeActiveItem?: (value: string) => void | Promise<void>;
@@ -47,7 +51,7 @@ type BoxMenuProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
-    $isBlur?: boolean;
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $bg?: Hex;
@@ -78,7 +82,6 @@ const ORIENTATION = {
 const SRoot = styled.div<SRootProps>`
     position: relative;
     box-sizing: border-box;
-    background-color: ${(props) => props.$bg ?? `${props.$colors.secondary}${props.$styles.menu.backgroundOpacity}`};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
@@ -96,11 +99,14 @@ const SRoot = styled.div<SRootProps>`
         })};
     ${(props) => ORIENTATION[props.$orientation]}
     ${(props) => getMargin(props.$styles.mr, props.$mr)};
-    ${(props) => {
-        if (props.$isBlur) {
-            return CSSBlurEffect({ $blurCount: props.$styles.menu.blurCount });
-        }
-    }};
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.secondary,
+            bg: props.$bg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
+
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
 `;
 
 export const BoxMenu = React.memo(
@@ -109,7 +115,7 @@ export const BoxMenu = React.memo(
             {
                 mr,
                 boxWidthVariant,
-                isBlur,
+                bgStyles,
                 boxPaddingVariant = EBoxProps.BoxPaddingVariant.P1,
                 bg,
                 boxGapVariant = EBoxProps.BoxGapVariant.G1,
@@ -135,7 +141,7 @@ export const BoxMenu = React.memo(
             ref
         ) => {
             const colors = useColorScheme($colors);
-            const styles = useStyleScheme(['box', 'mr', 'btn', 'typography', 'menu'], $styles);
+            const styles = useStyleScheme(['box', 'mr', 'btn', 'typography'], $styles);
             const [activeValue, setActiveValue] = useState<string>(activeItem ?? '');
 
             const handleClick = useCallback(
@@ -196,7 +202,7 @@ export const BoxMenu = React.memo(
             return (
                 <SRoot
                     ref={ref}
-                    $isBlur={isBlur}
+                    $bgStyles={bgStyles}
                     $styles={styles}
                     $colors={colors}
                     $mr={mr}

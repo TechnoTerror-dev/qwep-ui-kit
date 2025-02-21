@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { StyledProvider } from './lib/general/StyledContext';
 import { ThemeProvider, TypeColorTheme } from './lib/general/ThemeContext';
 import { Main } from './present-components/Main';
 import './styles/index.css';
-import { Button } from './lib';
+// import { Button } from './lib';
 // import { Button } from './lib';
 
 const Root = () => {

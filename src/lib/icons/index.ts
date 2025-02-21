@@ -38,7 +38,7 @@ import { FolderDelete } from './FolderDelete';
 import { Gear } from './Gear';
 import { Global } from './Global';
 import { Group } from './Group';
-import { IconSVGContainer, IconSVGContainerProps } from './IconSVGContainer';
+import { IconSVGContainer } from './IconSVGContainer';
 import { Image } from './Image';
 import { Inbox } from './Inbox';
 import { Info } from './Info';
@@ -201,5 +201,3 @@ export {
     TabletFilled,
     QuestionFilled,
 };
-
-export type { IconSVGContainerProps };

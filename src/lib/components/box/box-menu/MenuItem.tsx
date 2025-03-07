@@ -17,6 +17,7 @@ type TypeStyles = {
 type MenuItemProps = {
     value: string;
     active?: boolean;
+    isRippleEffect?: boolean;
     sizeVariant?: TBaseProps.VariantSize;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
@@ -111,6 +112,7 @@ export const MenuItem = React.memo(
         (
             {
                 active,
+                isRippleEffect,
                 color,
                 sizeVariant = EBaseProps.VariantSize.L,
                 onClick,
@@ -131,6 +133,7 @@ export const MenuItem = React.memo(
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                 itemRippleEffect(
+                    isRippleEffect,
                     event,
                     getColor({
                         cs: colors,

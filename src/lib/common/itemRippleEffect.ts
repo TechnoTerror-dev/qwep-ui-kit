@@ -1,5 +1,5 @@
 export const itemRippleEffect = (
-    isRippleEffect: boolean = false,
+    isRippleEffect: boolean = true,
     event: React.MouseEvent<HTMLElement>,
     color: string,
     duration: number = 800

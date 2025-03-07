@@ -77,7 +77,7 @@ export const colorsLight: TypeColorScheme = {
     background: '#CBD5E1',
     layoutBox: '#ffffff',
     backgroundBox: '#ffffff',
-    backgroundTooltip: '#1f1f1fc8',
+    backgroundTooltip: '#1f1f1f',
     disabled: '#B9BCBE',
     shadowColor: '#002B4D40',
 
@@ -123,7 +123,7 @@ export const colorsDark: TypeColorScheme = {
     background: '#121923',
     layoutBox: '#1E293B',
     backgroundBox: '#1E293B',
-    backgroundTooltip: '#334155c8',
+    backgroundTooltip: '#334155',
     disabled: '#64748B',
     shadowColor: '#00000000',
 

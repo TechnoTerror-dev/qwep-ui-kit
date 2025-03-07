@@ -12,6 +12,7 @@ import {
     CircleDecorationTitle,
     Avatar,
     BoxSkeleton,
+    IconButton,
 } from '@src/lib';
 import { MainTextField, PhoneTextField, WrapperInput } from '@src/lib/components/input';
 
@@ -127,6 +128,18 @@ export const ShowProfile = () => {
                     <Separator mr={'my-9'} />
 
                     <TabContent value={'t-1'} boxDisplay={'block'}>
+                        <IconButton>
+                            <Icon.Settings />
+                        </IconButton>
+                        <IconButton sizeVariant={'M'}>
+                            <Icon.Settings />
+                        </IconButton>
+                        <IconButton colorVariant={'error'}>
+                            <Icon.Settings />
+                        </IconButton>
+                        <IconButton borderRadius={'round'}>
+                            <Icon.Settings />
+                        </IconButton>
                         <BoxAdaptive boxDisplay={'grid'} isSkeleton={skeleton}>
                             <CircleDecorationTitle title={'Фото'} icon={<Icon.Photo />}></CircleDecorationTitle>
                             <Box boxDisplay={'flex'}>

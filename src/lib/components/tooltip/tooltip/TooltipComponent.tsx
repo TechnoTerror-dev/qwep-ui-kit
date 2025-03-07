@@ -5,7 +5,6 @@ import React from 'react';
 type SContentProps = React.ComponentPropsWithRef<typeof Tooltip.Content>;
 
 const SContent = styled(Tooltip.Content)<SContentProps>`
-    user-select: none;
     animation-duration: 400ms;
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;

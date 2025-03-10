@@ -3,8 +3,9 @@ import { StickerButton, TStickerConfig } from './StickerButton';
 import { styled } from 'styled-components';
 import { Icon, Title } from '@src/lib';
 import { FilterBarController } from '../type/controler.enum';
+import { TypeGeneral } from '@src/lib/general';
 
-export type TStickerController = {
+export type TStickerControllerConfig = {
     id: string;
     controller: FilterBarController.Sticker;
     generalTitle: React.ReactNode;
@@ -12,6 +13,10 @@ export type TStickerController = {
     stickers: TStickerConfig[];
     onChange: (updatedValues: Record<string, boolean>) => void;
 };
+
+type TStickerController = {
+    colors: TypeGeneral.ColorScheme;
+} & TStickerControllerConfig;
 
 const SRoot = styled.div`
     display: block;

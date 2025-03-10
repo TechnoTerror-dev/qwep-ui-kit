@@ -98,6 +98,7 @@ import { SettingsFilled } from './SettingsFilled';
 import { BuildingAltFilled } from './BuildingAltFilled';
 import { TabletFilled } from './TabletFilled';
 import { QuestionFilled } from './QuestionFilled';
+import { Sum } from './Sum';
 
 export {
     Add,
@@ -200,4 +201,5 @@ export {
     BuildingAltFilled,
     TabletFilled,
     QuestionFilled,
+    Sum,
 };

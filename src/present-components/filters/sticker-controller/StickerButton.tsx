@@ -9,7 +9,7 @@ export type TStickerConfig = {
     isActive: boolean;
 };
 
-export type TSticker = {
+type TSticker = {
     onCheck: (isActive: boolean) => void;
 } & TStickerConfig;
 

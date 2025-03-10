@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
-import { Icon, PopupHover, Title } from '@src/lib';
-import { ListItem, TListItem } from './ListItem';
+import { BaseText, Common, Icon, Title } from '@src/lib';
+import { ListItem, TListItemConfig } from './ListItem';
 import { FilterBarController } from '../type/controler.enum';
+import { TypeGeneral } from '@src/lib/general';
+import { ListPopup } from './ListPopup';
 
-export type TListController = {
+export type TListControllerConfig = {
     id: string;
     controller: FilterBarController.List;
     generalTitle: React.ReactNode;
-    isOpen?: boolean;
-    list: TListItem[];
-    onOpen?: (isOpen: boolean) => void;
-    subTitle?: React.ReactNode;
+    isDefaultOpen?: boolean;
+    list: TListItemConfig[];
+    isCount?: boolean;
+    isScroll?: boolean;
+    isLargeList?: boolean;
+    maxHeight?: string;
+    isCheckboxIndicator?: boolean;
+    onChange: (updatedValues: Record<string, boolean>) => void;
 };
+
+type TListController = {
+    colors: TypeGeneral.ColorScheme;
+} & TListControllerConfig;
 
 const SRoot = styled.div`
     display: block;
@@ -20,11 +30,16 @@ const SRoot = styled.div`
     height: fit-content;
 `;
 
-const SContent = styled.ul`
+type SContentProps = {
+    $colors: TypeGeneral.ColorScheme;
+    $maxHeight?: string;
+};
+
+const SContent = styled.ul<SContentProps>`
     position: relative;
+    overflow-x: hidden;
     width: 240px;
-    overflow: hidden;
-    height: 240px;
+    height: ${(props) => props.$maxHeight ?? '240px'};
     padding: 0 12px;
     animation: Show_open 300ms ease-in-out;
     @keyframes Show_open {
@@ -37,15 +52,7 @@ const SContent = styled.ul`
             transform: translateY(0px);
         }
     }
-`;
-
-const SContentHover = styled.ul`
-    position: relative;
-    width: 300px;
-    max-height: 80vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 0 12px;
+    ${Common.StyledScrollbarItem}
 `;
 
 const SContentTitle = styled.div`
@@ -57,62 +64,109 @@ const SContentTitle = styled.div`
     user-select: none;
 `;
 
+const SCount = styled.div`
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    user-select: none;
+    gap: 5px;
+`;
+
 export const ListController = React.memo(
-    ({ id, generalTitle, isOpen = true, onOpen, subTitle, list }: TListController) => {
+    ({
+        id,
+        generalTitle,
+        isDefaultOpen = true,
+        isCount = true,
+        isLargeList = true,
+        maxHeight,
+        list,
+        onChange,
+        colors,
+        isCheckboxIndicator,
+    }: TListController) => {
+        const [isOpen, setIsOpen] = useState(isDefaultOpen);
+        const sortedList = useMemo(() => [...list].sort((a, b) => a.title.localeCompare(b.title)), [list]);
+        const [listValues, setListValues] = useState(
+            sortedList.reduce(
+                (acc, item) => {
+                    acc[item.id] = item.isActive;
+                    return acc;
+                },
+                {} as Record<string, boolean>
+            )
+        );
+
+        const handleStickerToggle = (itemId: string, isActive: boolean) => {
+            setListValues((prev) => {
+                const updatedValues = {
+                    ...prev,
+                    [itemId]: isActive,
+                };
+                if (onChange) {
+                    onChange(updatedValues);
+                }
+                return updatedValues;
+            });
+        };
+
         return (
-            <SRoot>
-                <SContentTitle role={'button'} onClick={() => onOpen && onOpen(!isOpen)}>
-                    <Title sizeVariant={'S'}>{generalTitle}</Title>
-                    {subTitle}
+            <SRoot id={id}>
+                <SContentTitle role="button" onClick={() => setIsOpen(!isOpen)}>
+                    <Title sizeVariant="S">{generalTitle}</Title>
+                    {isCount && (
+                        <SCount>
+                            <Icon.Sum sizeVariant={'M'} color={colors.successItem} />
+                            <BaseText color={colors.successItem}>{sortedList.length}</BaseText>
+                        </SCount>
+                    )}
                     <Icon.Arrow position={isOpen ? 'top' : 'bottom'} />
                 </SContentTitle>
-                {isOpen && (
-                    <PopupHover
-                        contentProps={{
-                            side: 'right',
-                        }}
-                        bgStyles={{
-                            isBlur: true,
-                            isHoverBlur: true,
-                            backgroundOpacity: 'ac',
-                        }}
-                        trigger={
-                            <SContent>
-                                {list.map(({ title, isActive, ...itemProps }: TListItem) => {
-                                    return <ListItem key={id} title={title} isActive={isActive} {...itemProps} />;
-                                })}
-                            </SContent>
-                        }
-                    >
-                        <SContentHover>
-                            {list.map(({ title, isActive, ...itemProps }: TListItem) => {
-                                return <ListItem key={id} title={title} isActive={isActive} {...itemProps} />;
+
+                {isOpen &&
+                    (isLargeList ? (
+                        <ListPopup
+                            list={sortedList}
+                            listValues={listValues}
+                            handleStickerToggle={handleStickerToggle}
+                            isCheckboxIndicator={isCheckboxIndicator}
+                            colors={colors}
+                            trigger={
+                                <SContent $colors={colors} $maxHeight={maxHeight}>
+                                    {sortedList.map(({ id: itemId, title, subTitle }: TListItemConfig) => {
+                                        return (
+                                            <ListItem
+                                                key={itemId}
+                                                id={itemId}
+                                                title={title}
+                                                subTitle={subTitle}
+                                                isActive={listValues[itemId]}
+                                                onCheck={(newState) => handleStickerToggle(itemId, newState)}
+                                                isCheckboxIndicator={isCheckboxIndicator}
+                                            />
+                                        );
+                                    })}
+                                </SContent>
+                            }
+                        />
+                    ) : (
+                        <SContent $colors={colors} $maxHeight={maxHeight}>
+                            {sortedList.map(({ id: itemId, title, subTitle }: TListItemConfig) => {
+                                return (
+                                    <ListItem
+                                        key={itemId}
+                                        id={itemId}
+                                        title={title}
+                                        subTitle={subTitle}
+                                        isActive={listValues[itemId]}
+                                        onCheck={(newState) => handleStickerToggle(itemId, newState)}
+                                        isCheckboxIndicator={isCheckboxIndicator}
+                                    />
+                                );
                             })}
-                        </SContentHover>
-                    </PopupHover>
-                )}
+                        </SContent>
+                    ))}
             </SRoot>
         );
     }
 );
-
-// <Box
-//     boxDisplay={'flex'}
-//     mr={'mb-2'}
-//     style={{ alignItems: 'center', justifyContent: 'space-between' }}
-// >
-//     <Title mr={'mb-2'}>Popup Title</Title>
-//     <ClosePopupButton>
-//         <IconButton
-//             borderRadius={'round'}
-//             colorVariant={'error'}
-//             sizeVariant={'M'}
-//             onClick={() => console.log('close popup')}
-//         >
-//             <Icon.Close />
-//         </IconButton>
-//     </ClosePopupButton>
-// </Box>
-// <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
-// <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
-// </PopupHover>

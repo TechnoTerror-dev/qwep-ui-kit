@@ -13,7 +13,7 @@ import { ShowNotification } from './ShowNotification';
 import { styled } from 'styled-components';
 import { ShowTooltip } from './ShowTooltip';
 import { ShowColors } from './ShowColors';
-import { ShowFilterBar } from './filters/ShowFilterBar';
+import { ShowFilterBar } from './ShowFilterBar';
 
 const SMenu = styled(BoxMenu)`
     position: absolute;

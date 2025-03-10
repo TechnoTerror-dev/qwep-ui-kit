@@ -1,8 +1,7 @@
 import { Icon } from '@src/lib';
-import { FilterBar } from './FilterBar';
-import { FilterBarController } from './type/controler.enum';
+import { TStickerConfig } from '../sticker-controller/StickerButton';
 
-const initConfigStickers = [
+export const initConfigStickers: TStickerConfig[] = [
     {
         id: 'crown',
         isActive: true,
@@ -45,25 +44,3 @@ const initConfigStickers = [
         icon: <Icon.More />,
     },
 ];
-
-export const ShowFilterBar = () => {
-    const handleFilterChange = (data: Record<string, boolean>) => {
-        console.log('Фильтры изменились:', data);
-    };
-
-    return (
-        <div style={{ margin: '60px 0 0 50px', width: '100%' }}>
-            <FilterBar
-                controllers={[
-                    {
-                        id: 'sticker-controller',
-                        controller: FilterBarController.Sticker,
-                        generalTitle: 'ПОПУЛЯРНЫЕ ФИЛЬТРЫ',
-                        stickers: initConfigStickers,
-                        onChange: handleFilterChange,
-                    },
-                ]}
-            />
-        </div>
-    );
-};

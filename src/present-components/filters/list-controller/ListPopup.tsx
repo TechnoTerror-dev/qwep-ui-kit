@@ -68,7 +68,7 @@ export const ListPopup = React.memo(
             <PopupHover
                 contentProps={{
                     side: 'right',
-                    align: 'start',
+                    align: 'center',
                     sideOffset: 10,
                 }}
                 trigger={trigger}

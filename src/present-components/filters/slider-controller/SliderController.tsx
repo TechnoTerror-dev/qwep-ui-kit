@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { Icon, Title } from '@src/lib';
 import { SliderItem, TSliderItem } from './SliderItem';
 import { FilterBarController } from '../type/controler.enum';
+import { TypeGeneral } from '@src/lib/general';
 
-export type TSliderController = {
+export type TSliderControllerConfig = {
     id: string;
     controller: FilterBarController.Slider;
     generalTitle: string;
-    isOpen?: boolean;
-    onOpen?: (isOpen: boolean) => void;
+    isDefaultOpen?: boolean;
 } & TSliderItem;
+
+type TSliderController = {
+    colors: TypeGeneral.ColorScheme;
+} & TSliderControllerConfig;
 
 const SRoot = styled.div`
     display: block;
@@ -22,7 +26,7 @@ const SContent = styled.ul`
     position: relative;
     width: 240px;
     overflow: hidden;
-    height: 240px;
+
     padding: 3px 12px 0px 12px;
     animation: Show_open 300ms ease-in-out;
     @keyframes Show_open {
@@ -47,11 +51,21 @@ const SContentTitle = styled.div`
 `;
 
 export const SliderController = React.memo(
-    ({ id, generalTitle, isOpen = true, onOpen, min, max, minPlaceholder, maxPlaceholder }: TSliderController) => {
+    ({
+        id,
+        generalTitle,
+        isDefaultOpen = true,
+        min,
+        max,
+        minPlaceholder,
+        maxPlaceholder,
+        onChange,
+    }: TSliderController) => {
+        const [isOpen, setIsOpen] = useState(isDefaultOpen);
         return (
             <SRoot id={id}>
-                <SContentTitle role={'button'} onClick={() => onOpen && onOpen(!isOpen)}>
-                    <Title sizeVariant={'S'}>{generalTitle}</Title>
+                <SContentTitle role="button" onClick={() => setIsOpen(!isOpen)}>
+                    <Title sizeVariant="S">{generalTitle}</Title>
                     <Icon.Arrow position={isOpen ? 'top' : 'bottom'} />
                 </SContentTitle>
                 {isOpen && (
@@ -61,6 +75,7 @@ export const SliderController = React.memo(
                             max={max}
                             minPlaceholder={minPlaceholder}
                             maxPlaceholder={maxPlaceholder}
+                            onChange={onChange}
                         />
                     </SContent>
                 )}

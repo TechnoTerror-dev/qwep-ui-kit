@@ -24,9 +24,7 @@ const SRoot = styled.div`
 
 const SContent = styled.ul`
     position: relative;
-    width: 240px;
     overflow: hidden;
-
     padding: 3px 12px 0px 12px;
     animation: Show_open 300ms ease-in-out;
     @keyframes Show_open {

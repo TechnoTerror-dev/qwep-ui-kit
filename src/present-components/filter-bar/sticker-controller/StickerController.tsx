@@ -54,7 +54,7 @@ const SContentTitle = styled.div`
 `;
 
 export const StickerController = React.memo(
-    ({ id, generalTitle, isDefaultOpen = true, stickers, onChange }: TStickerController) => {
+    ({ id, generalTitle, isDefaultOpen = true, stickers, onChange, colors }: TStickerController) => {
         const [isOpen, setIsOpen] = useState(isDefaultOpen);
         const [stickerValues, setStickerValues] = useState(
             stickers.reduce(
@@ -88,15 +88,17 @@ export const StickerController = React.memo(
                 {isOpen && (
                     <SContent>
                         {stickers.map((sticker) => {
-                            const { id: stickerId, title, icon } = sticker;
+                            const { id: stickerId, title, icon, ...props } = sticker;
                             return (
                                 <StickerButton
                                     id={stickerId}
                                     key={stickerId}
                                     icon={icon}
                                     title={title}
-                                    isActive={stickerValues[stickerId]}
                                     onCheck={(newState) => handleStickerToggle(stickerId, newState)}
+                                    colors={colors}
+                                    {...props}
+                                    isActive={stickerValues[stickerId]}
                                 />
                             );
                         })}

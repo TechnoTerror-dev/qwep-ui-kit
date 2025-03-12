@@ -133,16 +133,17 @@ export const ListController = React.memo(
                             colors={colors}
                             trigger={
                                 <SContent $colors={colors} $maxHeight={maxHeight}>
-                                    {sortedList.map(({ id: itemId, title, subTitle }: TListItemConfig) => {
+                                    {sortedList.map(({ id: itemId, title, subTitle, ...props }: TListItemConfig) => {
                                         return (
                                             <ListItem
                                                 key={itemId}
                                                 id={itemId}
                                                 title={title}
                                                 subTitle={subTitle}
-                                                isActive={listValues[itemId]}
                                                 onCheck={(newState) => handleStickerToggle(itemId, newState)}
                                                 isCheckboxIndicator={isCheckboxIndicator}
+                                                {...props}
+                                                isActive={listValues[itemId]}
                                             />
                                         );
                                     })}
@@ -151,16 +152,17 @@ export const ListController = React.memo(
                         />
                     ) : (
                         <SContent $colors={colors} $maxHeight={maxHeight}>
-                            {sortedList.map(({ id: itemId, title, subTitle }: TListItemConfig) => {
+                            {sortedList.map(({ id: itemId, title, subTitle, ...props }: TListItemConfig) => {
                                 return (
                                     <ListItem
                                         key={itemId}
                                         id={itemId}
                                         title={title}
                                         subTitle={subTitle}
-                                        isActive={listValues[itemId]}
                                         onCheck={(newState) => handleStickerToggle(itemId, newState)}
                                         isCheckboxIndicator={isCheckboxIndicator}
+                                        {...props}
+                                        isActive={listValues[itemId]}
                                     />
                                 );
                             })}

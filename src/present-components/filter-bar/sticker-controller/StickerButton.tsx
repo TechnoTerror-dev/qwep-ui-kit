@@ -1,4 +1,4 @@
-import { TypeGeneral, useColorScheme } from '@src/lib/general';
+import { TypeGeneral } from '@src/lib/general';
 import React from 'react';
 import { css, styled } from 'styled-components';
 
@@ -7,10 +7,11 @@ export type TStickerConfig = {
     title?: string;
     icon?: React.ReactNode;
     isActive: boolean;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 type TSticker = {
     onCheck: (isActive: boolean) => void;
+    colors: TypeGeneral.ColorScheme;
 } & TStickerConfig;
 
 type SRootProps = {
@@ -66,9 +67,7 @@ const SRoot = styled.button<SRootProps>`
     }}
 `;
 
-export const StickerButton = React.memo(({ title, icon, isActive = false, onCheck, ...props }: TSticker) => {
-    const colors = useColorScheme();
-
+export const StickerButton = React.memo(({ title, icon, isActive = false, onCheck, colors, ...props }: TSticker) => {
     const renderIconButton = () =>
         React.cloneElement(icon as React.ReactElement, {
             // @ts-ignore
@@ -80,7 +79,7 @@ export const StickerButton = React.memo(({ title, icon, isActive = false, onChec
             $colors={colors}
             $isActive={isActive}
             $isTitle={Boolean(title)}
-            onClick={() => onCheck?.(!isActive)}
+            onClick={() => onCheck(!isActive)}
             {...props}
         >
             {icon && <SIconContainer>{renderIconButton()}</SIconContainer>}

@@ -99,6 +99,11 @@ import { BuildingAltFilled } from './BuildingAltFilled';
 import { TabletFilled } from './TabletFilled';
 import { QuestionFilled } from './QuestionFilled';
 import { Sum } from './Sum';
+import { Crown } from './Crown';
+import { ArrowLeftRight } from './ArrowLeftRight';
+import { HashTag } from './HashTag';
+import { House } from './House';
+import { Check } from './Check';
 
 export {
     Add,
@@ -202,4 +207,9 @@ export {
     TabletFilled,
     QuestionFilled,
     Sum,
+    Crown,
+    ArrowLeftRight,
+    HashTag,
+    House,
+    Check,
 };

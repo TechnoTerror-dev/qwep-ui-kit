@@ -104,17 +104,18 @@ export const ListPopup = React.memo(
                 </SPanel>
 
                 <SContentHover $colors={colors}>
-                    {filteredList.map(({ id: itemId, title, subTitle }: TListItemConfig) => {
+                    {filteredList.map(({ id: itemId, title, subTitle, ...props }: TListItemConfig) => {
                         return (
                             <ListItem
                                 key={itemId}
                                 id={itemId}
                                 title={title}
                                 subTitle={subTitle}
-                                isActive={listValues[itemId]}
                                 onCheck={(newState) => handleStickerToggle(itemId, newState)}
                                 isPopup
                                 isCheckboxIndicator={isCheckboxIndicator}
+                                {...props}
+                                isActive={listValues[itemId]}
                             />
                         );
                     })}

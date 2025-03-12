@@ -8,7 +8,7 @@ export type TListItemConfig = {
     title: string;
     subTitle?: React.ReactNode;
     isActive: boolean;
-};
+} & React.LiHTMLAttributes<HTMLLIElement>;
 
 export type TListItem = {
     onCheck: (value: boolean) => void;

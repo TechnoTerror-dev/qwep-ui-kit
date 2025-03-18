@@ -14,6 +14,7 @@ import { styled } from 'styled-components';
 import { ShowTooltip } from './ShowTooltip';
 import { ShowColors } from './ShowColors';
 import { ShowFilterBar } from './ShowFilterBar';
+import { ShowSwitch } from './ShowSwitch';
 
 const SMenu = styled(BoxMenu)`
     position: absolute;
@@ -34,6 +35,7 @@ const pages = {
     notification: <ShowNotification />,
     tooltip: <ShowTooltip />,
     filter: <ShowFilterBar />,
+    switch: <ShowSwitch />,
 };
 
 export const Main = () => {
@@ -79,6 +81,7 @@ export const Main = () => {
                     <MenuItem value={'icons'}>Icons</MenuItem>
                     <MenuItem value={'colors'}>Colors</MenuItem>
                     <MenuItem value={'filter'}>Filter</MenuItem>
+                    <MenuItem value={'switch'}>Switch</MenuItem>
 
                     <IconButton onClick={themeChange} sizeVariant={'M'}>
                         {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}

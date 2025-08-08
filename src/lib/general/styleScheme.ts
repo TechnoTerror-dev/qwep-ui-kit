@@ -292,12 +292,12 @@ export const styleScheme: TypeSS = {
     // switch
     switch: {
         switchSize_X_L: '36px',
-        switchSize_Y_L: '20px',
+        switchSize_Y_L: '22px',
         switchSize_X_M: '30px',
         switchSize_Y_M: '18px',
-        switchThumbSize_L: '18px',
+        switchThumbSize_L: '19px',
         switchThumbSize_M: '16px',
-        switchThumbTranslateX_L: '17px',
+        switchThumbTranslateX_L: '16px',
         switchThumbTranslateX_M: '13px',
     },
 
@@ -372,7 +372,7 @@ export const styleScheme: TypeSS = {
     layout: {
         borderRadius: '40px',
 
-        width_L: '1060px',
+        width_L: '1092px',
         width_M: '768px',
         width_S: '100%',
 

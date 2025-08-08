@@ -5,8 +5,14 @@ import { TypeSSBox, TypeSSMR, TypeSSTypography } from '@src/lib/general/styleSch
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { SBasePopup, TBasePopup } from '../base-popup/BasePopup';
-import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import {
+    CSSBaseBox,
+    CSSSimpleBox,
+    CSSBlurEffect,
+    CSSBackgroundEffect,
+} from '@src/lib/common-styled-component/StyledComponentBox';
 import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 
 type TypeStyles = {
     mr: TypeSSMR;
@@ -15,6 +21,7 @@ type TypeStyles = {
 };
 
 type PopupProps = {
+    bgStyles?: TBaseProps.BackgroundStyles;
     boxShadowColor?: Hex;
     boxShadowVariant?: TBoxProps.BoxShadowVariant;
     boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
@@ -30,6 +37,7 @@ type PopupProps = {
 } & TBasePopup.Main;
 
 type SContentProps = {
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $bg?: Hex;
@@ -57,7 +65,6 @@ const opacity_SContentEffect = keyframes`
 
 const SContent = styled(SBasePopup.Content)<SContentProps>`
     overflow: hidden;
-    background-color: ${({ $colors, $bg }) => $bg ?? $colors.backgroundBox};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
@@ -75,6 +82,15 @@ const SContent = styled(SBasePopup.Content)<SContentProps>`
             $boxDisplay: props.$boxDisplay,
         })};
     animation: ${opacity_SContentEffect} 0.3s ease-in-out;
+
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.backgroundBox,
+            bg: props.$bg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
+
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
 `;
 
 export const Popup = React.memo(
@@ -82,6 +98,7 @@ export const Popup = React.memo(
         (
             {
                 trigger,
+                bgStyles,
                 bg,
                 boxShadowColor,
                 boxWidthVariant,
@@ -110,6 +127,7 @@ export const Popup = React.memo(
                     </SBasePopup.Trigger>
                     <SBasePopup.Portal {...portalProps}>
                         <SContent
+                            $bgStyles={bgStyles}
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}

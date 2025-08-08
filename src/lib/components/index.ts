@@ -15,3 +15,4 @@ export * from './scrollarea';
 export * from './tab';
 export * from './notification';
 export * from './decoration';
+export * from './switch';

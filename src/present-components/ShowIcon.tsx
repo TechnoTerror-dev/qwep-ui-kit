@@ -145,6 +145,15 @@ export const ShowIcon = () => {
                 </WrapBox>
                 <Title>Other</Title>
                 <WrapBox boxDisplay={'flex'} boxGapVariant={'g-2'} mr={'mb-3'}>
+                    <Item
+                        icon={<Icon.ArrowLeftRight colorVariant={colorVariant} sizeVariant={size} />}
+                        text={'ArrowLeftRight'}
+                    />
+                    <Item icon={<Icon.HashTag colorVariant={colorVariant} sizeVariant={size} />} text={'HashTag'} />
+                    <Item icon={<Icon.House colorVariant={colorVariant} sizeVariant={size} />} text={'House'} />
+                    <Item icon={<Icon.Check colorVariant={colorVariant} sizeVariant={size} />} text={'Check'} />
+                    <Item icon={<Icon.Crown colorVariant={colorVariant} sizeVariant={size} />} text={'Crown'} />
+                    <Item icon={<Icon.Sum colorVariant={colorVariant} sizeVariant={size} />} text={'Sum'} />
                     <Item icon={<Icon.Watches colorVariant={colorVariant} sizeVariant={size} />} text={'Watches'} />
                     <Item icon={<Icon.Settings colorVariant={colorVariant} sizeVariant={size} />} text={'Settings'} />
                     <Item icon={<Icon.EyeClose colorVariant={colorVariant} sizeVariant={size} />} text={'EyeClose'} />
@@ -159,7 +168,6 @@ export const ShowIcon = () => {
                     <Item icon={<Icon.ChatSmall colorVariant={colorVariant} sizeVariant={size} />} text={'ChatSmall'} />
                     <Item icon={<Icon.Global colorVariant={colorVariant} sizeVariant={size} />} text={'Global'} />
                     <Item icon={<Icon.Group colorVariant={colorVariant} sizeVariant={size} />} text={'Group'} />
-
                     <Item
                         icon={<Icon.RangeGroup colorVariant={colorVariant} sizeVariant={size} />}
                         text={'RangeGroup'}
@@ -182,9 +190,7 @@ export const ShowIcon = () => {
                         text={'RangeGroup'}
                     />
                     <Item icon={<Icon.Image colorVariant={colorVariant} sizeVariant={size} />} text={'Image'} />
-
                     <Item icon={<Icon.Links colorVariant={colorVariant} sizeVariant={size} />} text={'Links'} />
-
                     <Item icon={<Icon.Lock colorVariant={colorVariant} sizeVariant={size} />} text={'Lock'} />
                     <Item
                         icon={<Icon.Personalization colorVariant={colorVariant} sizeVariant={size} />}

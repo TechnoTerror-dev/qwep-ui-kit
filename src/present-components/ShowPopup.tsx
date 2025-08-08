@@ -20,7 +20,13 @@ export const ShowPopup = () => {
             <Title sizeVariant={'L'} mr={'m-6'}>
                 ShowPopup
             </Title>
-            <BoxLayout>
+            <BoxLayout
+                bgStyles={{
+                    isBlur: true,
+                    isHoverBlur: true,
+                    backgroundOpacity: 'ac',
+                }}
+            >
                 <Box boxDisplay={'flex'} boxGapVariant={'g-2'}>
                     <BasePopup trigger={<MainButton>Show Base Popup</MainButton>}>
                         <CardBox
@@ -47,7 +53,14 @@ export const ShowPopup = () => {
                             <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
                         </CardBox>
                     </BasePopup>
-                    <Popup trigger={<MainButton>Show Popup</MainButton>}>
+                    <Popup
+                        bgStyles={{
+                            isBlur: true,
+                            isHoverBlur: true,
+                            backgroundOpacity: 'ac',
+                        }}
+                        trigger={<MainButton>Show Popup</MainButton>}
+                    >
                         <Box
                             boxDisplay={'flex'}
                             mr={'mb-2'}
@@ -72,7 +85,14 @@ export const ShowPopup = () => {
 
                 <Separator mr={'my-9'} />
                 <Box boxDisplay={'flex'} boxGapVariant={'g-2'}>
-                    <PopupHover trigger={<MainButton>Show Hover Popup</MainButton>}>
+                    <PopupHover
+                        bgStyles={{
+                            isBlur: true,
+                            isHoverBlur: true,
+                            backgroundOpacity: 'ac',
+                        }}
+                        trigger={<MainButton>Show Hover Popup</MainButton>}
+                    >
                         <Box
                             boxDisplay={'flex'}
                             mr={'mb-2'}
@@ -94,6 +114,11 @@ export const ShowPopup = () => {
                         <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
                     </PopupHover>
                 </Box>
+
+                <CardBox>
+                    <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
+                    <Paragraph>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Paragraph>
+                </CardBox>
             </BoxLayout>
         </>
     );

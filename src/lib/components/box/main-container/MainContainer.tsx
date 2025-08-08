@@ -2,6 +2,7 @@ import { StyledScrollbarItem } from '@src/lib/common-styled-component/StyledBase
 import { useColorScheme } from '@src/lib/general';
 import { TypeColorScheme } from '@src/lib/general/colors';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 import { styled } from 'styled-components';
 
 type ContainerProps = {
@@ -24,6 +25,11 @@ const SRoot = styled.div<SRootProps>`
     min-width: 100%;
     min-height: 100vh;
     background: ${(props) => props.$background ?? props.$colors.background};
+
+    /* background-image: url('https://i.ibb.co/xSDtqGg/1bd75bbd0408.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
 
     ${(props) =>
         StyledScrollbarItem({

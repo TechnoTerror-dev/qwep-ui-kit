@@ -13,6 +13,8 @@ import { ShowNotification } from './ShowNotification';
 import { styled } from 'styled-components';
 import { ShowTooltip } from './ShowTooltip';
 import { ShowColors } from './ShowColors';
+import { ShowFilterBar } from './ShowFilterBar';
+import { ShowSwitch } from './ShowSwitch';
 
 const SMenu = styled(BoxMenu)`
     position: absolute;
@@ -32,6 +34,8 @@ const pages = {
     dialog: <ShowDialog />,
     notification: <ShowNotification />,
     tooltip: <ShowTooltip />,
+    filter: <ShowFilterBar />,
+    switch: <ShowSwitch />,
 };
 
 export const Main = () => {
@@ -56,7 +60,15 @@ export const Main = () => {
     return (
         <MainContainer>
             <NotificationProvider>
-                <SMenu activeItem={pageName} itemSizeVariant={'M'} onChangeActiveItem={menuHandler}>
+                <SMenu
+                    activeItem={pageName}
+                    itemSizeVariant={'M'}
+                    onChangeActiveItem={menuHandler}
+                    bgStyles={{
+                        isBlur: true,
+                        backgroundOpacity: 'dd',
+                    }}
+                >
                     <MenuItem value={'box'}>Box</MenuItem>
                     <MenuItem value={'popup'}>Popup</MenuItem>
                     <MenuItem value={'profile'}>Profile</MenuItem>
@@ -68,6 +80,8 @@ export const Main = () => {
                     <MenuItem value={'tooltip'}>Tooltip</MenuItem>
                     <MenuItem value={'icons'}>Icons</MenuItem>
                     <MenuItem value={'colors'}>Colors</MenuItem>
+                    <MenuItem value={'filter'}>Filter</MenuItem>
+                    <MenuItem value={'switch'}>Switch</MenuItem>
 
                     <IconButton onClick={themeChange} sizeVariant={'M'}>
                         {currentColorThemeName === 'light' ? <Icon.ThemeDark /> : <Icon.ThemeLight />}

@@ -3,7 +3,12 @@ import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { css, styled } from 'styled-components';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
-import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import {
+    CSSBackgroundEffect,
+    CSSBaseBox,
+    CSSBlurEffect,
+    CSSSimpleBox,
+} from '@src/lib/common-styled-component/StyledComponentBox';
 import { getMargin } from '@src/lib/common/getMargin';
 import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
 import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
@@ -20,6 +25,7 @@ type TypeStyles = {
 
 type BoxMenuProps = {
     mr?: TBaseProps.Margin;
+    bgStyles?: TBaseProps.BackgroundStyles;
     orientation?: TBaseProps.OrientationContent;
     boxWidthVariant?: TBoxProps.BoxWidthVariant;
     boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
@@ -45,6 +51,7 @@ type BoxMenuProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 type SRootProps = {
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $bg?: Hex;
@@ -75,7 +82,6 @@ const ORIENTATION = {
 const SRoot = styled.div<SRootProps>`
     position: relative;
     box-sizing: border-box;
-    background-color: ${(props) => props.$bg ?? props.$colors.secondary};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
@@ -93,6 +99,14 @@ const SRoot = styled.div<SRootProps>`
         })};
     ${(props) => ORIENTATION[props.$orientation]}
     ${(props) => getMargin(props.$styles.mr, props.$mr)};
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.secondary,
+            bg: props.$bg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
+
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
 `;
 
 export const BoxMenu = React.memo(
@@ -101,6 +115,7 @@ export const BoxMenu = React.memo(
             {
                 mr,
                 boxWidthVariant,
+                bgStyles,
                 boxPaddingVariant = EBoxProps.BoxPaddingVariant.P1,
                 bg,
                 boxGapVariant = EBoxProps.BoxGapVariant.G1,
@@ -148,22 +163,25 @@ export const BoxMenu = React.memo(
 
             const renderItems = useMemo(() => {
                 return React.Children.map(rest.children, (child: React.ReactNode) => {
-                    if (React.isValidElement(child) && child.props.value) {
-                        return React.cloneElement(child, {
-                            onClick: handleClick,
-                            active: Boolean(child.props.value === activeValue),
-                            sizeVariant: itemSizeVariant,
-                            color: itemColor,
-                            opacityHover: itemOpacityHover,
-                            opacityActive: itemOpacityActive,
-                            textColor: itemTextColor,
-                            textColorActive: itemTextColorActive,
-                            $styles,
-                            $colors,
-                            tabIndex: 0,
-                            'aria-pressed': child.props.value === activeValue ? 'true' : 'false',
-                            ...child.props,
-                        });
+                    if (React.isValidElement<TMenuItem.Main>(child) && child.props.value) {
+                        return React.cloneElement(
+                            child as React.ReactElement<{ value?: string | number; active?: boolean }>,
+                            {
+                                onClick: handleClick,
+                                active: Boolean(child.props.value === activeValue),
+                                sizeVariant: itemSizeVariant,
+                                color: itemColor,
+                                opacityHover: itemOpacityHover,
+                                opacityActive: itemOpacityActive,
+                                textColor: itemTextColor,
+                                textColorActive: itemTextColorActive,
+                                $styles,
+                                $colors,
+                                tabIndex: 0,
+                                'aria-pressed': child.props.value === activeValue ? 'true' : 'false',
+                                ...child.props,
+                            }
+                        );
                     }
                     return child;
                 });
@@ -184,6 +202,7 @@ export const BoxMenu = React.memo(
             return (
                 <SRoot
                     ref={ref}
+                    $bgStyles={bgStyles}
                     $styles={styles}
                     $colors={colors}
                     $mr={mr}

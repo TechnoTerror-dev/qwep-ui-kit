@@ -38,7 +38,7 @@ import { FolderDelete } from './FolderDelete';
 import { Gear } from './Gear';
 import { Global } from './Global';
 import { Group } from './Group';
-import { IconSVGContainer, IconSVGContainerProps } from './IconSVGContainer';
+import { IconSVGContainer } from './IconSVGContainer';
 import { Image } from './Image';
 import { Inbox } from './Inbox';
 import { Info } from './Info';
@@ -98,6 +98,12 @@ import { SettingsFilled } from './SettingsFilled';
 import { BuildingAltFilled } from './BuildingAltFilled';
 import { TabletFilled } from './TabletFilled';
 import { QuestionFilled } from './QuestionFilled';
+import { Sum } from './Sum';
+import { Crown } from './Crown';
+import { ArrowLeftRight } from './ArrowLeftRight';
+import { HashTag } from './HashTag';
+import { House } from './House';
+import { Check } from './Check';
 
 export {
     Add,
@@ -200,6 +206,10 @@ export {
     BuildingAltFilled,
     TabletFilled,
     QuestionFilled,
+    Sum,
+    Crown,
+    ArrowLeftRight,
+    HashTag,
+    House,
+    Check,
 };
-
-export type { IconSVGContainerProps };

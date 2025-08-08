@@ -16,7 +16,7 @@ type TypeStyles = {
 type CircleDecorationTitleProps = {
     mr?: TBaseProps.Margin;
     icon: React.ReactNode;
-    title: string;
+    title: React.ReactNode;
     bgIcon?: Hex;
     titleSizeVariant?: TTextProps.TitleVariant;
     $colors?: TypeColorScheme;

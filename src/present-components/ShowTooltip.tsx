@@ -33,6 +33,7 @@ export const ShowTooltip = () => {
                         isCustom
                         tooltip={
                             <CardBox
+                                isBlur
                                 boxPaddingVariant={'p-3'}
                                 boxDisplay={'grid'}
                                 boxGapVariant={'g-3'}

@@ -12,6 +12,7 @@ import {
     CircleDecorationTitle,
     Avatar,
     BoxSkeleton,
+    IconButton,
 } from '@src/lib';
 import { MainTextField, PhoneTextField, WrapperInput } from '@src/lib/components/input';
 
@@ -23,27 +24,32 @@ import { Armenia, Belarus, Kazakhstan, Russia } from './countryIcon';
 const items = [
     {
         id: '1',
-        icon: <Russia sizeVariant={'M'} />,
+        icon: <Russia sizeVariant="M" />,
         title: 'Россия',
-        mask: '+7 (999) 999-99-99',
+        mask: '+{7} (000) 000-00-00',
+        placeholder: '+7 (___) ___-__-__',
     },
     {
         id: '2',
-        icon: <Kazakhstan sizeVariant={'M'} />,
+        icon: <Kazakhstan sizeVariant="M" />,
         title: 'Казахстан',
-        mask: '+7 (701) 999-99-99',
+
+        mask: '+{7} (701) 000-00-00',
+        placeholder: '+7 (701) ___-__-__',
     },
     {
         id: '3',
-        icon: <Armenia sizeVariant={'M'} />,
+        icon: <Armenia sizeVariant="M" />,
         title: 'Армения',
-        mask: '+374 (99) 999-999',
+        mask: '+374 (00) 000-000',
+        placeholder: '+374 (__) ___-__-__',
     },
     {
         id: '4',
-        icon: <Belarus sizeVariant={'M'} />,
+        icon: <Belarus sizeVariant="M" />,
         title: 'Беларусь',
-        mask: '+375 (29) 999-99-99',
+        mask: '+375 (00) 000-00-00',
+        placeholder: '+375 (__) ___-__-__',
     },
 ];
 
@@ -79,8 +85,13 @@ export const ShowProfile = () => {
             <Button onClick={skeletonClick} style={{ position: 'absolute', top: 0, right: 0 }}>
                 {skeleton ? 'Skeleton' : 'None skeleton'}
             </Button>
-
-            <BoxLayout>
+            <BoxLayout
+                bgStyles={{
+                    isBlur: true,
+                    isHoverBlur: true,
+                    backgroundOpacity: 'ac',
+                }}
+            >
                 <Tabs
                     defaultValue={'t-1'}
                     tabs={
@@ -117,6 +128,18 @@ export const ShowProfile = () => {
                     <Separator mr={'my-9'} />
 
                     <TabContent value={'t-1'} boxDisplay={'block'}>
+                        <IconButton>
+                            <Icon.Settings />
+                        </IconButton>
+                        <IconButton sizeVariant={'M'}>
+                            <Icon.Settings />
+                        </IconButton>
+                        <IconButton colorVariant={'error'}>
+                            <Icon.Settings />
+                        </IconButton>
+                        <IconButton borderRadius={'round'}>
+                            <Icon.Settings />
+                        </IconButton>
                         <BoxAdaptive boxDisplay={'grid'} isSkeleton={skeleton}>
                             <CircleDecorationTitle title={'Фото'} icon={<Icon.Photo />}></CircleDecorationTitle>
                             <Box boxDisplay={'flex'}>

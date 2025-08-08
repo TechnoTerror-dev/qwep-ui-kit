@@ -3,6 +3,7 @@ import { Hex, TypeColorScheme } from '../general/colors';
 import { TypeSSBox, TypeSSLayout } from '../general/styleScheme';
 import { EBoxProps, TBoxProps } from '../types/TypeBox';
 import { keyframes } from 'styled-components';
+import { TBaseProps } from '../types/TypeBase';
 
 export const BOX_WIDTH_VARIANT = {
     [EBoxProps.BoxWidthVariant.FIT_CONTENT]: (props: TypeSSBox) => css`
@@ -151,7 +152,6 @@ export const CSSBoxLayout = (l: TypeSSLayout) => css`
     }
 
     @media screen and (min-width: 768px) and (max-width: 1278px) {
-        /* max-width: ${l.width_M}; */
         padding: ${l.padding_M};
     }
 
@@ -193,6 +193,7 @@ export const CSSSkeletonBox = (borderRadius: string, colors: TypeColorScheme) =>
         ${colors.disabled} 50%,
         ${colors.backgroundBox} 100%
     );
+
     background-size: 200% 100%;
     animation:
         ${backgroundPosition_SkeletonEffect} 2s infinite,
@@ -213,4 +214,32 @@ const opacity_BoxLayoutEffect = keyframes`
 
 export const CSSBaseLayoutStart = () => css`
     animation: ${opacity_BoxLayoutEffect} 0.5s ease-in-out;
+`;
+
+export const CSSBlurEffect = ({ backgroundOpacity, isBlur, isHoverBlur }: TBaseProps.BackgroundStyles) => {
+    if (!(isBlur && backgroundOpacity)) return css``;
+    return css`
+        backdrop-filter: blur(8px) saturate(110%);
+        -webkit-backdrop-filter: blur(8px) saturate(110%);
+        ${isHoverBlur &&
+        css`
+            transition:
+                backdrop-filter 0.3s ease-in-out,
+                -webkit-backdrop-filter 0.3s ease-in-out;
+            &:hover {
+                backdrop-filter: blur(14px) saturate(150%);
+                -webkit-backdrop-filter: blur(14px) saturate(150%);
+            }
+        `}
+    `;
+};
+
+export type CSSBackgroundEffectProps = {
+    defaultBg: Hex;
+    bg?: Hex;
+    backgroundOpacity?: string;
+};
+
+export const CSSBackgroundEffect = ({ bg, defaultBg, backgroundOpacity }: CSSBackgroundEffectProps) => css`
+    background-color: ${bg ?? `${defaultBg}${backgroundOpacity ?? ''}`};
 `;

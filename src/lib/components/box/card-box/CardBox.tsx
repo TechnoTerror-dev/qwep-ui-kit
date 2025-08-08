@@ -1,4 +1,4 @@
-import { CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import { CSSBlurEffect, CSSSimpleBox, CSSBackgroundEffect } from '@src/lib/common-styled-component/StyledComponentBox';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
@@ -6,10 +6,12 @@ import { TBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
 import { styled } from 'styled-components';
 import { SBox, TBox } from '../box/Box';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 
 type CardBoxProps = {
     bg?: Hex;
     boxShadowColor?: Hex;
+    bgStyles?: TBaseProps.BackgroundStyles;
     boxShadowVariant?: TBoxProps.BoxShadowVariant;
     boxRadiusVariant?: TBoxProps.BoxRadiusVariant;
     $colors?: TypeColorScheme;
@@ -18,6 +20,7 @@ type CardBoxProps = {
 type SRootProps = {
     $colors: TypeColorScheme;
     $bg?: Hex;
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $boxBorderColor?: Hex;
     $boxShadowColor?: Hex;
     $boxShadowVariant?: TBoxProps.BoxShadowVariant;
@@ -25,7 +28,6 @@ type SRootProps = {
 } & TBox.SRoot;
 
 const SRoot = styled(SBox.Root)<SRootProps>`
-    background-color: ${(props) => props.$bg ?? props.$colors.backgroundBox};
     ${(props) =>
         CSSSimpleBox({
             $colors: props.$colors,
@@ -34,6 +36,15 @@ const SRoot = styled(SBox.Root)<SRootProps>`
             $boxRadiusVariant: props.$boxRadiusVariant,
             $styles: props.$styles.box,
         })};
+
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.backgroundBox,
+            bg: props.$bg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
+
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
 `;
 
 export const CardBox = React.memo(
@@ -43,6 +54,7 @@ export const CardBox = React.memo(
                 as: Component = 'div',
                 mr,
                 bg,
+                bgStyles,
                 boxWidthVariant,
                 boxPaddingVariant,
                 boxGapVariant,
@@ -63,6 +75,7 @@ export const CardBox = React.memo(
                 <SRoot
                     ref={ref}
                     as={Component}
+                    $bgStyles={bgStyles}
                     $styles={styles}
                     $colors={colors}
                     $mr={mr}

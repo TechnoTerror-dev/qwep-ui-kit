@@ -58,3 +58,7 @@ export const IconSVGContainer: React.FC<IconSVGContainerProps> = ({
         </StyledIconContainer>
     );
 };
+
+export namespace TIconContainer {
+    export type Main = IconSVGContainerProps;
+}

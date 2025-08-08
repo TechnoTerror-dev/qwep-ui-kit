@@ -8,14 +8,21 @@ import styled from 'styled-components';
 import { StyledScrollbarItem } from '@src/lib/common-styled-component/StyledBase';
 import * as D from '@radix-ui/react-dialog';
 import { TBoxProps, EBoxProps } from '@src/lib/types/TypeBox';
-import { CSSBaseBox, CSSSimpleBox } from '@src/lib/common-styled-component/StyledComponentBox';
+import {
+    CSSBaseBox,
+    CSSSimpleBox,
+    CSSBlurEffect,
+    CSSBackgroundEffect,
+} from '@src/lib/common-styled-component/StyledComponentBox';
 import { SDialogComponent, TDialogComponent } from './DialogComponents';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 
 type TypeStyles = {
     box: TypeSSBox;
 };
 
 type DialogProps = {
+    bgStyles?: TBaseProps.BackgroundStyles;
     $colors?: TypeColorScheme;
     $styles?: TypeStyles;
     bg?: Hex;
@@ -26,7 +33,6 @@ type DialogProps = {
     boxWidthVariant?: TBoxProps.BoxWidthVariant;
     boxPaddingVariant?: TBoxProps.BoxPaddingVariant;
     boxGapVariant?: TBoxProps.BoxGapVariant;
-    overlayBlur?: string;
     overlayColor?: Hex;
     contentWidth?: string;
     portalProps?: React.ComponentPropsWithoutRef<typeof D.Portal>;
@@ -37,18 +43,16 @@ type DialogProps = {
 type SOverlayProps = {
     $colors: TypeColorScheme;
     $styles: TypeStyles;
-    $overlayBlur?: string;
     $overlayColor?: Hex;
 } & TDialogComponent.SOverlay;
 
 const SOverlay = styled(SDialogComponent.Overlay)<SOverlayProps>`
-    backdrop-filter: blur(${(props) => props.$overlayBlur ?? '0px'});
-
     background-color: ${(props) =>
         getColor({ cs: props.$colors, color: props.$overlayColor ?? props.$colors.omega, opacity: '90' })};
 `;
 
 type SContentProps = {
+    $bgStyles?: TBaseProps.BackgroundStyles;
     $colors: TypeColorScheme;
     $styles: TypeStyles;
     $contentWidth?: string;
@@ -64,11 +68,19 @@ type SContentProps = {
 
 const SContent = styled(SDialogComponent.Content)<SContentProps>`
     position: relative;
-    background-color: ${(props) => props.$bg ?? props.$colors.backgroundBox};
     width: calc(100vw - 60px);
     max-width: ${(props) => props.$contentWidth ?? '768px'};
     overflow-x: 'hidden';
     overflow-y: auto;
+    ${(props) =>
+        CSSBackgroundEffect({
+            defaultBg: props.$colors.backgroundBox,
+            bg: props.$bg,
+            backgroundOpacity: props.$bgStyles?.backgroundOpacity,
+        })}
+
+    ${(props) => props.$bgStyles && CSSBlurEffect(props.$bgStyles)}
+
     ${(props) =>
         StyledScrollbarItem({
             $colors: props.$colors,
@@ -96,6 +108,7 @@ export const Dialog = React.memo(
         (
             {
                 bg,
+                bgStyles,
                 boxShadowColor,
                 boxShadowVariant,
                 boxDisplay,
@@ -104,7 +117,6 @@ export const Dialog = React.memo(
                 contentWidth,
                 boxWidthVariant,
                 boxGapVariant,
-                overlayBlur,
                 overlayColor,
                 $colors,
                 $styles,
@@ -121,15 +133,10 @@ export const Dialog = React.memo(
             return (
                 <D.Root {...rest}>
                     <D.Portal {...portalProps}>
-                        <SOverlay
-                            $colors={colors}
-                            $styles={styles}
-                            $overlayColor={overlayColor}
-                            $overlayBlur={overlayBlur}
-                            {...overlayProps}
-                        >
+                        <SOverlay $colors={colors} $styles={styles} $overlayColor={overlayColor} {...overlayProps}>
                             <SContent
                                 ref={ref}
+                                $bgStyles={bgStyles}
                                 $colors={colors}
                                 $styles={styles}
                                 $boxPaddingVariant={boxPaddingVariant}

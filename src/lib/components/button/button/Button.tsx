@@ -19,6 +19,7 @@ type TypeStyles = {
 
 type ButtonProps = {
     mr?: TBaseProps.Margin;
+    isRippleEffect?: boolean;
     sizeVariant?: TBaseProps.VariantSize;
     colorVariant?: TBaseProps.VariantColor;
     variant?: TButtonProps.VariantBtn;
@@ -159,6 +160,7 @@ export const Button = React.memo(
             {
                 mr,
                 color,
+                isRippleEffect,
                 sizeVariant = EBaseProps.VariantSize.L,
                 colorVariant = EBaseProps.VariantColor.DEFAULT,
                 variant = EButtonProps.VariantBtn.CONTAINED,
@@ -176,6 +178,7 @@ export const Button = React.memo(
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(
+                    isRippleEffect,
                     event,
                     getColor({
                         cs: colors,
@@ -184,6 +187,7 @@ export const Button = React.memo(
                         opacity: '40',
                     })
                 );
+
                 if (onClick) {
                     await onClick(event);
                 }

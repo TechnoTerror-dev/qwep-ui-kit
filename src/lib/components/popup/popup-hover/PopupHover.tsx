@@ -13,6 +13,7 @@ export const PopupHover = React.memo(
             {
                 trigger,
                 bg,
+                bgStyles,
 
                 delay = 300,
                 boxShadowColor,
@@ -36,20 +37,31 @@ export const PopupHover = React.memo(
             const [isOpen, setIsOpen] = React.useState(false);
             const closeTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
             const colors = useColorScheme($colors);
-            const styles = useStyleScheme(['mr', 'box', 'typography'], $styles);
+            const styles = useStyleScheme(['mr', 'box', 'typography', 'popup'], $styles);
+            const isHovering = React.useRef(false);
 
             const handleMouseEnter = () => {
                 if (closeTimeout.current) {
                     clearTimeout(closeTimeout.current);
                     closeTimeout.current = null;
                 }
+                isHovering.current = true;
                 setIsOpen(true);
             };
 
             const handleMouseLeave = () => {
                 closeTimeout.current = setTimeout(() => {
+                    isHovering.current = false;
                     setIsOpen(false);
                 }, delay);
+            };
+
+            // **Фикс проблемы с кликом**
+            const handleTriggerClick = (e: React.MouseEvent) => {
+                if (isHovering.current) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
             };
 
             React.useEffect(() => {
@@ -67,11 +79,13 @@ export const PopupHover = React.memo(
                         {...triggerProps}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
+                        onClick={handleTriggerClick}
                     >
                         {trigger}
                     </SPopup.Trigger>
                     <SPopup.Portal {...portalProps}>
                         <SPopup.Content
+                            $bgStyles={bgStyles}
                             $colors={colors}
                             $styles={styles}
                             $bg={bg}
@@ -86,6 +100,7 @@ export const PopupHover = React.memo(
                             {...contentProps}
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
+                            style={{ pointerEvents: 'auto' }} // Гарантируем, что popup не блокирует триггер
                         >
                             {rest.children}
                         </SPopup.Content>

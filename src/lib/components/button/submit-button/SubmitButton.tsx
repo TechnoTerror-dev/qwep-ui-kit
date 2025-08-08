@@ -138,6 +138,7 @@ export const SubmitButton = React.memo(
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(
+                    rest.isRippleEffect,
                     event,
                     getColor({
                         cs: colors,

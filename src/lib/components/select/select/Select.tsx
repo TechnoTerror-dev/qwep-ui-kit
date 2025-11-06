@@ -109,6 +109,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
     cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
     line-height: normal;
     width: ${(props) => props.$width};
+
     &:not([disabled]):hover {
         color: ${(props) =>
             getColorSystem({
@@ -126,6 +127,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
                 variant: props.$colorVariant,
                 hover: props.$_isActiveHover,
             })};
+
         &[data-placeholder] {
             color: ${(props) =>
                 getColor({
@@ -136,8 +138,10 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
                     hover: props.$_isActiveHover,
                 })};
         }
+
         ${SSelectComponent.Icon} {
             transition: all 0.3s ease-in-out;
+
             svg {
                 color: ${(props) =>
                     getColorSystem({
@@ -150,6 +154,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
             }
         }
     }
+
     &[data-placeholder] {
         color: ${(props) =>
             getColorIcon({
@@ -162,6 +167,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
 
     ${SSelectComponent.Icon} {
         transform: rotate(180deg);
+
         svg {
             color: ${(props) =>
                 getColorIcon({
@@ -172,6 +178,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
                 })};
         }
     }
+
     &[data-state='open'] {
         color: ${(props) =>
             getColor({
@@ -189,6 +196,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
                 variant: props.$colorVariant,
                 hover: props.$_isActiveHover,
             })};
+
         &[data-placeholder] {
             color: ${(props) =>
                 getColor({
@@ -202,6 +210,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
 
         ${SSelectComponent.Icon} {
             transform: rotate(0deg);
+
             svg {
                 color: ${(props) =>
                     getColorSystem({
@@ -214,8 +223,10 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
             }
         }
     }
+
     ${(props) => getMargin(props.$styles?.mr, props.$mr)};
     ${(props) => SELECT_SIZE[props.$sizeVariant](props.$styles.select)};
+
     span {
         &:nth-child(1) {
             user-select: none;
@@ -224,6 +235,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
             overflow: hidden;
         }
     }
+
     ${(props) =>
         props.$blocked &&
         css`
@@ -248,9 +260,11 @@ const SContent = styled(S.Content)<SContentProps>`
     font-size: ${(props) => props.$styles.typography.text};
     border-radius: ${(props) => props.$styles.base.borderRadiusItem};
     width: ${(props) => props.$width};
+
     ${SSelectComponent.Item} {
         &[data-disabled] {
             color: ${(props) => props.$colors.disabled};
+
             svg {
                 color: ${(props) => props.$colors.disabled};
             }
@@ -286,14 +300,15 @@ const SContent = styled(S.Content)<SContentProps>`
                 })};
         }
     }
+
     ${(props) => BOX_PADDING_VARIANT[props.$boxPaddingVariant](props.$styles.box)};
+
     ${(props) =>
         props.$boxShadowVariant &&
         BOX_SHADOW_VARIANT[props.$boxShadowVariant]({
             $box: props.$styles.box,
             $colors: props.$colors,
         })}
-
     ${SSelectGroup.Root} {
         color: ${(props) => props.$colors.disabled};
         border-color: ${(props) => props.$colors.disabled};
@@ -322,7 +337,7 @@ const SViewport = styled.div<SViewportProps>`
         })}
 `;
 
-export const Select = React.memo(
+const SelectInner = React.memo(
     React.forwardRef<HTMLButtonElement, SelectProps>(
         (
             {
@@ -408,6 +423,8 @@ export const Select = React.memo(
         }
     )
 );
+
+export const Select = SelectInner as React.MemoExoticComponent<React.ForwardRefExoticComponent<Partial<SelectProps>>>;
 
 // //export component
 export const SSelect = {

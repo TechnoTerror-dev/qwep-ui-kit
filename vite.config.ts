@@ -32,6 +32,7 @@ export default defineConfig({
                     'styled-components': 'styled',
                 },
                 dir: 'dist',
+                interop: 'compat',
             },
         },
     },

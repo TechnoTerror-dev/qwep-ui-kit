@@ -43,7 +43,7 @@
         "@radix-ui/react-tabs": "1.1.2",
         "@radix-ui/react-toggle-group": "1.1.1",
         "@radix-ui/react-tooltip": "1.1.6",
-        "styled-components": "6.1.14"
+        "styled-components": "6.1.19"
     },
     "dependencies": {
         "react": "19.2.0",

@@ -4,7 +4,7 @@ import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSMR } from '@src/lib/general/styleScheme';
 import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
-import { css, styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type TypeStyles = {
     mr: TypeSSMR;

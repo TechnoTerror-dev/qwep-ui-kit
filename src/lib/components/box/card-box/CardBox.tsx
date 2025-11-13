@@ -4,7 +4,7 @@ import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { TBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { SBox, TBox } from '../box/Box';
 import { TBaseProps } from '@src/lib/types/TypeBase';
 

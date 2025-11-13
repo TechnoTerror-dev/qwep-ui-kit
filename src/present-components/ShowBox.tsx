@@ -1,36 +1,36 @@
 import {
-    Checkbox,
+    Avatar,
     BaseText,
+    Box,
     BoxLayout,
+    BoxSkeleton,
     Button,
+    CardBox,
+    CardBoxSkeleton,
+    Checkbox,
+    CircleDecorationTitle,
     CircleLoading,
     Icon,
     MainButton,
     Paragraph,
-    SubmitButton,
-    SubmitCheckbox,
-    CardBox,
     RadioGroup,
     RadioItem,
-    SelectItem,
-    SelectGroup,
     Select,
-    Tabs,
-    Box,
-    Title,
+    SelectGroup,
+    SelectItem,
+    Separator,
+    SubmitButton,
+    SubmitCheckbox,
     Tab,
     TabContent,
-    Separator,
-    CircleDecorationTitle,
-    Avatar,
-    BoxSkeleton,
-    CardBoxSkeleton,
+    Tabs,
+    Title,
 } from '@src/lib';
 import { IconButton } from '@src/lib/components/button/icon-button/IconButton';
 import { BaseTextField, MainTextField, WrapperInput } from '@src/lib/components/input';
 
 import { useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { url1 } from './avatar-img';
 
 const LabelRole = styled(Box)`

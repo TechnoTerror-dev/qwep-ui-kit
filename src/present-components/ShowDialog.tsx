@@ -6,7 +6,7 @@ const SHeader = styled(Box)`
 `;
 
 import { useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const ShowDialog = () => {
     const [open, setOpen] = useState(false);

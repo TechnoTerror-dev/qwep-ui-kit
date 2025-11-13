@@ -5,10 +5,10 @@ import { useColorScheme } from '@src/lib/general';
 import { TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSBox, TypeSSTypography } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import { TBaseProps, EBaseProps } from '@src/lib/types/TypeBase';
-import { TBoxProps, EBoxProps } from '@src/lib/types/TypeBox';
+import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
+import { EBoxProps, TBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
-import { css, styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type TypeStyles = {
     typography: TypeSSTypography;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { IconSVGContainerProps, IconSVGContainer } from './IconSVGContainer';
+import styled from 'styled-components';
 import { EIconProps, TIconProps } from '../types/TypeIcon';
-import { styled } from 'styled-components';
+import { IconSVGContainer, IconSVGContainerProps } from './IconSVGContainer';
 
 export type ArrowProps = {
     position?: TIconProps.IconPosition;

@@ -2,7 +2,7 @@ import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React from 'react';
 import { CSSSkeletonBox } from '@src/lib/common-styled-component/StyledComponentBox';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { SBox } from '../box/Box';
 import { SCardBox, TCardBox } from '../card-box/CardBox';
 

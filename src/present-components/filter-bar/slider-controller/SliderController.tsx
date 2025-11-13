@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { styled } from 'styled-components';
 import { Icon, Title } from '@src/lib';
-import { SliderItem, TSliderItem } from './SliderItem';
-import { FilterBarController } from '../type/controler.enum';
 import { TypeGeneral } from '@src/lib/general';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { FilterBarController } from '../type/controler.enum';
+import { SliderItem, TSliderItem } from './SliderItem';
 
 export type TSliderControllerConfig = {
     id: string;

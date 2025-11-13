@@ -1,6 +1,6 @@
 import * as P from '@radix-ui/react-popover';
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const SRoot = styled(P.Close)<React.ComponentPropsWithoutRef<typeof P.Close>>`
     all: unset;

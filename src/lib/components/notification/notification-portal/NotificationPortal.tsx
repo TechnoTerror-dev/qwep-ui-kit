@@ -5,7 +5,7 @@ import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
 import { TBoxProps, EBoxProps } from '@src/lib/types/TypeBox';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { css, styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NotificationToast } from '../notification-toast/NotificationToast';
 import { TypeOptions, TypeOptionsBase } from '../notification-provider/NotificationProvider';
 

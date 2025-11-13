@@ -1,23 +1,23 @@
 import {
-    BoxLayout,
-    Button,
-    Icon,
-    Paragraph,
-    Tabs,
+    Avatar,
     Box,
-    Title,
+    BoxLayout,
+    BoxSkeleton,
+    Button,
+    CircleDecorationTitle,
+    Icon,
+    IconButton,
+    Paragraph,
+    Separator,
     Tab,
     TabContent,
-    Separator,
-    CircleDecorationTitle,
-    Avatar,
-    BoxSkeleton,
-    IconButton,
+    Tabs,
+    Title,
 } from '@src/lib';
 import { MainTextField, PhoneTextField, WrapperInput } from '@src/lib/components/input';
 
 import { useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { url1 } from './avatar-img';
 import { Armenia, Belarus, Kazakhstan, Russia } from './countryIcon';
 

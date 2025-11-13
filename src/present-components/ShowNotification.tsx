@@ -11,7 +11,7 @@ import {
     useNotificationContext,
 } from '@src/lib';
 import { useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const CustomNotification = styled(CardBox)`
     position: fixed;

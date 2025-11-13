@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { StickerButton, TStickerConfig } from './StickerButton';
-import { styled } from 'styled-components';
 import { Icon, Title } from '@src/lib';
-import { FilterBarController } from '../type/controler.enum';
 import { TypeGeneral } from '@src/lib/general';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { FilterBarController } from '../type/controler.enum';
+import { StickerButton, TStickerConfig } from './StickerButton';
 
 export type TStickerControllerConfig = {
     id: string;

@@ -1,7 +1,7 @@
 import { Box, CardBox, Icon, MenuItemList, MenuList, Paragraph, Separator, Title } from '@src/lib';
 import { useColorScheme } from '@src/lib/general';
 import React, { JSX } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const MenuCard = styled(CardBox)`
     position: fixed;

@@ -1,7 +1,7 @@
 import { Box, BoxLayout, Button, Icon, Paragraph, Title } from '@src/lib';
-import { EBaseProps, TBaseProps } from '../lib';
 import { useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
+import { EBaseProps, TBaseProps } from '../lib';
 
 const WrapBox = styled(Box)`
     flex-wrap: wrap;

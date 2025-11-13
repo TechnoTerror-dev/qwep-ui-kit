@@ -3,10 +3,10 @@ import { useColorScheme, useStyleScheme } from '@src/lib/general';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBase, TypeSSMR } from '@src/lib/general/styleScheme';
 import { TBaseProps } from '@src/lib/types/TypeBase';
+import { ETextProps, TTextProps } from '@src/lib/types/TypeText';
 import React, { useMemo } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { STitle, TTitle } from '../../typography/title/Title';
-import { TTextProps, ETextProps } from '@src/lib/types/TypeText';
 
 type TypeStyles = {
     mr: TypeSSMR;

@@ -1,9 +1,9 @@
 import { TypeGeneral, useColorScheme } from '@src/lib/general';
 import React from 'react';
-import { styled } from 'styled-components';
-import { StickerController, TStickerControllerConfig } from './sticker-controller/StickerController';
+import styled from 'styled-components';
 import { ListController, TListControllerConfig } from './list-controller/ListController';
 import { SliderController, TSliderControllerConfig } from './slider-controller/SliderController';
+import { StickerController, TStickerControllerConfig } from './sticker-controller/StickerController';
 import { FilterBarController } from './type/controler.enum';
 
 export type TFilterBar = {

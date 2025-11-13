@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
 import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
+import styled from 'styled-components';
 
 const SOverlay = styled(Dialog.Overlay)<React.ComponentPropsWithRef<typeof Dialog.Overlay>>`
     position: fixed;

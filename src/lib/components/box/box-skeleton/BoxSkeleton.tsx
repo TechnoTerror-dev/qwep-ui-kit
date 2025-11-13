@@ -4,7 +4,7 @@ import { TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSBox, TypeSSMR } from '@src/lib/general/styleScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { SBox, TBox } from '../box/Box';
 
 type TypeStyles = {

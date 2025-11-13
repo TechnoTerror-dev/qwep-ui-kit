@@ -3,7 +3,7 @@ import { useColorScheme } from '@src/lib/general';
 import { TypeColorScheme } from '@src/lib/general/colors';
 import React from 'react';
 import { JSX } from 'react/jsx-runtime';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 type ContainerProps = {
     as?: keyof JSX.IntrinsicElements;

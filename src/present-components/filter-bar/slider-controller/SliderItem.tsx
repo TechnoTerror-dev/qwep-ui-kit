@@ -1,6 +1,6 @@
 import { BaseTextField, Slider } from '@src/lib';
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export type TSliderItem = {
     min: number;

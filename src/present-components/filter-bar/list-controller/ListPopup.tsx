@@ -1,9 +1,9 @@
 import { BaseText, Box, Common, Icon, IconButton, MainTextField, PopupHover } from '@src/lib';
 
-import React, { useEffect, useState } from 'react';
-import { ListItem, TListItemConfig } from './ListItem';
-import { styled } from 'styled-components';
 import { TypeGeneral } from '@src/lib/general';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { ListItem, TListItemConfig } from './ListItem';
 
 type TListPopup = {
     list: TListItemConfig[];

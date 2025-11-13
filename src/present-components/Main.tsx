@@ -1,20 +1,19 @@
-import { BoxMenu, Icon, IconButton, MainContainer, MenuItem, NotificationProvider } from '@src/lib';
-import { General } from '@src/lib';
+import { BoxMenu, General, Icon, IconButton, MainContainer, MenuItem, NotificationProvider } from '@src/lib';
 import { useState } from 'react';
+import styled from 'styled-components';
 import { ShowBox } from './ShowBox';
-import { ShowPopup } from './ShowPopup';
-import { ShowProfile } from './ShowProfile';
-import { ShowMenu } from './ShowMenu';
+import { ShowColors } from './ShowColors';
+import { ShowDialog } from './ShowDialog';
+import { ShowFilterBar } from './ShowFilterBar';
 import { ShowIcon } from './ShowIcon';
 import { ShowList } from './ShowList';
-import { ShowSlider } from './ShowSlider';
-import { ShowDialog } from './ShowDialog';
+import { ShowMenu } from './ShowMenu';
 import { ShowNotification } from './ShowNotification';
-import { styled } from 'styled-components';
-import { ShowTooltip } from './ShowTooltip';
-import { ShowColors } from './ShowColors';
-import { ShowFilterBar } from './ShowFilterBar';
+import { ShowPopup } from './ShowPopup';
+import { ShowProfile } from './ShowProfile';
+import { ShowSlider } from './ShowSlider';
 import { ShowSwitch } from './ShowSwitch';
+import { ShowTooltip } from './ShowTooltip';
 
 const SMenu = styled(BoxMenu)`
     position: absolute;

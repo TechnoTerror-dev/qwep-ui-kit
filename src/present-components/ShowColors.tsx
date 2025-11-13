@@ -1,7 +1,7 @@
 import { Box, BoxLayout, Paragraph, Title } from '@src/lib';
 import { useColorScheme } from '@src/lib/general';
 import { Hex } from '@src/lib/general/colors';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const Circle = styled(Box)<{ color: Hex }>`
     width: 80px;

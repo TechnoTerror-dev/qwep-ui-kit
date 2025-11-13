@@ -22,20 +22,39 @@ export default defineConfig({
         lib: {
             entry: path.resolve('', 'src/lib/index.ts'),
             name: 'QWEP-KIT',
-            formats: ['es', 'umd'],
+            formats: ['es'], // Только ES
             fileName: (format) => `qwep-kit.${format}.js`,
         },
         rollupOptions: {
             external: ['react', 'react-dom', 'styled-components'],
             output: {
-                globals: {
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                    'styled-components': 'styled',
-                },
-                interop: 'auto',
+                format: 'es',
+                entryFileNames: 'qwep-kit.es.js',
                 dir: 'dist',
+                interop: 'default', // или 'compat'
+                preserveModules: false,
+                externalLiveBindings: false,
             },
         },
     },
+    // build: {
+    //     lib: {
+    //         entry: path.resolve('', 'src/lib/index.ts'),
+    //         name: 'QWEP-KIT',
+    //         formats: ['es', 'umd'],
+    //         fileName: (format) => `qwep-kit.${format}.js`,
+    //     },
+    //     rollupOptions: {
+    //         external: ['react', 'react-dom', 'styled-components'],
+    //         output: {
+    //             globals: {
+    //                 react: 'React',
+    //                 'react-dom': 'ReactDOM',
+    //                 'styled-components': 'styled',
+    //             },
+    //             interop: 'auto',
+    //             dir: 'dist',
+    //         },
+    //     },
+    // },
 });

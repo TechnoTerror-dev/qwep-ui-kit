@@ -16,6 +16,7 @@ export default defineConfig({
         alias: {
             '@src': path.resolve('', 'src'),
         },
+        dedupe: ['styled-components', 'react', 'react-dom'],
     },
     build: {
         lib: {
@@ -25,11 +26,12 @@ export default defineConfig({
             fileName: (format) => `qwep-kit.${format}.js`,
         },
         rollupOptions: {
-            external: ['react', 'react-dom'],
+            external: ['react', 'react-dom', 'styled-components'],
             output: {
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',
+                    'styled-components': 'styled',
                 },
                 dir: 'dist',
             },

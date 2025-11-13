@@ -1,19 +1,19 @@
 {
     "name": "qwep-kit",
     "private": false,
-    "version": "0.2.10",
+    "version": "0.3.0",
     "type": "module",
     "files": [
         "dist/**/*"
     ],
     "homepage": "https://github.com/TechnoTerror-dev/qwep-ui-kit",
-    "main": "./dist/qwep-kit.es.js",
+    "main": "./dist/qwep-kit.umd.js",
     "module": "./dist/qwep-kit.es.js",
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "import": "./dist/qwep-kit.es.js",
-            "types": "./dist/index.d.ts"
+            "require": "./dist/qwep-kit.umd.js"
         }
     },
     "scripts": {

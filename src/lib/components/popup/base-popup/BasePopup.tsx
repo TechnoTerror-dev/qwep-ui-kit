@@ -1,8 +1,8 @@
 import * as P from '@radix-ui/react-popover';
 import { Hex, TypeColorScheme } from '@src/lib/general/colors';
+import { TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled from 'styled-components';
-import { TBaseProps } from '@src/lib/types/TypeBase';
 
 type BasePopupProps = {
     trigger: React.ReactNode;
@@ -29,11 +29,19 @@ const SContent = styled(P.Content)<React.ComponentPropsWithRef<typeof P.Content>
 export const BasePopup = React.memo(
     React.forwardRef<HTMLButtonElement, BasePopupProps>(
         ({ trigger, triggerProps, portalProps, contentProps, ...rest }, ref) => {
+            const isReactElement = React.isValidElement(trigger);
+
             return (
                 <P.Root {...rest}>
-                    <STrigger ref={ref} {...triggerProps}>
-                        {trigger}
-                    </STrigger>
+                    {isReactElement ? (
+                        <P.Trigger asChild ref={ref} {...triggerProps}>
+                            {trigger}
+                        </P.Trigger>
+                    ) : (
+                        <STrigger ref={ref} {...triggerProps}>
+                            {trigger}
+                        </STrigger>
+                    )}
                     <P.Portal {...portalProps}>
                         <SContent sideOffset={8} {...contentProps}>
                             {rest.children}

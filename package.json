@@ -9,6 +9,7 @@
     "homepage": "https://github.com/TechnoTerror-dev/qwep-ui-kit",
     "main": "./dist/qwep-kit.umd.js",
     "module": "./dist/qwep-kit.es.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "import": "./dist/qwep-kit.es.js",

@@ -4,7 +4,7 @@ import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import React, { useCallback, useMemo, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { SBaseTextField, TBaseTextField } from '../base-text-field/BaseTextField';
+import { SBaseTextField, TBaseTextField } from '@src/lib';
 import { EBaseProps } from '@src/lib/types/TypeBase';
 
 type MainTextFieldProps = {
@@ -16,21 +16,43 @@ type MainTextFieldProps = {
 
 type SIconContainerProps = {
     $isStart: boolean;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLDivElement> &
+    Pick<TBaseTextField.SRoot, '$colors' | '$color' | '$colorVariant' | '$disabled'>;
 
 export const SIconContainer = styled.div<SIconContainerProps>`
     margin: 0;
     outline: none;
-    ${({ $isStart }) => {
-        if ($isStart) {
-            return css`
-                padding-right: 8px;
-            `;
-        }
-        return css`
-            padding-left: 8px;
-        `;
-    }};
+
+    ${({ $isStart }) =>
+        $isStart
+            ? css`
+                  padding-right: 8px;
+              `
+            : css`
+                  padding-left: 8px;
+              `}
+    svg {
+        transition: color 0.2s;
+        color: ${(props) =>
+            getColorIcon({
+                cs: props.$colors,
+                color: props.$color,
+                disabled: props.$disabled,
+                variant: props.$colorVariant,
+                hover: false,
+            })};
+    }
+
+    &:hover svg {
+        color: ${(props) =>
+            getColorIcon({
+                cs: props.$colors,
+                color: props.$color,
+                disabled: props.$disabled,
+                variant: props.$colorVariant,
+                hover: true,
+            })};
+    }
 `;
 
 export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
@@ -43,31 +65,6 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
             css`
                 pointer-events: none;
             `};
-        svg {
-            color: ${(props) =>
-                getColorIcon({
-                    cs: props.$colors,
-                    color: props.$color,
-                    disabled: props.$disabled,
-                    variant: props.$colorVariant,
-                    hover: props.$_isFocused,
-                })};
-        }
-    }
-    &:hover {
-        ${SIconContainer} {
-            svg {
-                color: ${(props) =>
-                    getColorIcon({
-                        cs: props.$colors,
-                        color: props.$color,
-                        disabled: props.$disabled,
-                        variant: props.$colorVariant,
-                        hover: props.$_isActiveHover,
-                    })};
-            }
-        }
-    }
 `;
 
 export const MainTextField = React.memo(
@@ -130,7 +127,17 @@ export const MainTextField = React.memo(
                     onBlur={handleBlur}
                     {...rootProps}
                 >
-                    {renderIconStart && <SIconContainer $isStart={true}>{renderIconStart}</SIconContainer>}
+                    {renderIconStart && (
+                        <SIconContainer
+                            $isStart={true}
+                            $colors={colors}
+                            $color={color}
+                            $colorVariant={colorVariant}
+                            $disabled={rest.disabled}
+                        >
+                            {renderIconStart}
+                        </SIconContainer>
+                    )}
 
                     <SBaseTextField.Input
                         ref={ref}
@@ -140,7 +147,19 @@ export const MainTextField = React.memo(
                         $colorVariant={colorVariant}
                         {...rest}
                     />
-                    {renderIconsEnd && <SIconContainer $isStart={false}>{renderIconsEnd}</SIconContainer>}
+                    {renderIconsEnd &&
+                        renderIconsEnd.map((iconNode, index) => (
+                            <SIconContainer
+                                key={`text-field-icon-end-${index}`}
+                                $isStart={false}
+                                $colors={colors}
+                                $color={color}
+                                $colorVariant={colorVariant}
+                                $disabled={rest.disabled}
+                            >
+                                {iconNode}
+                            </SIconContainer>
+                        ))}
                 </SRoot>
             );
         }
@@ -156,5 +175,6 @@ export const SMainTextField = {
 //export type
 export namespace TMainTextField {
     export type Main = MainTextFieldProps;
-    export type SIconContainer = React.HTMLAttributes<HTMLDivElement>;
+    export type SIconContainer = React.HTMLAttributes<HTMLDivElement> &
+        Pick<TBaseTextField.SRoot, '$colors' | '$color' | '$colorVariant' | '$disabled'>;
 }

@@ -6,7 +6,7 @@ import { TBaseProps } from '@src/lib/types/TypeBase';
 import { ETextProps, TTextProps } from '@src/lib/types/TypeText';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { STitle, TTitle } from '../../typography/title/Title';
+import { STitle, TTitle } from '@src/lib';
 
 type TypeStyles = {
     mr: TypeSSMR;
@@ -85,10 +85,18 @@ export const CircleDecorationTitle = React.memo(
                 });
             }, [icon, colors]);
 
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { children: _children, ...titlePropsWithoutChildren } = titleProps || {};
+
             return (
                 <SRoot ref={ref} $bgIcon={bgIcon} $colors={colors} $styles={styles} $mr={mr} {...rest}>
                     <SIconContent {...iconContainerProps}>{renderIcon}</SIconContent>
-                    <STitle.Root $sizeVariant={titleSizeVariant} $colors={colors} $styles={styles} {...titleProps}>
+                    <STitle.Root
+                        $sizeVariant={titleSizeVariant}
+                        $colors={colors}
+                        $styles={styles}
+                        {...titlePropsWithoutChildren}
+                    >
                         {title}
                     </STitle.Root>
                 </SRoot>

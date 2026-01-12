@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        "src/lib"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "build",
+        "src/present-components",
+        "src/main.tsx",
+        "src/stories"
+    ]
+}
+

@@ -29,3 +29,5 @@ package-lock.json
 
 storybook-static
 storybook-static/*
+dist-demo
+dist-demo/*

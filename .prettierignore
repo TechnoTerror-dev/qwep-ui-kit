@@ -2,3 +2,6 @@ node_modules
 build
 dist
 *.min.js
+# GitHub Actions workflows
+.github/workflows/**/*.yml
+.github/workflows/**/*.yaml

@@ -6,7 +6,17 @@ import dts from 'vite-plugin-dts';
 const isLibBuild = process.env.BUILD_MODE === 'lib';
 
 export default defineConfig({
-    plugins: [react(), ...(isLibBuild ? [dts({ insertTypesEntry: true })] : [])],
+    plugins: [
+        react(),
+        ...(isLibBuild
+            ? [
+                  dts({
+                      insertTypesEntry: true,
+                      include: ['src/lib'],
+                  }),
+              ]
+            : []),
+    ],
     resolve: {
         alias: {
             '@src': path.resolve('', 'src'),

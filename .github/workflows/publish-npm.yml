@@ -1,56 +1,56 @@
 name: Publish to NPM
 
 on:
-    push:
-        tags:
-            - 'v*'
+  push:
+    tags:
+      - 'v*'
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
-    publish:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '20'
-                  registry-url: 'https://registry.npmjs.org'
-                  cache: 'npm'
-
-            - name: Install dependencies
-              run: npm ci
-
-            - name: Bump patch version
-              id: bump-version
-              run: |
-                  CURRENT_VERSION=$(node -p "require('./package.json').version")
-                  echo "Current version: $CURRENT_VERSION"
-
-                  # Увеличиваем патч-версию (например, 0.3.2 -> 0.3.3)
-                  IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
-                  MAJOR=${VERSION_PARTS[0]}
-                  MINOR=${VERSION_PARTS[1]}
-                  PATCH=${VERSION_PARTS[2]}
-
-                  NEW_PATCH=$((PATCH + 1))
-                  NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
-
-                  echo "New version: $NEW_VERSION"
-                  echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
-                  # Обновляем версию в package.json
-                  npm pkg set version=$NEW_VERSION
-                  echo "Updated package.json version:"
-                  cat package.json | grep '"version"'
-
-            - name: Build library
-              run: npm run build:lib
-
-            - name: Publish to NPM
-              run: npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Bump patch version
+        id: bump-version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          
+          # Увеличиваем патч-версию (например, 0.3.2 -> 0.3.3)
+          IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
+          MAJOR=${VERSION_PARTS[0]}
+          MINOR=${VERSION_PARTS[1]}
+          PATCH=${VERSION_PARTS[2]}
+          
+          NEW_PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+          
+          echo "New version: $NEW_VERSION"
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          
+          # Обновляем версию в package.json
+          npm pkg set version=$NEW_VERSION
+          echo "Updated package.json version:"
+          cat package.json | grep '"version"'
+      
+      - name: Build library
+        run: npm run build:lib
+      
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

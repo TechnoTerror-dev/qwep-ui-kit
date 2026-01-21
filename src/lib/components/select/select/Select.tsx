@@ -94,6 +94,7 @@ const STrigger = styled(S.Trigger)<STriggerProps>`
                 color: props.$color,
                 disabled: props.disabled,
                 variant: props.$colorVariant,
+                opacity: '80',
             })};
     color: ${(props) =>
         getColorIcon({

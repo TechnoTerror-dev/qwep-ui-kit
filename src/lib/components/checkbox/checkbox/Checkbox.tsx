@@ -95,6 +95,7 @@ const SRoot = styled(Root)<SRootProps>`
                 disabled: props.disabled,
                 color: props.$color,
                 variant: props.$colorVariant,
+                opacity: '80',
             })};
     &[data-state='checked'] {
         border-color: ${(props) =>

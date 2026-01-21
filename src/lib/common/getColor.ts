@@ -32,7 +32,7 @@ export const getColorSystem = ({ cs, variant, disabled, color, opacity = '', hov
     } else if (hover) {
         return `${variant === 'error' ? cs.errorItemActive : variant === 'info' ? cs.infoItemActive : variant === 'warning' ? cs.warningItemActive : variant === 'success' ? cs.successItemActive : cs.primaryItemActive}${opacity}`;
     } else {
-        return `${variant === 'error' ? cs.errorItem : variant === 'info' ? cs.infoItem : variant === 'warning' ? cs.warningItem : variant === 'success' ? cs.successItem : cs.system}${opacity}`;
+        return `${variant === 'error' ? cs.errorItem : variant === 'info' ? cs.infoItem : variant === 'warning' ? cs.warningItem : variant === 'success' ? cs.successItem : cs.iconGroup}${opacity}`;
     }
 };
 

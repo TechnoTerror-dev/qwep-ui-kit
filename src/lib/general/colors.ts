@@ -40,6 +40,37 @@ export type TypeColorScheme = {
     textItem: Hex;
     link: Hex;
     linkActive: Hex;
+    tableText: Hex;
+    subTextPink: Hex;
+    subTextEvergreen: Hex;
+
+    //icon
+    iconGroup: Hex;
+    iconsOrange: Hex;
+    iconsRed: Hex;
+    iconsGreen: Hex;
+
+    //backgrounds
+    backgroundHeaderCards: Hex;
+    backgroundLightRed: Hex;
+    backgroundOrdersGreen: Hex;
+    backgroundOrdersGrey: Hex;
+    backgroundElementsBlueGrey: Hex;
+    backgroundElementsOrange: Hex;
+    backgroundElementsGreen: Hex;
+
+    //table backgrounds
+    backgroundTableBlue: Hex;
+    backgroundTableGreen: Hex;
+    backgroundTableGrey: Hex;
+    backgroundTableLightGrey: Hex;
+    backgroundTableOrange: Hex;
+    backgroundTableEvergreen: Hex;
+    backgroundTablePink: Hex;
+    backgroundTableRed: Hex;
+
+    //elements
+    secondaryElements: Hex;
 
     //general
     alpha: Hex;
@@ -88,6 +119,37 @@ export const colorsLight: TypeColorScheme = {
     textItem: '#F5F5F5',
     link: '#2563EB',
     linkActive: '#1D4ED8',
+    tableText: '#121923',
+    subTextPink: '#DB2777',
+    subTextEvergreen: '#0A9588',
+
+    //icon
+    iconGroup: '#64748B',
+    iconsOrange: '#FB923C',
+    iconsRed: '#EF4444',
+    iconsGreen: '#22C55E',
+
+    //backgrounds
+    backgroundHeaderCards: '#ffffff',
+    backgroundLightRed: '#FEF2F2',
+    backgroundOrdersGreen: '#DCFCE7',
+    backgroundOrdersGrey: '#E2E8F0',
+    backgroundElementsBlueGrey: '#2563EB20',
+    backgroundElementsOrange: '#FFF7ED',
+    backgroundElementsGreen: '#F0FDF4',
+
+    //table backgrounds
+    backgroundTableBlue: '#DBEAFE',
+    backgroundTableGreen: '#BBF7D0',
+    backgroundTableGrey: '#F3F4F6',
+    backgroundTableLightGrey: '#F8FAFC',
+    backgroundTableOrange: '#FFEDD5',
+    backgroundTableEvergreen: '#E6F7F4',
+    backgroundTablePink: '#FCE7F3',
+    backgroundTableRed: '#FEE2E2',
+
+    //elements
+    secondaryElements: '#3B82F6',
 
     //general
     alpha: '#ffffff',
@@ -134,6 +196,37 @@ export const colorsDark: TypeColorScheme = {
     textItem: '#F8FAFC',
     link: '#3B82F6',
     linkActive: '#2563EB',
+    tableText: '#F8FAFC',
+    subTextPink: '#F472B6',
+    subTextEvergreen: '#5ED1C1',
+
+    //icon
+    iconGroup: '#A9C1CF',
+    iconsOrange: '#F97316',
+    iconsRed: '#EF4444',
+    iconsGreen: '#22C55E',
+
+    //backgrounds
+    backgroundHeaderCards: '#121923',
+    backgroundLightRed: '#7A161699',
+    backgroundOrdersGreen: '#16653499',
+    backgroundOrdersGrey: '#47556999',
+    backgroundElementsBlueGrey: '#3B82F620',
+    backgroundElementsOrange: '#7B2A0E99',
+    backgroundElementsGreen: '#12512A99',
+
+    //table backgrounds
+    backgroundTableBlue: '#18338C99',
+    backgroundTableGreen: '#16653499',
+    backgroundTableGrey: '#33415599',
+    backgroundTableLightGrey: '#12192399',
+    backgroundTableOrange: '#7B2A0E99',
+    backgroundTableEvergreen: '#07776F99',
+    backgroundTablePink: '#7E123E99',
+    backgroundTableRed: '#7A161699',
+
+    //elements
+    secondaryElements: '#60A5FA',
 
     //general
     alpha: '#ffffff',

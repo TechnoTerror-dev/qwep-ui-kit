@@ -38,6 +38,7 @@ const SRoot = styled(SCheckbox.Root)<SRootProps>`
                             cs: props.$colors,
                             color: props.$color,
                             variant: props.$colorVariant,
+                            opacity: '80',
                         })};
                 }
                 ${StyledLoadingItemEffect}

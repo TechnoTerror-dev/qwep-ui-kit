@@ -32,7 +32,7 @@ export const ShowColors = () => {
     return (
         <>
             <Title sizeVariant={'L'} mr={'m-6'}>
-                ShowSlider
+                ShowColors
             </Title>
             <BoxLayout>
                 <Title>General</Title>
@@ -80,6 +80,41 @@ export const ShowColors = () => {
                     <ColorBox color={colors.textItem} text={'textItem'} />
                     <ColorBox color={colors.link} text={'link'} />
                     <ColorBox color={colors.linkActive} text={'linkActive'} />
+                    <ColorBox color={colors.tableText} text={'tableText'} />
+                    <ColorBox color={colors.subTextPink} text={'subTextPink'} />
+                    <ColorBox color={colors.subTextEvergreen} text={'subTextEvergreen'} />
+                </Box>
+                <Title>Icon</Title>
+                <Box mr={'my-3'} boxDisplay={'flex'} boxGapVariant={'g-3'}>
+                    <ColorBox color={colors.iconGroup} text={'iconGroup'} />
+                    <ColorBox color={colors.iconsOrange} text={'iconsOrange'} />
+                    <ColorBox color={colors.iconsRed} text={'iconsRed'} />
+                    <ColorBox color={colors.iconsGreen} text={'iconsGreen'} />
+                </Box>
+                <Title>Backgrounds</Title>
+                <Box mr={'my-3'} boxDisplay={'flex'} boxGapVariant={'g-3'}>
+                    <ColorBox color={colors.backgroundHeaderCards} text={'backgroundHeaderCards'} />
+                    <ColorBox color={colors.backgroundLightRed} text={'backgroundLightRed'} />
+                    <ColorBox color={colors.backgroundOrdersGreen} text={'backgroundOrdersGreen'} />
+                    <ColorBox color={colors.backgroundOrdersGrey} text={'backgroundOrdersGrey'} />
+                    <ColorBox color={colors.backgroundElementsBlueGrey} text={'backgroundElementsBlueGrey'} />
+                    <ColorBox color={colors.backgroundElementsOrange} text={'backgroundElementsOrange'} />
+                    <ColorBox color={colors.backgroundElementsGreen} text={'backgroundElementsGreen'} />
+                </Box>
+                <Title>Table Backgrounds</Title>
+                <Box mr={'my-3'} boxDisplay={'flex'} boxGapVariant={'g-3'}>
+                    <ColorBox color={colors.backgroundTableBlue} text={'backgroundTableBlue'} />
+                    <ColorBox color={colors.backgroundTableGreen} text={'backgroundTableGreen'} />
+                    <ColorBox color={colors.backgroundTableGrey} text={'backgroundTableGrey'} />
+                    <ColorBox color={colors.backgroundTableLightGrey} text={'backgroundTableLightGrey'} />
+                    <ColorBox color={colors.backgroundTableOrange} text={'backgroundTableOrange'} />
+                    <ColorBox color={colors.backgroundTableEvergreen} text={'backgroundTableEvergreen'} />
+                    <ColorBox color={colors.backgroundTablePink} text={'backgroundTablePink'} />
+                    <ColorBox color={colors.backgroundTableRed} text={'backgroundTableRed'} />
+                </Box>
+                <Title>Elements</Title>
+                <Box mr={'my-3'} boxDisplay={'flex'} boxGapVariant={'g-3'}>
+                    <ColorBox color={colors.secondaryElements} text={'secondaryElements'} />
                 </Box>
                 <Title>Default</Title>
                 <Box mr={'my-3'} boxDisplay={'flex'} boxGapVariant={'g-3'}>

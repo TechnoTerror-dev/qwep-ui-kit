@@ -69,6 +69,7 @@ const SRoot = styled.div<SRootProps>`
                 color: props.$color,
                 disabled: props.$disabled,
                 variant: props.$colorVariant,
+                opacity: '80',
             })};
     ${(props) =>
         !props.$disabled &&

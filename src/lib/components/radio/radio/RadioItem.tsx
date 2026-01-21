@@ -89,6 +89,7 @@ const SItem = styled(RadioGroup.Item)<SItemProps>`
                 disabled: props.disabled,
                 color: props.$color,
                 variant: props.$colorVariant,
+                opacity: '80',
             })};
     transition: all 0.3s ease-in-out;
     &[data-state='checked'] {

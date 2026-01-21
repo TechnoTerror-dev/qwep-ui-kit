@@ -1,7 +1,7 @@
 {
     "name": "qwep-kit",
     "private": false,
-    "version": "0.3.2",
+    "version": "0.3.3",
     "type": "module",
     "files": [
         "dist/**/*"
@@ -22,9 +22,9 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "BUILD_MODE=lib tsc --project tsconfig.build.json && vite build",
+        "build": "export BUILD_MODE=lib && tsc --project tsconfig.build.json && vite build",
         "build:demo": "vite build",
-        "build:lib": "BUILD_MODE=lib tsc --project tsconfig.build.json && vite build",
+        "build:lib": "export BUILD_MODE=lib && tsc --project tsconfig.build.json && vite build",
         "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
         "format": "prettier --write .",
         "preview": "vite preview",

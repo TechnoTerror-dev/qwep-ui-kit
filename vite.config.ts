@@ -15,6 +15,7 @@ export default defineConfig({
     base: process.env.NODE_ENV === 'production' && !isLibBuild ? '/qwep-ui-kit/' : '/',
     build: isLibBuild
         ? {
+              outDir: 'dist',
               lib: {
                   entry: path.resolve('', 'src/lib/index.ts'),
                   name: 'QWEP-KIT',
@@ -28,7 +29,6 @@ export default defineConfig({
                           react: 'React',
                           'react-dom': 'ReactDOM',
                       },
-                      dir: 'dist',
                   },
               },
           }

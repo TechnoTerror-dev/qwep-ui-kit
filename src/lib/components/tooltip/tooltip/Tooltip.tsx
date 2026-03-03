@@ -1,8 +1,8 @@
-import { useColorScheme } from '@src/lib/general/useColorScheme';
 import * as T from '@radix-ui/react-tooltip';
-import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { TypeColorScheme } from '@src/lib/general/colors';
 import { TypeSSTooltip, TypeSSTypography } from '@src/lib/general/styleScheme';
+import { useColorScheme } from '@src/lib/general/useColorScheme';
+import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { TBaseProps } from '@src/lib/types/TypeBase';
 import React from 'react';
 import styled, { css } from 'styled-components';
@@ -53,12 +53,10 @@ const SContent = styled(STooltipComponent.Content)<SContentProps>`
 
 export const Tooltip = React.memo(
     React.forwardRef<HTMLButtonElement, TooltipProps>(
-        (
-            { tooltip, isCustom, providerProps, rootProps, triggerProps, portalProps, $colors, $styles, ...rest },
-            ref
-        ) => {
+        ({ tooltip, providerProps, rootProps, triggerProps, portalProps, $colors, $styles, ...rest }, ref) => {
             const colors = useColorScheme($colors);
             const styles = useStyleScheme(['tooltip', 'typography'], $styles);
+            const { isCustom, ...contentRest } = rest;
 
             return (
                 <T.Provider delayDuration={500} {...providerProps}>
@@ -73,7 +71,7 @@ export const Tooltip = React.memo(
                                 $isCustom={isCustom}
                                 sideOffset={4}
                                 side={'bottom'}
-                                {...rest}
+                                {...contentRest}
                             >
                                 {tooltip}
                             </SContent>

@@ -83,6 +83,7 @@ export const MainTextField = React.memo(
                 $colors,
                 $styles,
                 rootProps,
+                iconContainerProps,
                 componentsEnd,
                 ...rest
             },
@@ -137,6 +138,7 @@ export const MainTextField = React.memo(
                             $color={color}
                             $colorVariant={colorVariant}
                             $disabled={rest.disabled}
+                            {...iconContainerProps}
                         >
                             {renderIconStart}
                         </SIconContainer>
@@ -159,6 +161,7 @@ export const MainTextField = React.memo(
                                 $color={color}
                                 $colorVariant={colorVariant}
                                 $disabled={rest.disabled}
+                                {...iconContainerProps}
                             >
                                 {iconNode}
                             </SIconContainer>

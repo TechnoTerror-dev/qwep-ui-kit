@@ -116,6 +116,7 @@ export const SubmitButton = React.memo(
         (
             {
                 isLoading,
+                icon,
                 sizeVariant = EBaseProps.VariantSize.L,
                 colorVariant = EBaseProps.VariantColor.DEFAULT,
                 variant = EButtonProps.VariantBtn.CONTAINED,
@@ -127,6 +128,7 @@ export const SubmitButton = React.memo(
                 $styles,
                 isRippleEffect,
                 iconContainerProps,
+                contentProps,
                 ...rest
             },
             ref
@@ -135,8 +137,8 @@ export const SubmitButton = React.memo(
             const styles = useStyleScheme(['base', 'btn', 'typography', 'mr'], $styles);
 
             const renderIcon = useMemo(() => {
-                return renderIconButton({ icon: rest.icon, size: styles.btn, sizeVariant, rest: { $colors: colors } });
-            }, [rest.icon, colors, styles, sizeVariant]);
+                return renderIconButton({ icon, size: styles.btn, sizeVariant, rest: { $colors: colors } });
+            }, [icon, colors, styles, sizeVariant]);
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(
@@ -175,7 +177,7 @@ export const SubmitButton = React.memo(
                             {renderIcon}
                         </SMainButton.IconContainer>
                     )}
-                    <SMainButton.ContentContainer $position={position} {...rest.contentProps}>
+                    <SMainButton.ContentContainer $position={position} {...contentProps}>
                         {rest.children}
                     </SMainButton.ContentContainer>
                     {isLoading && !rest.disabled && (

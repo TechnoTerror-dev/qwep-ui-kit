@@ -1,5 +1,7 @@
 export type Hex = `#${string}`;
 
+export type ColorValue = Hex | string;
+
 export type TypeColorScheme = {
     primary: Hex;
     secondary: Hex;
@@ -76,7 +78,7 @@ export type TypeColorScheme = {
     alpha: Hex;
     omega: Hex;
 } & {
-    [key: string]: Hex;
+    [key: string]: ColorValue;
 };
 
 export const colorsLight: TypeColorScheme = {

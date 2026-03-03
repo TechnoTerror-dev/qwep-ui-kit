@@ -88,6 +88,7 @@ export const IconButton = React.memo(
                 _isActiveHover = true,
                 $colors,
                 $styles,
+                isRippleEffect,
                 ...rest
             },
             ref
@@ -106,7 +107,7 @@ export const IconButton = React.memo(
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(
-                    rest.isRippleEffect,
+                    isRippleEffect,
                     event,
                     getColor({
                         cs: colors,

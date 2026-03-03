@@ -1,15 +1,16 @@
+import { SBaseTextField, TBaseTextField } from '@src/lib';
 import { getColorIcon } from '@src/lib/common/getColor';
 import { renderIconTextField } from '@src/lib/common/renderIconItem';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
-import React, { useCallback, useMemo, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { SBaseTextField, TBaseTextField } from '@src/lib';
 import { EBaseProps } from '@src/lib/types/TypeBase';
+import React, { ReactNode, useCallback, useMemo, useState } from 'react';
+import styled, { css } from 'styled-components';
 
 type MainTextFieldProps = {
     iconStart?: React.ReactNode;
     iconsEnd?: React.ReactNode[];
+    componentsEnd?: ReactNode;
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     iconContainerProps?: React.HTMLAttributes<HTMLDivElement>;
 } & TBaseTextField.Main;
@@ -65,6 +66,7 @@ export const SRoot = styled(SBaseTextField.Root)<TBaseTextField.SRoot>`
             css`
                 pointer-events: none;
             `};
+    }
 `;
 
 export const MainTextField = React.memo(
@@ -81,6 +83,7 @@ export const MainTextField = React.memo(
                 $colors,
                 $styles,
                 rootProps,
+                componentsEnd,
                 ...rest
             },
             ref
@@ -160,6 +163,7 @@ export const MainTextField = React.memo(
                                 {iconNode}
                             </SIconContainer>
                         ))}
+                    {componentsEnd && componentsEnd}
                 </SRoot>
             );
         }

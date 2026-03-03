@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useState, useContext, useMemo } from 'react';
-import { Hex, TypeColorScheme, colorsDark, colorsLight } from './colors';
+import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
+import { colorsDark, colorsLight, ColorValue, TypeColorScheme } from './colors';
 
 export type TypeColorTheme = 'light' | 'dark' | `_custom_${string}`;
 
@@ -21,8 +21,8 @@ type ThemeProvider = {
     children: ReactNode;
     colorThemeName?: TypeColorTheme;
     customColorThemes?: TypeCustomColorTheme[];
-    addColorsLight?: { [key: string]: Hex };
-    addColorsDark?: { [key: string]: Hex };
+    addColorsLight?: { [key: string]: ColorValue };
+    addColorsDark?: { [key: string]: ColorValue };
 };
 
 const ThemeContext = createContext<TypeThemeContext>({

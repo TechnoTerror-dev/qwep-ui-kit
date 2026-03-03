@@ -125,6 +125,8 @@ export const SubmitButton = React.memo(
                 loadingProps,
                 $colors,
                 $styles,
+                isRippleEffect,
+                iconContainerProps,
                 ...rest
             },
             ref
@@ -138,7 +140,7 @@ export const SubmitButton = React.memo(
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(
-                    rest.isRippleEffect,
+                    isRippleEffect,
                     event,
                     getColor({
                         cs: colors,
@@ -169,7 +171,7 @@ export const SubmitButton = React.memo(
                     {...rest}
                 >
                     {renderIcon && (
-                        <SMainButton.IconContainer $iconPosition={iconPosition} {...rest.iconContainerProps}>
+                        <SMainButton.IconContainer $iconPosition={iconPosition} {...iconContainerProps}>
                             {renderIcon}
                         </SMainButton.IconContainer>
                     )}

@@ -4,7 +4,7 @@ import { renderIconButton } from '@src/lib/common/renderIconItem';
 import { useColorScheme } from '@src/lib/general/useColorScheme';
 import { useStyleScheme } from '@src/lib/general/useStyleScheme';
 import { EBaseProps, TBaseProps } from '@src/lib/types/TypeBase';
-import { TButtonProps, EButtonProps } from '@src/lib/types/TypeBtn';
+import { EButtonProps, TButtonProps } from '@src/lib/types/TypeBtn';
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 import { SButton, TButton } from '../button/Button';
@@ -113,6 +113,7 @@ export const MainButton = React.memo(
                 contentProps,
                 $colors,
                 $styles,
+                isRippleEffect,
                 ...rest
             },
             ref
@@ -126,7 +127,7 @@ export const MainButton = React.memo(
 
             const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
                 itemRippleEffect(
-                    rest.isRippleEffect,
+                    isRippleEffect,
                     event,
                     getColor({
                         cs: colors,

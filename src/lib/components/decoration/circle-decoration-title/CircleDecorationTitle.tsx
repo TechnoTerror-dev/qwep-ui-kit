@@ -85,7 +85,6 @@ export const CircleDecorationTitle = React.memo(
                 });
             }, [icon, colors]);
 
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { children: _children, ...titlePropsWithoutChildren } = titleProps || {};
 
             return (
